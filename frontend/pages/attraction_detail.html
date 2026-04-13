@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>景点详情 - TripMind</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/icons.js"></script>
+    <style>
+        .detail-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 100px 24px 60px;
+            color: white;
+        }
+
+        .detail-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .detail-hero h1 {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .detail-hero p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .detail-content {
+            background: var(--bg-main);
+            padding: 40px 24px;
+        }
+
+        .detail-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+        }
+
+        .detail-card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .detail-card h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .detail-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .detail-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .detail-stat {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .detail-stat-value {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .detail-stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .route-card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            position: sticky;
+            top: 92px;
+        }
+
+        .route-card h3 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .route-inputs {
+            margin-bottom: 16px;
+        }
+
+        .route-inputs .form-group {
+            margin-bottom: 12px;
+        }
+
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .facility-item {
+            background: var(--bg-main);
+            padding: 14px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .facility-item .icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .facility-item .name {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-hero h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" style="background: transparent; border-bottom-color: rgba(255,255,255,0.1);">
+        <div class="navbar-inner">
+            <div class="logo" onclick="location.href='../index.html'">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                </div>
+                <span class="logo-text" style="color: white;">TripMind</span>
+            </div>
+
+            <div class="nav-tabs" style="background: rgba(255,255,255,0.1);">
+                <a href="home.html" class="nav-tab active" style="color: white;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    探索
+                </a>
+                <a href="route_planning.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>
+                    规划
+                </a>
+                <a href="diary_square.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                    游记
+                </a>
+                <a href="food.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+                    食集
+                </a>
+            </div>
+
+            <div class="user-area" id="userArea">
+                <a href="../login.html" class="btn-signin" style="background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.2);">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 景点详情Hero -->
+    <div class="detail-hero">
+        <div class="detail-hero-content">
+            <div class="back-btn" onclick="history.back()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                返回
+            </div>
+            <h1 id="attractionName">加载中...</h1>
+            <p id="attractionDesc">-</p>
+        </div>
+    </div>
+
+    <!-- 景点内容 -->
+    <div class="detail-content">
+        <div class="detail-grid">
+            <!-- 左侧 -->
+            <div>
+                <div class="detail-card">
+                    <h3>📖 景点介绍</h3>
+                    <p id="attractionContent">正在加载景点详情...</p>
+                </div>
+
+                <div class="detail-card">
+                    <h3>🛏️ 附近设施</h3>
+                    <div class="facility-grid" id="facilities">
+                        <div class="facility-item">
+                            <div class="icon">🚽</div>
+                            <div class="name">卫生间</div>
+                        </div>
+                        <div class="facility-item">
+                            <div class="icon">🅿️</div>
+                            <div class="name">停车场</div>
+                        </div>
+                        <div class="facility-item">
+                            <div class="icon">🍽️</div>
+                            <div class="name">餐饮</div>
+                        </div>
+                        <div class="facility-item">
+                            <div class="icon">🏪</div>
+                            <div class="name">商店</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <h3>📝 相关游记</h3>
+                    <div id="relatedDiaries">
+                        <p style="color: var(--text-muted);">暂无相关游记</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧 -->
+            <div>
+                <div class="detail-stats">
+                    <div class="detail-stat">
+                        <div class="detail-stat-value" id="statRating">-</div>
+                        <div class="detail-stat-label">评分</div>
+                    </div>
+                    <div class="detail-stat">
+                        <div class="detail-stat-value" id="statHeat">-</div>
+                        <div class="detail-stat-label">热度</div>
+                    </div>
+                    <div class="detail-stat">
+                        <div class="detail-stat-value" id="statDiary">-</div>
+                        <div class="detail-stat-label">游记</div>
+                    </div>
+                </div>
+
+                <div class="route-card">
+                    <h3>🗺️ 从这里出发</h3>
+                    <div class="route-inputs">
+                        <div class="form-group">
+                            <label class="form-label">起点</label>
+                            <select id="fromSelect" class="form-input">
+                                <option value="">选择出发地点</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">终点（自动设为本景点）</label>
+                            <input type="text" class="form-input" id="toSelect" disabled placeholder="自动设为本景点">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="planRoute()" style="width: 100%;">
+                        规划路线
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script>
+        // 检查登录状态
+        function checkLogin() {
+            const user = API.Auth.getCurrentUser();
+            const userArea = document.getElementById('userArea');
+            if (user && userArea) {
+                userArea.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span style="color: var(--text-secondary);">欢迎，${user.username}</span>
+                        <button onclick="logout()" class="btn" style="padding: 8px 16px; background: var(--primary-light); color: var(--primary);">退出</button>
+                    </div>
+                `;
+            }
+        }
+
+        function logout() {
+            API.Auth.logout();
+            location.reload();
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const attractionId = urlParams.get('id');
+        let currentAttraction = null;
+
+        // 加载景点详情
+        async function loadAttraction() {
+            if (!attractionId) {
+                document.getElementById('attractionName').textContent = '景点不存在';
+                return;
+            }
+
+            try {
+                const data = await API.Attractions.get(attractionId);
+                if (data) {
+                    currentAttraction = data;
+                    displayAttraction(data);
+                } else {
+                    loadMockAttraction();
+                }
+            } catch (e) {
+                console.log('加载失败，使用模拟数据');
+                loadMockAttraction();
+            }
+        }
+
+        // 显示景点数据
+        function displayAttraction(data) {
+            document.getElementById('attractionName').textContent = data.name || '未知景点';
+            document.getElementById('attractionDesc').textContent = data.type || '北京景点';
+            document.getElementById('attractionContent').textContent = data.description || '暂无详细介绍';
+            document.getElementById('statRating').textContent = data.rating || '4.5';
+            document.getElementById('statHeat').textContent = (data.heat || 0) + '%';
+            document.getElementById('toSelect').value = data.name;
+            document.title = (data.name || '景点') + ' - TripMind';
+        }
+
+        // 模拟景点数据
+        function loadMockAttraction() {
+            const mock = {
+                name: '故宫博物院',
+                type: '历史古迹',
+                rating: 4.9,
+                heat: 98,
+                description: '故宫又名紫禁城，是中国古代宫廷建筑的精华之作。这里曾是明清两代的皇家宫殿，现在是中国最大的古代文化艺术博物馆。'
+            };
+            currentAttraction = mock;
+            displayAttraction(mock);
+        }
+
+        // 加载路线规划选项
+        async function loadRouteOptions() {
+            try {
+                const data = await API.Attractions.list({ limit: 20 });
+                const select = document.getElementById('fromSelect');
+                if (data && data.items) {
+                    data.items.forEach(item => {
+                        if (item.id !== attractionId) {
+                            const opt = document.createElement('option');
+                            opt.value = item.id;
+                            opt.textContent = item.name;
+                            select.appendChild(opt);
+                        }
+                    });
+                }
+            } catch (e) {
+                console.log('加载景点列表失败');
+            }
+        }
+
+        // 规划路线
+        function planRoute() {
+            const from = document.getElementById('fromSelect').value;
+            if (!from) {
+                alert('请选择出发地点');
+                return;
+            }
+            window.location.href = `route_planning.html?from=${from}&to=${attractionId}`;
+        }
+
+        // 页面加载
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLogin();
+            loadAttraction();
+            loadRouteOptions();
+        });
+    </script>
+</body>
+</html>

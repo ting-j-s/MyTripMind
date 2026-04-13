@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 - TripMind</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/icons.js"></script>
+    <style>
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 13px;
+        }
+        .checkbox-item:hover {
+            border-color: var(--primary);
+        }
+        .checkbox-item input {
+            display: none;
+        }
+        .checkbox-item.selected {
+            background: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <div class="logo" onclick="location.href='index.html'">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                </div>
+                <span class="logo-text">TripMind</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 注册页面 -->
+    <div class="auth-page">
+        <div class="auth-card">
+            <div style="text-align: center; margin-bottom: 32px;">
+                <div style="width: 72px; height: 72px; background: var(--primary); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 8px 20px rgba(45, 90, 39, 0.3);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                </div>
+                <h1>创建账号</h1>
+                <p style="color: var(--text-muted); margin-top: 8px;">Create your account to start your journey</p>
+            </div>
+
+            <form id="registerForm">
+                <div class="form-group">
+                    <label class="form-label">用户名</label>
+                    <input type="text" id="username" class="form-input" required placeholder="请输入用户名（至少2个字符）">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">密码</label>
+                    <input type="password" id="password" class="form-input" required placeholder="请输入密码（至少6位）">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">兴趣标签（可多选）</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item" onclick="toggleInterest(this)">
+                            <input type="checkbox" name="interests" value="历史">
+                            历史
+                        </label>
+                        <label class="checkbox-item" onclick="toggleInterest(this)">
+                            <input type="checkbox" name="interests" value="美食">
+                            美食
+                        </label>
+                        <label class="checkbox-item" onclick="toggleInterest(this)">
+                            <input type="checkbox" name="interests" value="自然风光">
+                            自然风光
+                        </label>
+                        <label class="checkbox-item" onclick="toggleInterest(this)">
+                            <input type="checkbox" name="interests" value="校园风光">
+                            校园风光
+                        </label>
+                        <label class="checkbox-item" onclick="toggleInterest(this)">
+                            <input type="checkbox" name="interests" value="建筑">
+                            建筑
+                        </label>
+                        <label class="checkbox-item" onclick="toggleInterest(this)">
+                            <input type="checkbox" name="interests" value="博物馆">
+                            博物馆
+                        </label>
+                        <label class="checkbox-item" onclick="toggleInterest(this)">
+                            <input type="checkbox" name="interests" value="艺术">
+                            艺术
+                        </label>
+                        <label class="checkbox-item" onclick="toggleInterest(this)">
+                            <input type="checkbox" name="interests" value="运动">
+                            运动
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px; margin-top: 8px;">
+                    注册
+                </button>
+            </form>
+
+            <p class="auth-link">
+                已有账号？<a href="login.html">立即登录</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+        function toggleInterest(label) {
+            label.classList.toggle('selected');
+        }
+
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (username.length < 2) {
+                alert('用户名至少2个字符');
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('密码至少6位');
+                return;
+            }
+
+            // 获取选中的兴趣
+            const interests = [];
+            document.querySelectorAll('input[name="interests"]:checked').forEach(cb => {
+                interests.push(cb.value);
+            });
+
+            try {
+                const data = await API.Auth.register(username, password, interests);
+                if (data) {
+                    alert('注册成功！请登录');
+                    window.location.href = 'login.html';
+                }
+            } catch (e) {
+                alert('注册失败，请重试');
+            }
+        });
+    </script>
+</body>
+</html>

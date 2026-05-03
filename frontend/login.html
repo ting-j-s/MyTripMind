@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - TripMind</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/icons.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <div class="logo" onclick="location.href='index.html'">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                </div>
+                <span class="logo-text">TripMind</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 登录页面 -->
+    <div class="auth-page">
+        <div class="auth-card">
+            <div style="text-align: center; margin-bottom: 32px;">
+                <div style="width: 72px; height: 72px; background: var(--primary); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 8px 20px rgba(45, 90, 39, 0.3);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <h1>欢迎回来</h1>
+                <p style="color: var(--text-muted); margin-top: 8px;">Sign in to continue your journey</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">用户名</label>
+                    <input type="text" id="username" class="form-input" required placeholder="请输入用户名">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">密码</label>
+                    <input type="password" id="password" class="form-input" required placeholder="请输入密码">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px;">
+                    登录
+                </button>
+            </form>
+
+            <p class="auth-link">
+                还没有账号？<a href="register.html">立即注册</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                alert('请填写完整信息');
+                return;
+            }
+
+            try {
+                const data = await API.Auth.login(username, password);
+                if (data) {
+                    API.Auth.setCurrentUser(data);
+                    alert('登录成功！');
+                    window.location.href = 'pages/home.html';
+                }
+            } catch (e) {
+                alert('登录失败，请检查用户名和密码');
+            }
+        });
+    </script>
+</body>
+</html>

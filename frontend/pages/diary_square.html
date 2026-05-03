@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游记广场 - TripMind</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/icons.js"></script>
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 48px 24px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 8px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 24px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .search-box button {
+            padding: 14px 28px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .sort-tabs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .sort-tab {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            background: var(--bg-main);
+            color: var(--text-secondary);
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .sort-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .diary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        .diary-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .diary-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .diary-card-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, #e8f5e9 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diary-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .diary-card-image .placeholder {
+            font-size: 48px;
+            opacity: 0.5;
+        }
+
+        .diary-card-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .diary-card-body {
+            padding: 20px;
+        }
+
+        .diary-card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .diary-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .diary-card-meta .author {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .diary-card-meta .location {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .diary-card-content {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .diary-card-stats {
+            display: flex;
+            gap: 20px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .diary-stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .diary-stat svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .loading, .empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 32px;
+        }
+
+        .page-btn {
+            min-width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            border: none;
+            background: var(--bg-main);
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .page-btn:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .page-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" style="background: rgba(45, 90, 39, 0.95); border-bottom-color: rgba(255,255,255,0.1);">
+        <div class="navbar-inner">
+            <div class="logo" onclick="location.href='../index.html'">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                </div>
+                <span class="logo-text" style="color: white;">TripMind</span>
+            </div>
+
+            <div class="nav-tabs" style="background: rgba(255,255,255,0.1);">
+                <a href="home.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    探索
+                </a>
+                <a href="route_planning.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>
+                    规划
+                </a>
+                <a href="diary_square.html" class="nav-tab active" style="color: white;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                    游记
+                </a>
+                <a href="food.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+                    食集
+                </a>
+            </div>
+
+            <div class="user-area">
+                <a href="../login.html" class="btn-signin" style="background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.2);">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="main-content page-bg-gradient">
+        <!-- Hero搜索 -->
+        <div class="hero-section">
+            <h1 class="hero-title">发现精彩游记</h1>
+            <p class="hero-subtitle">探索真实旅行体验，分享你的故事</p>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索目的地、景点或关键词...">
+                <button onclick="searchDiaries()">搜索</button>
+            </div>
+        </div>
+
+        <div class="container" style="padding-top: 32px;">
+            <!-- 排序 -->
+            <div class="section-header">
+                <h2 class="section-title">热门游记</h2>
+                <div class="sort-tabs">
+                    <button class="sort-tab active" data-sort="heat" onclick="changeSort('heat')">热度</button>
+                    <button class="sort-tab" data-sort="rating" onclick="changeSort('rating')">评分</button>
+                    <button class="sort-tab" data-sort="time" onclick="changeSort('time')">最新</button>
+                </div>
+            </div>
+
+            <!-- 日记列表 -->
+            <div id="diaryList">
+                <div class="loading">加载中...</div>
+            </div>
+
+            <!-- 分页 -->
+            <div id="pagination" class="pagination"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 TripMind | 数据结构课程设计</p>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script>
+        // 检查登录状态
+        function checkLogin() {
+            const user = API.Auth.getCurrentUser();
+            const userArea = document.getElementById('userArea');
+            if (user && userArea) {
+                userArea.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span style="color: var(--text-secondary);">欢迎，${user.username}</span>
+                        <button onclick="logout()" class="btn" style="padding: 8px 16px; background: var(--primary-light); color: var(--primary);">退出</button>
+                    </div>
+                `;
+            }
+        }
+
+        function logout() {
+            API.Auth.logout();
+            location.reload();
+        }
+
+        let currentPage = 1;
+        const pageSize = 12;
+        let currentSort = 'heat';
+        let locationNames = {};
+
+        // 获取景点名称
+        async function getLocationName(id) {
+            if (!id) return '北京景点';
+            if (locationNames[id]) return locationNames[id];
+
+            try {
+                const data = await API.Attractions.get(id);
+                if (data && data.name) {
+                    locationNames[id] = data.name;
+                    return data.name;
+                }
+            } catch (e) {}
+
+            // 如果API失败，尝试从ID提取中文名
+            return id.replace('ATTR_BJ_', '北京景点');
+        }
+
+        // 生成随机图片URL
+        function getRandomImage(id) {
+            // 使用 Unsplash 的占位图服务
+            const seed = id ? id.charCodeAt(id.length-1) : Math.floor(Math.random() * 100);
+            return `https://picsum.photos/seed/${seed}/400/240`;
+        }
+
+        // 加载日记列表
+        async function loadDiaries() {
+            const container = document.getElementById('diaryList');
+            container.innerHTML = '<div class="loading">加载中...</div>';
+
+            try {
+                const data = await API.Diaries.list({
+                    sort: currentSort,
+                    limit: pageSize,
+                });
+
+                if (!data || !data.items || !data.items.length) {
+                    container.innerHTML = '<div class="empty">暂无日记，来说点什么吧！</div>';
+                    return;
+                }
+
+                // 获取所有地点名称
+                const itemsWithNames = await Promise.all(data.items.map(async (item) => {
+                    const name = await getLocationName(item.location_id);
+                    return { ...item, locationName: name };
+                }));
+
+                container.innerHTML = `
+                    <div class="diary-grid">
+                        ${itemsWithNames.map(item => `
+                            <div class="diary-card" onclick="viewDiary('${item.id}')">
+                                <div class="diary-card-image">
+                                    ${item.images && item.images.length > 0
+                                        ? `<img src="${item.images[0]}" alt="${item.title}">`
+                                        : `<img src="${getRandomImage(item.id)}" alt="${item.title}" onerror="this.style.display='none'">`
+                                    }
+                                    <span class="diary-card-badge">${item.locationName}</span>
+                                </div>
+                                <div class="diary-card-body">
+                                    <h3 class="diary-card-title">${item.title}</h3>
+                                    <div class="diary-card-meta">
+                                        <span class="author">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                            ${item.user_id || '匿名'}
+                                        </span>
+                                        <span>${item.create_time || ''}</span>
+                                    </div>
+                                    <p class="diary-card-content">${item.content || '暂无内容'}</p>
+                                    <div class="diary-card-stats">
+                                        <span class="diary-stat">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                                            ${item.view_count || 0}
+                                        </span>
+                                        <span class="diary-stat">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            ${item.ratings && item.ratings.length
+                                                ? (item.ratings.reduce((a,b)=>a+b,0)/item.ratings.length).toFixed(1)
+                                                : '暂无'}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                // 更新分页
+                updatePagination(data.total || 0);
+            } catch (e) {
+                console.error('加载日记失败:', e);
+                container.innerHTML = '<div class="empty">加载失败，请刷新重试</div>';
+            }
+        }
+
+        // 搜索日记
+        async function searchDiaries() {
+            const keyword = document.getElementById('searchInput').value.trim();
+            if (!keyword) {
+                loadDiaries();
+                return;
+            }
+
+            const container = document.getElementById('diaryList');
+            container.innerHTML = '<div class="loading">搜索中...</div>';
+
+            try {
+                const data = await API.Diaries.search(keyword, 20);
+                if (!data || !data.items || !data.items.length) {
+                    container.innerHTML = '<div class="empty">未找到相关日记</div>';
+                    return;
+                }
+
+                const itemsWithNames = await Promise.all(data.items.map(async (item) => {
+                    const name = await getLocationName(item.location_id);
+                    return { ...item, locationName: name };
+                }));
+
+                container.innerHTML = `
+                    <div class="diary-grid">
+                        ${itemsWithNames.map(item => `
+                            <div class="diary-card" onclick="viewDiary('${item.id}')">
+                                <div class="diary-card-image">
+                                    ${item.images && item.images.length > 0
+                                        ? `<img src="${item.images[0]}" alt="${item.title}">`
+                                        : `<img src="${getRandomImage(item.id)}" alt="${item.title}" onerror="this.style.display='none'">`
+                                    }
+                                    <span class="diary-card-badge">${item.locationName}</span>
+                                </div>
+                                <div class="diary-card-body">
+                                    <h3 class="diary-card-title">${item.title}</h3>
+                                    <div class="diary-card-meta">
+                                        <span class="author">${item.user_id || '匿名'}</span>
+                                        <span>${item.create_time || ''}</span>
+                                    </div>
+                                    <p class="diary-card-content">${item.content || '暂无内容'}</p>
+                                    <div class="diary-card-stats">
+                                        <span class="diary-stat">👁 ${item.view_count || 0}</span>
+                                        <span class="diary-stat">⭐ ${item.ratings && item.ratings.length
+                                            ? (item.ratings.reduce((a,b)=>a+b,0)/item.ratings.length).toFixed(1)
+                                            : '暂无'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                document.getElementById('pagination').innerHTML = '';
+            } catch (e) {
+                container.innerHTML = '<div class="empty">搜索失败</div>';
+            }
+        }
+
+        // 切换排序
+        function changeSort(sort) {
+            currentSort = sort;
+            document.querySelectorAll('.sort-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.sort === sort);
+            });
+            loadDiaries();
+        }
+
+        // 查看日记
+        function viewDiary(id) {
+            window.location.href = `diary_detail.html?id=${id}`;
+        }
+
+        // 更新分页
+        function updatePagination(total) {
+            const totalPages = Math.ceil(total / pageSize);
+            const pagination = document.getElementById('pagination');
+
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+            for (let i = 1; i <= totalPages; i++) {
+                html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+            }
+            pagination.innerHTML = html;
+        }
+
+        // 翻页
+        function goPage(page) {
+            currentPage = page;
+            loadDiaries();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 回车搜索
+        document.addEventListener('DOMContentLoaded', () => {
+            checkLogin();
+            document.getElementById('searchInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') searchDiaries();
+            });
+            loadDiaries();
+        });
+    </script>
+</body>
+</html>

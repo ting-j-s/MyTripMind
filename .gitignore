@@ -1,8 +1,29 @@
-*.json
-*.log
-.DS_Store
+# Python
 __pycache__/
 *.pyc
-.env
-venv/
-*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# 不排除 data 目录下的 json 文件
+backend/data/*.json
+
+# 前端
+node_modules/
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 截图和临时文件
+*.jpg
+*.png
+convert_to_pdf.py
+
+# 课程PDF（不上传但本地保留）
+*.pdf

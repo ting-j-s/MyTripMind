@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - TripMind</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/icons.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" style="background: rgba(45, 90, 39, 0.95); border-bottom-color: rgba(255,255,255,0.1);">
+        <div class="navbar-inner">
+            <div class="logo" onclick="location.href='../index.html'">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                </div>
+                <span class="logo-text" style="color: white;">TripMind</span>
+            </div>
+
+            <div class="nav-tabs" style="background: rgba(255,255,255,0.1);">
+                <a href="home.html" class="nav-tab active" style="color: white;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    探索
+                </a>
+                <a href="route_planning.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>
+                    规划
+                </a>
+                <a href="diary_square.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                    游记
+                </a>
+                <a href="food.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+                    食集
+                </a>
+            </div>
+
+            <div class="user-area" id="userArea">
+                <a href="../login.html" class="btn-signin" style="background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.2);">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="main-content page-bg-gradient">
+        <!-- Hero搜索 -->
+        <section class="hero" style="padding: 60px 0 40px;">
+            <div class="container">
+                <h1 style="font-size: 36px; margin-bottom: 16px; color: white;">发现你的专属旅行</h1>
+                <p style="color: rgba(255,255,255,0.8); margin-bottom: 32px;">Based AI personalized travel recommendation</p>
+
+                <div style="display: flex; gap: 12px; max-width: 700px; margin: 0 auto;">
+                    <input type="text" id="searchInput" class="form-input" placeholder="搜索景点..." style="flex: 1;">
+                    <button class="btn btn-primary" onclick="searchAttractions()" style="padding: 14px 24px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        搜索
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 快捷路线规划入口 -->
+        <section style="padding: 0 0 40px;">
+            <div class="container">
+                <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: var(--shadow-md);">
+                    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                        快捷路线规划
+                    </h3>
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <select id="quickFrom" class="form-input" style="flex: 1; min-width: 150px;">
+                            <option value="">选择起点</option>
+                        </select>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        <select id="quickTo" class="form-input" style="flex: 1; min-width: 150px;">
+                            <option value="">选择终点</option>
+                        </select>
+                        <button class="btn btn-primary" onclick="quickRoute()" style="padding: 14px 24px;">
+                            规划
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门景点 -->
+        <section class="section" style="padding-top: 20px;">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title" style="color: white;">🔥 热门景点</h2>
+                        <p class="section-subtitle" style="color: rgba(255,255,255,0.6);">Popular destinations</p>
+                    </div>
+                    <a href="#" class="section-link" style="color: rgba(255,255,255,0.7);">
+                        查看全部
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </a>
+                </div>
+
+                <div class="grid-4" id="hotAttractions">
+                    <div class="loading" style="grid-column: 1/-1; color: rgba(255,255,255,0.6);">加载中...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 推荐景点 -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title" style="color: white;">✨ 为你推荐</h2>
+                        <p class="section-subtitle" style="color: rgba(255,255,255,0.6);">Personalized recommendations</p>
+                    </div>
+                </div>
+
+                <div class="grid-4" id="recommendAttractions">
+                    <div class="loading" style="grid-column: 1/-1; color: rgba(255,255,255,0.6);">加载中...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 最新日记 -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title" style="color: white;">📝 最新日记</h2>
+                        <p class="section-subtitle" style="color: rgba(255,255,255,0.6);">Latest travel diaries</p>
+                    </div>
+                    <a href="diary_square.html" class="section-link" style="color: rgba(255,255,255,0.7);">
+                        查看全部
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+                    </a>
+                </div>
+
+                <div id="latestDiaries">
+                    <div class="loading" style="color: rgba(255,255,255,0.6);">加载中...</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部 -->
+    <footer class="footer">
+        <p>© 2026 TripMind | 数据结构课程设计</p>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script>
+        // 检查登录
+        function checkLogin() {
+            const user = API.Auth.getCurrentUser();
+            const userArea = document.getElementById('userArea');
+
+            if (user) {
+                userArea.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span style="color: var(--text-secondary);">欢迎，${user.username}</span>
+                        <button onclick="logout()" class="btn" style="padding: 8px 16px; background: var(--primary-light); color: var(--primary);">退出</button>
+                    </div>
+                `;
+            }
+        }
+
+        function logout() {
+            API.Auth.logout();
+            location.reload();
+        }
+
+        // 搜索
+        function searchAttractions() {
+            const kw = document.getElementById('searchInput').value.trim();
+            if (!kw) return;
+            // TODO: 跳转到搜索结果页
+            alert('搜索: ' + kw);
+        }
+
+        // 快捷路线
+        function quickRoute() {
+            const from = document.getElementById('quickFrom').value;
+            const to = document.getElementById('quickTo').value;
+
+            if (!from || !to) {
+                alert('请选择起点和终点');
+                return;
+            }
+
+            location.href = `route_planning.html?from=${from}&to=${to}`;
+        }
+
+        // 加载热门景点
+        async function loadHotAttractions() {
+            const container = document.getElementById('hotAttractions');
+
+            try {
+                const data = await API.Attractions.list({ sort: 'heat', limit: 8 });
+                if (data && data.items && data.items.length > 0) {
+                    renderAttractions(container, data.items);
+                    populateQuickSelects(data.items);
+                } else {
+                    renderMockAttractions(container);
+                }
+            } catch (e) {
+                renderMockAttractions(container);
+            }
+        }
+
+        // 加载推荐景点
+        async function loadRecommendAttractions() {
+            const container = document.getElementById('recommendAttractions');
+
+            try {
+                const user = API.Auth.getCurrentUser();
+                const data = await API.Attractions.recommend(user?.user_id, 8);
+                if (data && data.items && data.items.length > 0) {
+                    renderAttractions(container, data.items);
+                } else {
+                    renderMockAttractions(container, 'recommend');
+                }
+            } catch (e) {
+                renderMockAttractions(container, 'recommend');
+            }
+        }
+
+        // 加载最新日记
+        async function loadLatestDiaries() {
+            const container = document.getElementById('latestDiaries');
+
+            try {
+                const data = await API.Diaries.list({ sort: 'time', limit: 5 });
+                if (data && data.items && data.items.length > 0) {
+                    container.innerHTML = data.items.map(item => `
+                        <div class="list-item" onclick="location.href='diary_detail.html?id=${item.id}'">
+                            <div class="info">
+                                <div class="title">${item.title}</div>
+                                <div class="subtitle">${item.view_count || 0}次浏览 | ⭐ ${item.ratings?.length ? (item.ratings.reduce((a,b)=>a+b,0)/item.ratings.length).toFixed(1) : '暂无'}</div>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = '<div class="empty">暂无日记</div>';
+                }
+            } catch (e) {
+                container.innerHTML = '<div class="empty">暂无日记</div>';
+            }
+        }
+
+        // 渲染景点卡片
+        function renderAttractions(container, items) {
+            container.innerHTML = items.map(item => `
+                <div class="attraction-card" onclick="location.href='attraction_detail.html?id=${item.id}'">
+                    <div class="attraction-image">
+                        <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=400&h=300&fit=crop" alt="${item.name}">
+                        <div class="attraction-overlay">
+                            <p>探索北京的精彩</p>
+                        </div>
+                        <div class="attraction-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <span>${item.rating || '4.5'}</span>
+                        </div>
+                    </div>
+                    <div class="attraction-name">${item.name}</div>
+                    <div class="attraction-meta">
+                        <span>${item.type || '景点'}</span>
+                        <span>·</span>
+                        <span style="display: flex; align-items: center; gap: 4px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                            ${item.heat || 0}%
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 模拟景点数据
+        function renderMockAttractions(container, type = 'hot') {
+            const mockData = [
+                { id: 1, name: '故宫博物院', rating: 4.9, heat: 98, type: '历史古迹' },
+                { id: 2, name: '天坛公园', rating: 4.8, heat: 85, type: '公园景观' },
+                { id: 3, name: '颐和园', rating: 4.9, heat: 92, type: '皇家园林' },
+                { id: 4, name: '北海公园', rating: 4.7, heat: 80, type: '特色公园' },
+                { id: 5, name: '八达岭长城', rating: 4.9, heat: 95, type: '历史古迹' },
+                { id: 6, name: '南锣鼓巷', rating: 4.6, heat: 78, type: '特色街道' },
+                { id: 7, name: '798艺术区', rating: 4.5, heat: 72, type: '艺术区' },
+                { id: 8, name: '鸟巢', rating: 4.7, heat: 88, type: '体育场馆' },
+            ];
+
+            const images = [
+                'https://images.unsplash.com/photo-1599571133917-062e21245037?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1584283861218-c529ba737299?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1543157145-f78c636d023d?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1606136968306-ab2fe3057f93?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1513077202514-c511b41bd4c7?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1514539079130-25950c84af65?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1569503689347-5f13fe8040c7?w=400&h=300&fit=crop',
+            ];
+
+            container.innerHTML = mockData.map((item, i) => `
+                <div class="attraction-card" onclick="location.href='attraction_detail.html?id=${item.id}'">
+                    <div class="attraction-image">
+                        <img src="${images[i]}" alt="${item.name}">
+                        <div class="attraction-overlay">
+                            <p>探索北京的精彩</p>
+                        </div>
+                        <div class="attraction-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <span>${item.rating}</span>
+                        </div>
+                    </div>
+                    <div class="attraction-name">${item.name}</div>
+                    <div class="attraction-meta">
+                        <span>${item.type}</span>
+                        <span>·</span>
+                        <span style="display: flex; align-items: center; gap: 4px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                            ${item.heat}%
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 填充快捷选择下拉框
+        function populateQuickSelects(items) {
+            const fromSelect = document.getElementById('quickFrom');
+            const toSelect = document.getElementById('quickTo');
+
+            const options = items.map(a =>
+                `<option value="${a.id}">${a.name}</option>`
+            ).join('');
+
+            fromSelect.innerHTML = '<option value="">选择起点</option>' + options;
+            toSelect.innerHTML = '<option value="">选择终点</option>' + options;
+        }
+
+        // 页面加载
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLogin();
+            loadHotAttractions();
+            loadRecommendAttractions();
+            loadLatestDiaries();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日记详情 - TripMind</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/icons.js"></script>
+    <style>
+        .diary-detail {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 32px 24px;
+        }
+
+        .diary-header {
+            margin-bottom: 32px;
+        }
+
+        .diary-title {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .diary-meta {
+            display: flex;
+            gap: 16px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .diary-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .diary-content {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            line-height: 1.8;
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .diary-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 20px;
+            background: var(--primary-light);
+            border-radius: 12px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .diary-stats {
+            display: flex;
+            gap: 24px;
+            padding: 20px;
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: var(--bg-main);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" style="background: rgba(45, 90, 39, 0.95); border-bottom-color: rgba(255,255,255,0.1);">
+        <div class="navbar-inner">
+            <div class="logo" onclick="location.href='../index.html'">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                </div>
+                <span class="logo-text" style="color: white;">TripMind</span>
+            </div>
+
+            <div class="nav-tabs" style="background: rgba(255,255,255,0.1);">
+                <a href="home.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    探索
+                </a>
+                <a href="route_planning.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>
+                    规划
+                </a>
+                <a href="diary_square.html" class="nav-tab active" style="color: white;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                    游记
+                </a>
+                <a href="food.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+                    食集
+                </a>
+            </div>
+
+            <div class="user-area" id="userArea">
+                <a href="../login.html" class="btn-signin" style="background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.2);">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="main-content page-bg-gradient">
+        <div class="container" style="padding-top: 32px;">
+            <div class="diary-detail">
+                <!-- 返回按钮 -->
+                <button class="back-btn" onclick="history.back()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+                    返回
+                </button>
+
+                <!-- 日记头部 -->
+                <div class="diary-header" style="margin-top: 24px;">
+                    <h1 class="diary-title" id="diaryTitle">加载中...</h1>
+                    <div class="diary-meta">
+                        <span id="diaryAuthor">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            作者
+                        </span>
+                        <span id="diaryTime">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            时间
+                        </span>
+                    </div>
+                </div>
+
+                <!-- 关联景点 -->
+                <div class="diary-location" id="diaryLocation" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span id="locationName">-</span>
+                </div>
+
+                <!-- 日记内容 -->
+                <div class="diary-content" id="diaryContent">
+                    加载中...
+                </div>
+
+                <!-- 统计 -->
+                <div class="diary-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="viewCount">0</div>
+                        <div class="stat-label">浏览</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="ratingCount">0</div>
+                        <div class="stat-label">评分</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="avgRating">0</div>
+                        <div class="stat-label">平均分</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 TripMind | 数据结构课程设计</p>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script>
+        // 检查登录状态
+        function checkLogin() {
+            const user = API.Auth.getCurrentUser();
+            const userArea = document.getElementById('userArea');
+            if (user && userArea) {
+                userArea.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span style="color: var(--text-secondary);">欢迎，${user.username}</span>
+                        <button onclick="logout()" class="btn" style="padding: 8px 16px; background: var(--primary-light); color: var(--primary);">退出</button>
+                    </div>
+                `;
+            }
+        }
+
+        function logout() {
+            API.Auth.logout();
+            location.reload();
+        }
+
+        // 获取URL参数
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // 显示日记数据
+        function displayDiary(data) {
+            document.getElementById('diaryTitle').textContent = data.title || '无标题';
+            document.getElementById('diaryAuthor').innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                ${data.user_id || '匿名用户'}
+            `;
+            document.getElementById('diaryTime').innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                ${data.create_time || '-'}
+            `;
+            document.getElementById('diaryContent').textContent = data.content || '暂无内容';
+
+            if (data.location_id) {
+                document.getElementById('diaryLocation').style.display = 'flex';
+                document.getElementById('locationName').textContent = '关联景点: ' + data.location_id;
+            }
+
+            document.getElementById('viewCount').textContent = data.view_count || 0;
+            const ratings = data.ratings || [];
+            document.getElementById('ratingCount').textContent = ratings.length;
+            const avgRating = ratings.length > 0
+                ? (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(1)
+                : '0';
+            document.getElementById('avgRating').textContent = avgRating;
+
+            document.title = (data.title || '日记') + ' - TripMind';
+        }
+
+        // 模拟日记数据
+        function getMockDiary(id) {
+            const mockDiaries = {
+                'diary_001': {
+                    title: '故宫一日游',
+                    user_id: '旅游达人',
+                    create_time: '2026-03-10',
+                    content: '今天去了故宫，感受到了古代皇家的威严。建筑精美，文化底蕴深厚。建议早点去，人少一些。\n\n故宫的建筑面积很大，建议安排一整天的时间。从天安门进入，经过端门，就能看到午门。从午门进入后，可以先参观中轴线上的主要建筑，然后参观两侧的宫殿。\n\n特别推荐参观珍宝馆，里面有很多精美的文物。',
+                    location_id: 'ATTR_BJ_001',
+                    view_count: 520,
+                    ratings: [5.0, 4.5, 4.8]
+                },
+                'diary_002': {
+                    title: '颐和园春游记',
+                    user_id: '校园探索',
+                    create_time: '2026-03-08',
+                    content: '春天的颐和园太美了！湖面波光粼粼，柳树发芽，万寿山上的风景绝美。推荐划船游湖。\n\n昆明湖是颐和园的主体，占据了园区大部分面积。春天的时候，湖边的柳树抽出新芽，非常美丽。',
+                    location_id: 'ATTR_BJ_004',
+                    view_count: 380,
+                    ratings: [4.8, 5.0]
+                }
+            };
+            return mockDiaries[id] || mockDiaries['diary_001'];
+        }
+
+        // 加载日记详情
+        async function loadDiaryDetail() {
+            const id = getQueryParam('id');
+
+            if (!id) {
+                document.getElementById('diaryTitle').textContent = '日记不存在';
+                document.getElementById('diaryContent').textContent = '未指定日记ID';
+                return;
+            }
+
+            // 先显示加载状态
+            document.getElementById('diaryTitle').textContent = '加载中...';
+            document.getElementById('diaryContent').textContent = '正在加载日记内容...';
+
+            try {
+                const data = await API.Diaries.get(id);
+                if (data) {
+                    displayDiary(data);
+                    return;
+                }
+            } catch (e) {
+                console.log('API调用失败，使用模拟数据:', e);
+            }
+
+            // 如果API失败或返回null，使用模拟数据
+            const mockData = getMockDiary(id);
+            displayDiary(mockData);
+        }
+
+        // 页面加载
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLogin();
+            loadDiaryDetail();
+        });
+    </script>
+</body>
+</html>

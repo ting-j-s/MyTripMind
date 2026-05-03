@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>路线规划 - TripMind</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/icons.js"></script>
+    <!-- Leaflet OpenStreetMap -->
+    <link rel="stylesheet" href="../css/leaflet.css" />
+    <script src="../js/leaflet.js"></script>
+    <style>
+        /* 重置默认样式，确保导航栏位置正确 */
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* 地图容器 */
+        #mapContainer {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            position: relative;
+            z-index: 1;
+            background: #f8f8f8;
+        }
+
+        /* 确保Leaflet地图正确显示 */
+        .leaflet-container {
+            width: 100%;
+            height: 100%;
+            background: #e8f5e9;
+        }
+
+        /* 地图层级 */
+        .leaflet-pane {
+            z-index: 400;
+        }
+
+        /* 地图状态提示 */
+        .map-status {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: white;
+            padding: 12px 16px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* 路线结果 */
+        .route-result {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            margin-top: 16px;
+        }
+
+        .route-result h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .route-segment {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .route-segment:last-child {
+            border-bottom: none;
+        }
+
+        .route-segment .from,
+        .route-segment .to {
+            flex: 1;
+        }
+
+        .route-segment .from {
+            text-align: right;
+        }
+
+        .route-segment .arrow {
+            color: var(--primary);
+        }
+
+        .route-segment .name {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .route-segment .distance {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" style="background: rgba(45, 90, 39, 0.95); border-bottom-color: rgba(255,255,255,0.1);">
+        <div class="navbar-inner">
+            <div class="logo" onclick="location.href='../index.html'">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                </div>
+                <span class="logo-text" style="color: white;">TripMind</span>
+            </div>
+
+            <div class="nav-tabs" style="background: rgba(255,255,255,0.1);">
+                <a href="home.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    探索
+                </a>
+                <a href="route_planning.html" class="nav-tab active" style="color: white;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/></svg>
+                    规划
+                </a>
+                <a href="diary_square.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                    游记
+                </a>
+                <a href="food.html" class="nav-tab" style="color: rgba(255,255,255,0.7);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+                    食集
+                </a>
+            </div>
+
+            <div class="user-area" id="userArea">
+                <a href="../login.html" class="btn-signin" style="background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.2);">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 路线规划主内容 -->
+    <div class="page-planning page-bg-gradient">
+        <!-- 地图区域 -->
+        <div class="planning-map">
+            <div id="mapContainer">
+                <div id="map"></div>
+                <div class="map-status" id="mapStatus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    选择景点开始规划
+                </div>
+            </div>
+        </div>
+
+        <!-- 控制面板 -->
+        <div class="planning-panel">
+            <div class="planning-panel-header">
+                <h2>行程设计器</h2>
+                <p>设计最懂您的北京之行</p>
+            </div>
+
+            <div class="planning-panel-body">
+                <!-- 起点选择 -->
+                <div class="planning-section">
+                    <div class="planning-section-label">起点</div>
+                    <select class="form-input" id="fromSelect">
+                        <option value="">选择出发地点</option>
+                    </select>
+                </div>
+
+                <!-- 终点选择 -->
+                <div class="planning-section">
+                    <div class="planning-section-label">终点</div>
+                    <select class="form-input" id="toSelect">
+                        <option value="">选择目的地点</option>
+                    </select>
+                </div>
+
+                <!-- 交通方式 -->
+                <div class="planning-section">
+                    <div class="planning-section-label">交通方式</div>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn transport-btn active" data-type="walking" onclick="selectTransport(this)" style="flex: 1; padding: 10px; background: var(--primary-light); color: var(--primary);">
+                            步行
+                        </button>
+                        <button class="btn transport-btn" data-type="bicycle" onclick="selectTransport(this)" style="flex: 1; padding: 10px;">
+                            自行车
+                        </button>
+                        <button class="btn transport-btn" data-type="bus" onclick="selectTransport(this)" style="flex: 1; padding: 10px;">
+                            公交
+                        </button>
+                        <button class="btn transport-btn" data-type="car" onclick="selectTransport(this)" style="flex: 1; padding: 10px;">
+                            驾车
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 规划结果 -->
+                <div id="routeResult" class="route-result" style="display: none;">
+                    <h4>路线详情</h4>
+                    <div id="routeDetails"></div>
+                </div>
+            </div>
+
+            <div class="planning-panel-footer">
+                <button id="planBtn" class="btn-calculate" onclick="planRoute()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                    规划路线
+                </button>
+                <div class="info-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    <p>基于Dijkstra最短路径算法，考虑实时路况，为您规划最优路线。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script>
+        // 检查登录状态
+        function checkLogin() {
+            const user = API.Auth.getCurrentUser();
+            const userArea = document.getElementById('userArea');
+            if (user && userArea) {
+                userArea.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span style="color: var(--text-secondary);">欢迎，${user.username}</span>
+                        <button onclick="logout()" class="btn" style="padding: 8px 16px; background: var(--primary-light); color: var(--primary);">退出</button>
+                    </div>
+                `;
+            }
+        }
+
+        function logout() {
+            API.Auth.logout();
+            location.reload();
+        }
+
+        // 状态
+        let attractions = [];
+        let selectedTransport = 'walking';
+
+        // 加载景点数据
+        async function loadAttractions() {
+            try {
+                const data = await API.Attractions.list({ limit: 100 });
+                if (data && data.items) {
+                    attractions = data.items;
+                } else {
+                    attractions = getMockAttractions();
+                }
+            } catch (e) {
+                attractions = getMockAttractions();
+            }
+
+            populateSelects();
+        }
+
+        function getMockAttractions() {
+            return [
+                { id: 'ATTR_BJ_001', name: '故宫博物院', type: '历史古迹' },
+                { id: 'ATTR_BJ_002', name: '天安门广场', type: '广场' },
+                { id: 'ATTR_BJ_003', name: '天坛', type: '公园景观' },
+                { id: 'ATTR_BJ_004', name: '颐和园', type: '皇家园林' },
+                { id: 'ATTR_BJ_005', name: '圆明园', type: '皇家园林' },
+                { id: 'ATTR_BJ_006', name: '八达岭长城', type: '历史古迹' },
+                { id: 'ATTR_BJ_007', name: '奥林匹克公园', type: '公园景观' },
+                { id: 'ATTR_BJ_008', name: '北京大学', type: '高校' },
+                { id: 'ATTR_BJ_009', name: '清华大学', type: '高校' },
+                { id: 'ATTR_BJ_017', name: '国家博物馆', type: '博物馆' },
+                { id: 'ATTR_BJ_033', name: '南锣鼓巷', type: '特色街道' },
+                { id: 'ATTR_BJ_034', name: '香山公园', type: '公园景观' },
+                { id: 'ATTR_BJ_044', name: '798艺术区', type: '艺术区' },
+                { id: 'ATTR_BJ_048', name: '鸟巢', type: '体育场馆' },
+                { id: 'ATTR_BJ_049', name: '水立方', type: '体育场馆' },
+                { id: 'ATTR_BJ_055', name: '北京动物园', type: '公园景观' },
+            ];
+        }
+
+        function populateSelects() {
+            const fromSelect = document.getElementById('fromSelect');
+            const toSelect = document.getElementById('toSelect');
+
+            const options = attractions.map(a =>
+                `<option value="${a.id}">${a.name}</option>`
+            ).join('');
+
+            fromSelect.innerHTML = '<option value="">选择出发地点</option>' + options;
+            toSelect.innerHTML = '<option value="">选择目的地点</option>' + options;
+        }
+
+        // 选择交通方式
+        function selectTransport(btn) {
+            document.querySelectorAll('.transport-btn').forEach(b => {
+                b.classList.remove('active');
+                b.style.background = '';
+                b.style.color = '';
+            });
+            btn.classList.add('active');
+            btn.style.background = 'var(--primary-light)';
+            btn.style.color = 'var(--primary)';
+            selectedTransport = btn.dataset.type;
+        }
+
+        // 规划路线
+        async function planRoute() {
+            const from = document.getElementById('fromSelect').value;
+            const to = document.getElementById('toSelect').value;
+            const resultDiv = document.getElementById('routeResult');
+            const resultDetails = document.getElementById('routeDetails');
+            const planBtn = document.getElementById('planBtn');
+
+            if (!from || !to) {
+                alert('请选择起点和终点');
+                return;
+            }
+
+            if (from === to) {
+                alert('起点和终点不能相同');
+                return;
+            }
+
+            // 显示加载状态
+            planBtn.classList.add('loading');
+            planBtn.innerHTML = `
+                <svg class="spin" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                计算中...
+            `;
+
+            try {
+                const route = await API.Routes.shortest(from, to, {
+                    transport: getTransportName(selectedTransport),
+                    weight: 'distance'
+                });
+
+                if (route) {
+                    const distance = (route.distance / 1000).toFixed(2);
+                    const time = Math.round(route.time / 60);
+
+                    // 使用后端返回的名称
+                    const fromName = route.from_name || attractions.find(a => a.id === from)?.name || from;
+                    const toName = route.to_name || attractions.find(a => a.id === to)?.name || to;
+
+                    // 使用后端返回的path_names（友好名称）构建路段显示
+                    const pathNames = route.path_names || [];
+
+                    // 构建路段信息
+                    let segmentsHtml = '';
+                    if (route.segments && route.segments.length > 0) {
+                        // 如果有segments数据，使用它
+                        segmentsHtml = route.segments.map(seg => {
+                            const segFromName = seg.from_name || seg.from;
+                            const segToName = seg.to_name || seg.to;
+                            return `
+                                <div class="route-segment">
+                                    <div class="from">
+                                        <div class="name">${segFromName}</div>
+                                    </div>
+                                    <div class="arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                    </div>
+                                    <div class="to">
+                                        <div class="name">${segToName}</div>
+                                        <div class="distance">${(seg.distance / 1000).toFixed(1)}公里</div>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+                    } else if (pathNames.length > 2) {
+                        // 如果没有segments但有path_names，显示中间节点
+                        for (let i = 0; i < pathNames.length - 1; i++) {
+                            segmentsHtml += `
+                                <div class="route-segment">
+                                    <div class="from">
+                                        <div class="name">${pathNames[i]}</div>
+                                    </div>
+                                    <div class="arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                    </div>
+                                    <div class="to">
+                                        <div class="name">${pathNames[i + 1]}</div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    }
+
+                    resultDetails.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+                            <div style="text-align: center; flex: 1;">
+                                <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">总距离</div>
+                                <div style="font-size: 24px; font-weight: 900; color: var(--primary);">${distance}</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">公里</div>
+                            </div>
+                            <div style="text-align: center; flex: 1;">
+                                <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">预计时间</div>
+                                <div style="font-size: 24px; font-weight: 900; color: var(--accent);">${time}</div>
+                                <div style="font-size: 12px; color: var(--text-muted);">分钟</div>
+                            </div>
+                        </div>
+                        <div class="route-segment">
+                            <div class="from">
+                                <div class="name">${fromName}</div>
+                            </div>
+                            <div class="arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </div>
+                            <div class="to">
+                                <div class="name">${toName}</div>
+                            </div>
+                        </div>
+                        ${segmentsHtml}
+                    `;
+
+                    resultDiv.style.display = 'block';
+
+                    // 更新地图可视化（传入完整路线数据）
+                    updateMapVisualizationWithRoute(from, to, route);
+                } else {
+                    // API返回null，可能是后端未启动或网络错误
+                    showMockResult(from, to, resultDetails, resultDiv);
+                }
+            } catch (e) {
+                console.error('路线规划失败:', e);
+                showMockResult(from, to, resultDetails, resultDiv);
+            }
+
+            // 恢复按钮
+            planBtn.classList.remove('loading');
+            planBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                规划路线
+            `;
+        }
+
+        // 显示模拟结果（后端未启动时）
+        function showMockResult(from, to, resultDetails, resultDiv) {
+            const fromName = attractions.find(a => a.id === from)?.name || from;
+            const toName = attractions.find(a => a.id === to)?.name || to;
+            const mockDistance = Math.floor(Math.random() * 15000) + 2000;
+            const mockTime = Math.round(mockDistance / 80);
+
+            resultDetails.innerHTML = `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+                    <div style="text-align: center; flex: 1;">
+                        <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">总距离</div>
+                        <div style="font-size: 24px; font-weight: 900; color: var(--primary);">${(mockDistance / 1000).toFixed(2)}</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">公里</div>
+                    </div>
+                    <div style="text-align: center; flex: 1;">
+                        <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">预计时间</div>
+                        <div style="font-size: 24px; font-weight: 900; color: var(--accent);">${mockTime}</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">分钟</div>
+                    </div>
+                </div>
+                <div class="route-segment">
+                    <div class="from">
+                        <div class="name">${fromName}</div>
+                    </div>
+                    <div class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </div>
+                    <div class="to">
+                        <div class="name">${toName}</div>
+                    </div>
+                </div>
+                <p style="text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 12px;">后端服务未启动，显示模拟数据</p>
+            `;
+            resultDiv.style.display = 'block';
+            updateMapVisualizationSimple(from, to);
+        }
+
+        function getTransportName(type) {
+            const map = {
+                'walking': '步行',
+                'bicycle': '自行车',
+                'bus': '公交',
+                'car': '驾车'
+            };
+            return map[type] || '步行';
+        }
+
+        // ========== Leaflet地图 ==========
+        let map = null;
+        let routeLayer = null;
+        let markerLayer = null;
+
+        // 初始化Leaflet地图
+        function initMap() {
+            map = L.map('map').setView([39.9042, 116.4074], 12); // 北京中心
+
+            // 高德地图瓦片（国内可访问）
+            L.tileLayer('https://webst0{s}.is.autonavi.com/appmosaic?style=6&x={x}&y={y}&z={z}', {
+                subdomains: '1234',
+                attribution: '&copy; 高德地图',
+                maxZoom: 18
+            }).addTo(map);
+
+            // 创建路线和标记图层组
+            routeLayer = L.layerGroup().addTo(map);
+            markerLayer = L.layerGroup().addTo(map);
+        }
+
+        // 清除地图
+        function clearMap() {
+            if (routeLayer) routeLayer.clearLayers();
+            if (markerLayer) markerLayer.clearLayers();
+        }
+
+        // 在地图上显示路线
+        function showRouteOnMap(routeCoords, pathNames) {
+            clearMap();
+
+            if (!routeCoords || routeCoords.length === 0) {
+                updateMapStatus('无法显示路线');
+                return;
+            }
+
+            // 转换坐标为Leaflet格式 [lat, lon]
+            const latlngs = routeCoords.map(p => [p.y, p.x]);
+
+            // 绘制路线（绿色线条）
+            routeLayer.addLayer(L.polyline(latlngs, {
+                color: '#2D5A27',
+                weight: 5,
+                opacity: 0.8
+            }));
+
+            // 添加起点的绿色标记
+            const start = routeCoords[0];
+            const startIcon = L.divIcon({
+                html: `<div style="background:#4CAF50;width:28px;height:28px;border-radius:50%;border:3px solid white;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:12px;box-shadow:0 2px 6px rgba(0,0,0,0.3);">起</div>`,
+                className: '',
+                iconSize: [28, 28],
+                iconAnchor: [14, 14]
+            });
+            routeLayer.addLayer(L.marker([start.y, start.x], { icon: startIcon }).bindPopup(`起点: ${start.name || pathNames?.[0] || '起点'}`));
+
+            // 添加终点的红色标记
+            const end = routeCoords[routeCoords.length - 1];
+            const endIcon = L.divIcon({
+                html: `<div style="background:#F44336;width:28px;height:28px;border-radius:50%;border:3px solid white;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:12px;box-shadow:0 2px 6px rgba(0,0,0,0.3);">终</div>`,
+                className: '',
+                iconSize: [28, 28],
+                iconAnchor: [14, 14]
+            });
+            routeLayer.addLayer(L.marker([end.y, end.x], { icon: endIcon }).bindPopup(`终点: ${end.name || pathNames?.[pathNames.length-1] || '终点'}`));
+
+            // 添加中间点的标记
+            for (let i = 1; i < routeCoords.length - 1; i++) {
+                const p = routeCoords[i];
+                const midIcon = L.divIcon({
+                    html: `<div style="background:#2D5A27;width:24px;height:24px;border-radius:50%;border:2px solid white;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:11px;box-shadow:0 2px 4px rgba(0,0,0,0.25);">${i + 1}</div>`,
+                    className: '',
+                    iconSize: [24, 24],
+                    iconAnchor: [12, 12]
+                });
+                routeLayer.addLayer(L.marker([p.y, p.x], { icon: midIcon }).bindPopup(`${i + 1}. ${p.name || p.id}`));
+            }
+
+            // 调整视图以显示完整路线
+            map.fitBounds(L.polyline(latlngs).getBounds(), { padding: [50, 50] });
+        }
+
+        // 更新地图状态提示
+        function updateMapStatus(text) {
+            document.getElementById('mapStatus').innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                ${text}
+            `;
+        }
+
+        // 更新地图可视化（使用后端返回的path_coords）
+        function updateMapVisualizationWithRoute(fromId, toId, route) {
+            if (route && route.path_coords && route.path_coords.length > 0) {
+                showRouteOnMap(route.path_coords, route.path_names);
+                updateMapStatus('路线规划完成');
+            } else {
+                updateMapVisualizationSimple(fromId, toId);
+            }
+        }
+
+        // 简单的地图可视化（使用景点坐标）
+        function updateMapVisualizationSimple(fromId, toId) {
+            const fromAttr = attractions.find(a => a.id === fromId);
+            const toAttr = attractions.find(a => a.id === toId);
+
+            if (fromAttr && toAttr && fromAttr.x && toAttr.x) {
+                clearMap();
+
+                // 添加起点标记
+                const startIcon = L.divIcon({
+                    html: `<div style="background:#4CAF50;width:28px;height:28px;border-radius:50%;border:3px solid white;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:12px;box-shadow:0 2px 6px rgba(0,0,0,0.3);">起</div>`,
+                    className: '',
+                    iconSize: [28, 28],
+                    iconAnchor: [14, 14]
+                });
+                markerLayer.addLayer(L.marker([fromAttr.y, fromAttr.x], { icon: startIcon }).bindPopup(`起点: ${fromAttr.name}`));
+
+                // 添加终点标记
+                const endIcon = L.divIcon({
+                    html: `<div style="background:#F44336;width:28px;height:28px;border-radius:50%;border:3px solid white;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:12px;box-shadow:0 2px 6px rgba(0,0,0,0.3);">终</div>`,
+                    className: '',
+                    iconSize: [28, 28],
+                    iconAnchor: [14, 14]
+                });
+                markerLayer.addLayer(L.marker([toAttr.y, toAttr.x], { icon: endIcon }).bindPopup(`终点: ${toAttr.name}`));
+
+                // 画连接线（虚线）
+                markerLayer.addLayer(L.polyline([[fromAttr.y, fromAttr.x], [toAttr.y, toAttr.x]], {
+                    color: '#2D5A27',
+                    weight: 3,
+                    opacity: 0.7,
+                    dashArray: '10, 10'
+                }));
+
+                // 调整视图
+                map.fitBounds([[fromAttr.y, fromAttr.x], [toAttr.y, toAttr.x]], { padding: [50, 50] });
+                updateMapStatus('路线规划完成');
+            }
+        }
+
+        // 读取URL参数
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                from: params.get('from'),
+                to: params.get('to')
+            };
+        }
+
+        // 应用URL参数到选择框
+        function applyUrlParams() {
+            const { from, to } = getUrlParams();
+            if (from) {
+                document.getElementById('fromSelect').value = from;
+            }
+            if (to) {
+                document.getElementById('toSelect').value = to;
+            }
+            // 如果两边都有值，自动规划路线
+            if (from && to && from !== to) {
+                setTimeout(() => planRoute(), 100);
+            }
+        }
+
+        // 页面加载
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLogin();
+            initMap(); // 初始化Leaflet地图
+            loadAttractions().then(() => {
+                applyUrlParams();
+            });
+        });
+    </script>
+</body>
+</html>

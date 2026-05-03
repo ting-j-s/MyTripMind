@@ -24,7 +24,7 @@
 | 3.1.1 | 用户选择景点/学校作为目的地 | 已完成 | attractions.py:get_attractions, get_campuses | GET /api/attractions, GET /api/campuses | test_api_full_requirements.py | home.html | 是 | 无 | - |
 | 3.1.2 | 按热度推荐 | 已完成 | attractions.py:recommend_attractions | GET /api/recommend | test_api_full_requirements.py | home.html | 是 | 无 | - |
 | 3.1.3 | 按评价推荐 | 已完成 | attractions.py:recommend_attractions | GET /api/recommend?sort=rating | test_api_full_requirements.py | home.html | 是 | 无 | - |
-| 3.1.4 | 按个人兴趣推荐 | 部分完成 | attractions.py:recommend_attractions | GET /api/recommend?user_id=xxx | test_api_full_requirements.py | 无 | 部分 | 用户兴趣推荐逻辑较简单，未使用标签匹配 | P2 |
+| 3.1.4 | 按个人兴趣推荐 | 已完成 | attractions.py:recommend() strategy=interest | GET /api/recommend?user_id=xxx&strategy=interest | test_attraction_interest_recommendation.py | 无 | 是 | 使用 0.45*兴趣匹配+0.30*评分+0.25*热度 综合评分，Top-K 选取 | - |
 | 3.1.5 | 名称查询 | 已完成 | attractions.py:search_attractions + fuzzy_search | GET /api/attractions/search?q=xxx | test_api_full_requirements.py | home.html | 是 | 无 | - |
 | 3.1.6 | 类别查询 | 已完成 | attractions.py:get_attractions?type=xxx | GET /api/attractions?type=xxx | test_api_full_requirements.py | home.html | 是 | 无 | - |
 | 3.1.7 | 关键字查询 | 已完成 | attractions.py:search_attractions | GET /api/attractions/search?q=xxx | test_api_full_requirements.py | home.html | 是 | 无 | - |

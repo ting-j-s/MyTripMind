@@ -67,22 +67,35 @@
 
 **目标**: 与任务 2 类似，但针对景点推荐，基于用户兴趣标签匹配景点类别
 
+**状态**: ✅ 已完成
+
 **涉及文件**:
-- `backend/models/attraction.py` - 确认 tags 字段存在
-- `backend/routes/attractions.py` - 扩展 `recommend_attractions()` 支持兴趣匹配
+- `backend/models/attraction.py` - tags 字段已存在
+- `backend/routes/attractions.py` - 扩展 `recommend()` 支持 strategy=interest
 
 **涉及 API**:
-- `GET /api/recommend?user_id=xxx&sort=interest`
+- `GET /api/recommend?user_id=xxx&strategy=interest` - 基于兴趣评分推荐
+
+**评分公式**:
+```
+score = 0.45 * interest_match + 0.30 * rating_norm + 0.25 * heat_norm
+- interest_match = matched_tags / user_interests_count (0 到 1)
+- rating_norm = rating / 5.0
+- heat_norm = heat / max_heat
+```
+
+**Top-K 合规**: 使用 `sort.py:top_k` 实现，时间复杂度 O(n log k)
 
 **需要新增/修改的测试**:
-- `tests/test_attractions.py` - 新增 `test_recommend_by_interest` 测试用例
+- `tests/test_attraction_interest_recommendation.py` - 12 个测试用例
 
 **验收方式**:
-1. 用户有 interests = ["历史"]
+1. 用户有 interests = ["历史", "校园"]
 2. 景点有 tags = ["历史", "博物馆"]
-3. 推荐结果优先显示匹配景点
+3. 推荐结果优先显示匹配景点（高 interest_match）
+4. 返回结果包含 score, interest_match, match_reasons
 
-**风险**: 低 - 扩展现有推荐逻辑
+**风险**: 低 - 已完成
 
 ---
 

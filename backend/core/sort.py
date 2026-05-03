@@ -3,7 +3,7 @@
 这些是课程要求的"核心算法"，必须自己实现
 """
 
-from .heap import MaxHeap, HeapElement
+from .heap import MaxHeap, MinHeap, HeapElement
 
 
 # ============================================================
@@ -132,7 +132,7 @@ def top_k(arr, k, key=None, reverse=True):
     """
     Top-K 问题 - 只找出前K个最大/最小的元素
 
-    时间复杂度: O(n log k)
+    时间复杂度: O(n log k) 用于选择 + O(k log k) 用于最终排序
     适用于: n很大，k很小（如10000个中找前10个）
 
     参数:
@@ -157,25 +157,21 @@ def top_k(arr, k, key=None, reverse=True):
     if key is None:
         key = lambda x: x
 
-    # 使用最大堆找前K个最大元素
-    # 或最小堆找前K个最小元素
-
     if reverse:
-        # 找最大的K个 -> 用最大堆
-        # 维护一个大小为K的堆，堆顶是堆中最小的
-        heap = MaxHeap()
+        # 找最大的K个 -> 用最小堆（堆顶是k个中最小的）
+        # 当新元素比堆顶大时替换，这样堆中始终维护k个最大元素
+        heap = MinHeap()
         for item in arr:
             if len(heap) < k:
                 heap.push(HeapElement(item, key(item)))
             else:
-                # 如果当前元素比堆顶大，则替换
                 if key(item) > key(heap.peek().value):
                     heap.pop()
                     heap.push(HeapElement(item, key(item)))
     else:
-        # 找最小的K个 -> 用最小堆
-        from .heap import MinHeap
-        heap = MinHeap()
+        # 找最小的K个 -> 用最大堆（堆顶是k个中最大的）
+        # 当新元素比堆顶小时替换，这样堆中始终维护k个最小元素
+        heap = MaxHeap()
         for item in arr:
             if len(heap) < k:
                 heap.push(HeapElement(item, key(item)))
@@ -184,13 +180,15 @@ def top_k(arr, k, key=None, reverse=True):
                     heap.pop()
                     heap.push(HeapElement(item, key(item)))
 
-    # 堆中就是前K个，但顺序是乱的，需要排序
+    # 收集堆中元素并排序
     result = []
     while not heap.is_empty():
         result.append(heap.pop().value)
 
-    # 排序
-    result = heap_sort(result, key, reverse)
+    # min-heap pop 出来是升序，reverse=True 需要反转成降序
+    # max-heap pop 出来是降序，reverse=False 需要反转成升序
+    if reverse:
+        result.reverse()
 
     return result
 

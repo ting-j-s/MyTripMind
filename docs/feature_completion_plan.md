@@ -14,23 +14,28 @@
 
 **目标**: 用户可以选择多种交通工具（如步行+自行车），系统自动分段计算最优路径
 
+**状态**: ✅ 已完成
+
 **涉及文件**:
-- `backend/algorithms/dijkstra.py` - 需要新增 `dijkstra_mixed_transport()` 函数
-- `backend/routes/route.py` - 新增 API `/api/route/mixed` 或扩展 `/api/route/shortest`
+- `backend/algorithms/dijkstra.py` - 新增 `shortest_path_mixed_transport()` 函数
+- `backend/routes/route.py` - 扩展 `/api/route/shortest` 支持 `transport=mixed_transport`
 
 **涉及 API**:
 - `POST /api/route/shortest` (扩展)
 
-**需要新增/修改的测试**:
-- `tests/test_route.py` - 新增 `test_shortest_path_mixed_transport` 测试用例
-- 验证不同路段使用不同交通工具
+**算法设计**:
+- 使用 MinHeap 选择前 K 大元素，每条边枚举 allowed_modes 中可用的交通工具
+- 时间 = distance / (ideal_speed × congestion)
+- 对每条边选择使总时间最短的交通工具
 
 **验收方式**:
-1. 调用 API 时传入 `transports: ['步行', '自行车', '电瓶车']`
+1. 调用 API 时传入 `transport: 'mixed_transport'`，`modes: ['walk', 'bike', 'shuttle']`
 2. 返回的 path 中不同路段使用不同 speed 计算时间
-3. 验证总时间 = sum(segment_time)
+3. 返回 segments 包含每段的 mode、distance、time、congestion
+4. 返回 modes_used 列出实际使用的交通方式
+5. 验证总时间 = sum(segment_time)
 
-**风险**: 中 - 需要在 graph 边上记录多种 road_types
+**风险**: 低 - 已完成
 
 ---
 

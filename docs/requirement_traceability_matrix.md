@@ -50,7 +50,7 @@
 | 3.2.9 | 景区步行/电瓶车 | 已完成 | dijkstra_with_constraints road_types 限制 | road_types=['步行', '电瓶车'] | test_api_full_requirements.py | 无 | 是 | 无 | - |
 | 3.2.10 | 自行车只能走自行车道路 | 已完成 | dijkstra_with_constraints 过滤 road_types | transport='自行车' checks road_types | test_api_full_requirements.py | 无 | 是 | 无 | - |
 | 3.2.11 | 电瓶车只能走固定路线 | 已完成 | dijkstra_with_constraints 过滤 road_types | transport='电瓶车' checks road_types | test_api_full_requirements.py | 无 | 是 | 无 | - |
-| 3.2.12 | 混合交通工具 | 部分完成 | dijkstra_with_constraints 单一 transport | 每次只能选一种交通方式 | test_api_full_requirements.py | 无 | 部分 | 未实现多段不同交通工具混合 | P1 |
+| 3.2.12 | 混合交通工具 | 已完成 | shortest_path_mixed_transport | transport='mixed_transport' | test_mixed_transport_route.py | 无 | 是 | 已实现多段不同交通工具混合，每段记录实际使用的 mode | - |
 | 3.2.13 | 地图展示 | 已完成 | route_planning.html Leaflet | - | 无专门测试 | route_planning.html | 是 | 无 | - |
 | 3.2.14 | 路径展示 | 已完成 | route_planning.html path_coords 显示 | path_coords in API response | test_api_full_requirements.py | route_planning.html | 是 | 无 | - |
 | 3.2.15 | 室内导航：大门到电梯 | 已完成 | indoor_navigation_service.py:plan_indoor_route | POST /api/route/indoor | test_indoor_route.py | 无 | 是 | 无 | - |

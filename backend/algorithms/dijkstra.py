@@ -231,7 +231,195 @@ def dijkstra_with_constraints(graph, start: str, end: str,
     }
 
 
-def get_route_info(graph, path: List[str], weight: str = 'distance', transport: str = '步行') -> Dict:
+def shortest_path_mixed_transport(graph, start: str, end: str,
+                                  allowed_modes: List[str] = None,
+                                  ideal_speeds: Dict[str, float] = None) -> Dict:
+    """
+    混合交通工具最短时间路径算法
+
+    对每条边枚举 allowed_modes 中可用的交通工具，选择使总时间最短的路线。
+    时间 = distance / (ideal_speed * congestion)
+
+    参数:
+        graph: Graph图对象
+        start: 起点节点ID
+        end: 终点节点ID
+        allowed_modes: 可用交通方式列表，默认 ["walk", "bike", "shuttle"]
+        ideal_speeds: 各交通方式的理想速度（km/h），默认速度表
+
+    返回:
+        {
+            'success': bool,
+            'path': [节点ID列表],
+            'segments': [{from, to, distance, mode, speed, congestion, time}, ...],
+            'total_distance': float,
+            'total_time': float,
+            'modes_used': [使用的交通方式列表],
+            'error': str（如果失败）
+        }
+    """
+    # 默认可用交通方式
+    if allowed_modes is None:
+        allowed_modes = ['walk', 'bike', 'shuttle']
+
+    # 默认理想速度（km/h）
+    if ideal_speeds is None:
+        ideal_speeds = {
+            'walk': 5,
+            'bike': 15,
+            'shuttle': 20
+        }
+
+    # 检查节点是否存在
+    if not graph.node_exists(start):
+        return {'success': False, 'error': f'起点节点 {start} 不存在'}
+    if not graph.node_exists(end):
+        return {'success': False, 'error': f'终点节点 {end} 不存在'}
+
+    # 时间表（秒）
+    times = {node: float('inf') for node in graph.get_all_nodes()}
+    times[start] = 0
+
+    # 前驱表：(节点, 使用的交通方式)
+    predecessors = {node: None for node in graph.get_all_nodes()}
+    predecessor_modes = {node: None for node in graph.get_all_nodes()}
+
+    # 优先队列：(时间, 节点)
+    pq = MinHeap()
+    pq.push(HeapElement(start, 0))
+
+    visited = set()
+
+    while not pq.is_empty():
+        current = pq.pop()
+        current_node = current.value
+        current_time = current.key
+
+        if current_node in visited:
+            continue
+        visited.add(current_node)
+
+        if current_node == end:
+            break
+
+        if current_time > times[current_node]:
+            continue
+
+        # 检查邻居
+        for neighbor_info in graph.get_neighbors(current_node):
+            neighbor = neighbor_info['node']
+
+            if neighbor in visited:
+                continue
+
+            distance = neighbor_info.get('distance', 1)
+            congestion = neighbor_info.get('congestion', 1.0)
+            road_types = neighbor_info.get('road_types', ['walk'])
+
+            # 找到该边允许的所有可用交通方式
+            mode_candidates = []
+            for mode in allowed_modes:
+                # 统一交通方式名称：支持中英文混用
+                mode_normalized = _normalize_transport(mode)
+                road_type_normalized = [_normalize_transport(rt) for rt in road_types]
+                if mode_normalized in road_type_normalized:
+                    mode_candidates.append(mode)
+
+            if not mode_candidates:
+                continue
+
+            # 对每个可用模式计算时间，选择最短的
+            best_time = float('inf')
+            best_mode = None
+
+            for mode in mode_candidates:
+                speed = ideal_speeds.get(mode, 5)
+                # 真实速度 = ideal_speed * congestion
+                real_speed = speed * congestion
+                if real_speed > 0:
+                    travel_time = (distance / 1000) / real_speed * 3600
+                    if travel_time < best_time:
+                        best_time = travel_time
+                        best_mode = mode
+
+            if best_mode is None:
+                continue
+
+            new_time = current_time + best_time
+
+            if new_time < times[neighbor]:
+                times[neighbor] = new_time
+                predecessors[neighbor] = current_node
+                predecessor_modes[neighbor] = best_mode
+                pq.push(HeapElement(neighbor, new_time))
+
+    # 检查是否可达
+    if times.get(end, float('inf')) == float('inf'):
+        return {'success': False, 'error': '无法找到可行路径'}
+
+    # 重建路径
+    path = _reconstruct_path(predecessors, start, end)
+
+    # 收集每段的信息
+    segments = []
+    total_distance = 0
+    modes_used_set = set()
+
+    for i in range(len(path) - 1):
+        from_node = path[i]
+        to_node = path[i + 1]
+        mode = predecessor_modes.get(to_node, 'walk')
+
+        edge = graph.get_edge(from_node, to_node)
+        if edge:
+            distance = edge.get('distance', 0)
+            cong = edge.get('congestion', 1.0)
+            speed = ideal_speeds.get(mode, 5)
+            real_speed = speed * cong
+            time = (distance / 1000) / real_speed * 3600 if real_speed > 0 else 0
+
+            total_distance += distance
+            modes_used_set.add(mode)
+
+            segments.append({
+                'from': from_node,
+                'to': to_node,
+                'distance': distance,
+                'mode': mode,
+                'speed': speed,
+                'congestion': cong,
+                'time': time
+            })
+
+    return {
+        'success': True,
+        'path': path,
+        'segments': segments,
+        'total_distance': total_distance,
+        'total_time': times.get(end, 0),
+        'modes_used': list(modes_used_set)
+    }
+
+
+def _normalize_transport(mode: str) -> str:
+    """统一交通方式名称：支持中英文混用"""
+    transport_map = {
+        '步行': 'walk',
+        '自行车': 'bike',
+        'bike': 'bike',
+        'walk': 'walk',
+        '电瓶车': 'shuttle',
+        'shuttle': 'shuttle',
+        '驾车': 'car',
+        'car': 'car',
+        '公交': 'bus',
+        'bus': 'bus'
+    }
+    return transport_map.get(mode, mode)
+
+
+def get_route_info(graph, path: List[str], weight: str = 'distance',
+                   transport: str = 'walk') -> Dict:
     """
     获取路径的详细信息
 
@@ -253,11 +441,11 @@ def get_route_info(graph, path: List[str], weight: str = 'distance', transport: 
 
     # 不同交通方式的速度基数（km/h）
     transport_speeds = {
-        '步行': 5,
-        '自行车': 15,
-        '电瓶车': 20,
-        '公交': 25,
-        '驾车': 40
+        '步行': 5, 'walk': 5,
+        '自行车': 15, 'bike': 15,
+        '电瓶车': 20, 'shuttle': 20,
+        '公交': 25, 'bus': 25,
+        '驾车': 40, 'car': 40
     }
     base_speed = transport_speeds.get(transport, 5)
 
@@ -367,5 +555,17 @@ if __name__ == "__main__":
     print("  分段信息:")
     for seg in path_info['segments']:
         print(f"    {seg['from']} -> {seg['to']}: {seg['distance']:.0f}米, {seg['time']:.0f}秒")
+
+    # 测试5：混合交通工具
+    print("\n5. A到E的混合交通工具最短时间路径:")
+    result_mixed = shortest_path_mixed_transport(g, "A", "E")
+    print(f"  成功: {result_mixed['success']}")
+    print(f"  路径: {' -> '.join(result_mixed['path'])}")
+    print(f"  总距离: {result_mixed['total_distance']:.0f}米")
+    print(f"  总时间: {result_mixed['total_time']:.0f}秒")
+    print(f"  使用交通方式: {result_mixed['modes_used']}")
+    print("  分段信息:")
+    for seg in result_mixed['segments']:
+        print(f"    {seg['from']} -> {seg['to']}: {seg['distance']:.0f}米, mode={seg['mode']}, time={seg['time']:.0f}秒")
 
     print("\n[SUCCESS] Dijkstra test passed!")

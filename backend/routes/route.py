@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 from flask import Blueprint, request, jsonify
 
 from backend.data import get_loader
-from backend.algorithms import dijkstra, dijkstra_with_constraints, solve_tsp, get_route_info
+from backend.algorithms import dijkstra, dijkstra_with_constraints, solve_tsp, get_route_info, shortest_path_mixed_transport
 
 route_bp = Blueprint('route', __name__)
 
@@ -114,8 +114,9 @@ def shortest_path():
             "from": "起点节点ID",
             "to": "终点节点ID",
             "campus_id": "校区ID",
-            "transport": "交通方式",  // 步行/自行车/电瓶车
-            "weight": "distance" 或 "time"
+            "transport": "交通方式",  // 步行/自行车/电瓶车/mixed_transport
+            "weight": "distance" 或 "time",
+            "modes": ["walk", "bike", "shuttle"]  // 混合交通时可用模式
         }
 
     返回:
@@ -125,7 +126,8 @@ def shortest_path():
                 "path": ["A", "B", "C"],
                 "distance": 150,
                 "time": 180,
-                "segments": [...]
+                "segments": [...],
+                "modes_used": [...]
             }
         }
     """
@@ -133,8 +135,9 @@ def shortest_path():
     from_id = data.get('from')  # 原始ID（可能是景点ID）
     to_id = data.get('to')      # 原始ID（可能是景点ID）
     campus_id = data.get('campus_id')
-    transport = data.get('transport', '步行')
+    transport = data.get('transport', 'walk')
     weight = data.get('weight', 'distance')
+    modes = data.get('modes', ['walk', 'bike', 'shuttle'])
 
     if not from_id or not to_id:
         return jsonify({'code': 400, 'message': '起点和终点不能为空', 'data': None})
@@ -165,8 +168,21 @@ def shortest_path():
     if not graph.node_exists(to_node):
         return jsonify({'code': 404, 'message': f'终点节点{to_node}不存在', 'data': None})
 
-    # 如果选择了交通工具约束
-    if transport != '步行':
+    # 混合交通工具最短时间路线
+    if transport == 'mixed_transport':
+        result = shortest_path_mixed_transport(graph, from_node, to_node, allowed_modes=modes)
+        if not result.get('success'):
+            return jsonify({'code': 404, 'message': result.get('error', '无法找到可行路径'), 'data': None})
+
+        path = result['path']
+        segments = result['segments']
+        distance = result.get('total_distance', 0)
+        time = result.get('total_time', 0)
+        modes_used = result.get('modes_used', [])
+
+        path_info = {'segments': segments}
+    elif transport != 'walk':
+        # 单一交通方式约束
         result = dijkstra_with_constraints(graph, from_node, to_node,
                                           transport=transport, weight=weight)
         if not result.get('success'):
@@ -175,8 +191,10 @@ def shortest_path():
         path = result['path']
         distance = result.get('distance', 0)
         time = result.get('time', 0)
+        path_info = get_route_info(graph, path, weight=weight, transport=transport)
+        modes_used = [transport]
     else:
-        # 普通最短路径
+        # 普通最短路径（按距离或时间）
         result = dijkstra(graph, from_node, to_node, weight=weight)
         path = result.get('path', [])
         distance = result.get('distance', 0)
@@ -185,6 +203,7 @@ def shortest_path():
         if path:
             path_info = get_route_info(graph, path, weight=weight, transport=transport)
             time = path_info['total_time']
+            modes_used = ['walk']
         else:
             return jsonify({'code': 404, 'message': '无法找到路径', 'data': None})
 
@@ -257,7 +276,8 @@ def shortest_path():
             'to_node': to_node,
             'distance': distance,
             'time': time,
-            'segments': path_info.get('segments', [])
+            'segments': path_info.get('segments', []),
+            'modes_used': modes_used
         },
         'message': 'success'
     })

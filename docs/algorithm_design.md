@@ -339,5 +339,113 @@ Top-K 使用堆而不是全量排序：
 
 ---
 
+## 11. 混合交通工具最短时间算法
+
+### 11.1 概述
+
+混合交通工具路线规划允许用户同时使用多种交通方式（步行、自行车、电瓶车），系统自动为每条边选择使总时间最短的交通方式。
+
+### 11.2 图结构
+
+每条道路边 (road edge) 包含：
+
+```json
+{
+  "from": "node_a",
+  "to": "node_b",
+  "distance": 120,
+  "ideal_speed": 30,
+  "congestion": 0.8,
+  "road_types": ["步行", "自行车", "驾车"]
+}
+```
+
+- `distance`: 距离（米）
+- `congestion`: 拥挤度，0 < congestion <= 1，1 表示畅通
+- `road_types`: 允许的交通方式列表
+
+### 11.3 时间权重公式
+
+```
+真实速度 = ideal_speed × congestion
+时间 = distance / 真实速度
+```
+
+- walk 理想速度: 5 km/h
+- bike 理想速度: 15 km/h
+- shuttle 理想速度: 20 km/h
+
+### 11.4 算法流程
+
+```
+shortest_path_mixed_transport(graph, start, end, allowed_modes):
+  1. 初始化时间表 times[s] = 0，其他 = ∞
+  2. 初始化前驱表 predecessor_modes[节点] = None
+  3. 使用 MinHeap 优先队列
+  4. 当队列非空：
+     a. 弹出当前节点 current
+     b. 如果 current 已访问，继续
+     c. 检查邻居：
+        - 找到该边允许的所有可用交通方式
+        - 对每个可用 mode 计算 time = distance / (ideal_speed × congestion)
+        - 选择 time 最小的 mode 作为该段的交通方式
+        - 如果 new_time < times[neighbor]，更新 times、predecessor_modes
+  5. 重建路径，收集每段的 mode 信息
+  6. 返回 path、segments、total_distance、total_time、modes_used
+```
+
+### 11.5 与单一交通工具策略的区别
+
+| 特性 | 单一交通 (dijkstra_with_constraints) | 混合交通 (shortest_path_mixed_transport) |
+|------|--------------------------------------|------------------------------------------|
+| 每条边的交通方式 | 固定（由 transport 参数指定） | 可变（每条边选最优） |
+| 时间计算 | 统一使用一种速度 | 每条边可用不同速度 |
+| 返回 segments | 不包含 mode | 每段记录实际使用的 mode |
+| 适用场景 | 用户明确选择一种交通 | 系统自动选择最快组合 |
+
+### 11.6 返回格式
+
+```json
+{
+  "success": true,
+  "path": ["node_a", "node_b", "node_c"],
+  "segments": [
+    {
+      "from": "node_a",
+      "to": "node_b",
+      "distance": 100,
+      "mode": "walk",
+      "speed": 5,
+      "congestion": 0.8,
+      "time": 90.0
+    },
+    {
+      "from": "node_b",
+      "to": "node_c",
+      "distance": 100,
+      "mode": "bike",
+      "speed": 15,
+      "congestion": 0.9,
+      "time": 26.67
+    }
+  ],
+  "total_distance": 200,
+  "total_time": 116.67,
+  "modes_used": ["walk", "bike"]
+}
+```
+
+### 11.7 时间复杂度和空间复杂度
+
+| 指标 | 值 |
+|------|------|
+| 时间复杂度 | O((E × M + V) log V)，M 为交通方式数量 |
+| 空间复杂度 | O(V)，存储时间表和前驱表 |
+
+- 每条边最多检查 M 个模式（通常 M = 3）
+- V = 节点数，E = 边数
+
+---
+
 **最后更新**: 2026-05-04
-**状态**: 景点和日记兴趣推荐均已完成实现和测试
+**状态**: 景点和日记兴趣推荐均已完成实现和测试，混合交通工具路线已完成

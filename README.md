@@ -30,7 +30,7 @@ pip install --break-system-packages -r requirements.txt
 python -m pytest tests -q
 ```
 
-当前测试状态：**167 passed**
+当前测试状态：**171 passed**
 
 ## 启动后端
 

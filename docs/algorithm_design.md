@@ -138,6 +138,7 @@ score = 0.45 * interest_match + 0.30 * rating_norm + 0.25 * heat_norm
 - 使用 `backend/core/sort.py:top_k` 实现
 - 不是 `sorted(all)[:k]` 或 `list.sort()[:k]`
 - 时间复杂度 O(n log k) vs 全量排序 O(n log n)
+- heap_sort 已补充边界测试，Top-K 仍使用堆结构
 
 ## 9. 动态数据变化处理
 

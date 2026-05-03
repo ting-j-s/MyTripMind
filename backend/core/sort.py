@@ -93,13 +93,14 @@ def heap_sort(arr, key=None, reverse=False):
             if left > end:
                 break
 
-            # 找较小的子节点
+            # 找较大的子节点（对于最大堆）
             swap = left
             if right <= end:
-                if key(items[right]) < key(items[left]):
+                if key(items[right]) > key(items[left]):
                     swap = right
 
-            if key(items[swap]) < key(items[root]):
+            # 如果较大的子节点大于父节点，则交换
+            if key(items[swap]) > key(items[root]):
                 items[root], items[swap] = items[swap], items[root]
                 root = swap
             else:

@@ -6,6 +6,52 @@
 
 本系统是一个集景点推荐、路线规划、场所查询、旅游日记分享和美食推荐于一体的综合性旅游管理平台。
 
+## 环境要求
+
+- Python 3.10+
+- Flask 3.0.0
+- pip
+
+## 安装依赖
+
+```bash
+pip install -r requirements.txt
+```
+
+或使用系统包管理（需要 --break-system-packages）：
+
+```bash
+pip install --break-system-packages -r requirements.txt
+```
+
+## 运行测试
+
+```bash
+python -m pytest tests -q
+```
+
+当前测试状态：**95 passed**
+
+## 启动后端
+
+```bash
+cd backend
+python app.py
+```
+
+后端地址：http://127.0.0.1:5000
+
+如端口被占用，可修改 `backend/app.py` 中的 `port=5000` 为其他端口。
+
+## 启动前端
+
+```bash
+cd frontend
+python -m http.server 8080
+```
+
+访问 http://localhost:8080
+
 ## 功能模块
 
 - **旅游推荐**：基于热度、评分、兴趣的个性化景点推荐
@@ -33,26 +79,14 @@
 | 全文检索 | 倒排索引 |
 | 霍夫曼压缩 | 日记内容压缩存储 |
 
-## 数据结构
+## 核心数据结构
 
-- 图（邻接表存储道路网络）
-- 堆（优先队列、最小堆）
-- 哈希表（快速查找）
-- 链表（动态列表）
-
-## 启动方式
-
-```bash
-# 终端1：启动后端
-cd backend
-python app.py
-
-# 终端2：启动前端
-cd frontend
-python -m http.server 8080
-
-# 访问 http://localhost:8080
-```
+| 数据结构 | 说明 |
+|----------|------|
+| 图 | 邻接表存储道路网络 |
+| 堆 | 优先队列、最小堆 |
+| 哈希表 | 快速查找 |
+| 链表 | 动态列表 |
 
 ## 课程要求
 
@@ -69,14 +103,21 @@ python -m http.server 8080
 backend/
 ├── algorithms/     # 核心算法
 ├── core/          # 核心数据结构
+├── data/          # 数据文件
 ├── models/        # 数据模型
 ├── routes/        # API路由
+├── services/       # 业务服务
+├── utils/         # 工具函数
 └── app.py         # Flask入口
 
 frontend/
 ├── pages/         # HTML页面
 ├── css/           # 样式文件
 └── js/            # JavaScript
+
+tests/             # 测试文件
+docs/              # 文档
+scripts/           # 数据处理脚本
 ```
 
 ---

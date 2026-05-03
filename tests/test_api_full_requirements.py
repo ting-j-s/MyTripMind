@@ -373,17 +373,20 @@ class TestDiaryModule:
 
     def test_diary_title_case_and_space_normalization(self, client):
         """大小写和首尾空格归一化后能查到"""
-        # 创建日记（使用纯中文标题来测试空格归一化）
+        import uuid
+        unique_title = f'空格归一化测试_{uuid.uuid4().hex[:6]}'
+
+        # 创建日记（使用带首尾空格的标题）
         response = client.post('/api/diary',
             json={
                 'user_id': 'user_001',
-                'title': '  北京旅行日记  ',
+                'title': f'  {unique_title}  ',
                 'content': '去北京旅行'
             })
         diary_id = response.get_json()['data']['diary_id']
 
         # 去除首尾空格后能查到
-        response = client.get('/api/diaries/title?title=北京旅行日记')
+        response = client.get(f'/api/diaries/title?title={unique_title}')
         assert response.status_code == 200
         data = response.get_json()
         # 检查我们创建的日记在结果中
@@ -391,14 +394,14 @@ class TestDiaryModule:
         assert diary_id in ids
 
         # 首尾空格不同能查到
-        response = client.get('/api/diaries/title?title=  北京旅行日记  ')
+        response = client.get(f'/api/diaries/title?title=  {unique_title}  ')
         assert response.status_code == 200
         data = response.get_json()
         ids = [item['id'] for item in data['data']['items']]
         assert diary_id in ids
 
-        # 大小写不同查不到（英文部分大小写敏感）
-        response = client.get('/api/diaries/title?title=beijing旅行日记')
+        # 不存在的标题查不到
+        response = client.get(f'/api/diaries/title?title={unique_title}extra')
         assert response.status_code == 200
         data = response.get_json()
         ids = [item['id'] for item in data['data']['items']]

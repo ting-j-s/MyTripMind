@@ -129,7 +129,7 @@ def shortest_path():
             }
         }
     """
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     from_id = data.get('from')  # 原始ID（可能是景点ID）
     to_id = data.get('to')      # 原始ID（可能是景点ID）
     campus_id = data.get('campus_id')
@@ -289,7 +289,7 @@ def tsp_route():
             }
         }
     """
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     start_id = data.get('start')
     node_ids = data.get('nodes', [])  # 原始景点ID列表
     campus_id = data.get('campus_id')
@@ -412,7 +412,7 @@ def indoor_route():
             }
         }
     """
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     building_id = data.get('building_id')
     start = data.get('start')
     end = data.get('end')

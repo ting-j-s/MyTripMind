@@ -36,7 +36,7 @@ def register():
             "data": {"user_id": "xxx"}
         }
     """
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     username = data.get('username', '').strip()
     password = data.get('password', '')
     interests = data.get('interests', [])
@@ -95,7 +95,7 @@ def login():
             }
         }
     """
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     username = data.get('username', '').strip()
     password = data.get('password', '')
 

@@ -34,7 +34,7 @@ def generate_animation():
             }
         }
     """
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
     location = data.get('location', '')
     images = data.get('images', [])
     user_description = data.get('description', '')

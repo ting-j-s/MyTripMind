@@ -11,6 +11,7 @@ from flask import Blueprint, request, jsonify
 from backend.data import get_loader
 from backend.core import top_k
 from backend.algorithms import fuzzy_search
+from backend.utils.request_utils import parse_int_arg
 
 attractions_bp = Blueprint('attractions', __name__)
 
@@ -28,8 +29,14 @@ def get_attractions():
     """
     campus_id = request.args.get('campus_id')
     sort_by = request.args.get('sort', 'heat')  # heat 或 rating
-    limit = int(request.args.get('limit', 10))
-    offset = int(request.args.get('offset', 0))
+
+    # 安全解析 limit 和 offset
+    limit, err = parse_int_arg('limit', default=10, min_value=1, max_value=100)
+    if err:
+        return err
+    offset, err = parse_int_arg('offset', default=0, min_value=0, max_value=10000)
+    if err:
+        return err
 
     loader = get_loader()
     attractions = loader.get_all_attractions()
@@ -92,7 +99,11 @@ def search_attractions():
         limit: 返回数量
     """
     query = request.args.get('q', '').strip()
-    limit = int(request.args.get('limit', 10))
+
+    # 安全解析 limit
+    limit, err = parse_int_arg('limit', default=10, min_value=1, max_value=100)
+    if err:
+        return err
 
     if not query:
         return jsonify({

@@ -16,6 +16,7 @@ from backend.data import get_loader
 from backend.core import Graph
 from backend.algorithms import dijkstra
 from backend.algorithms import fuzzy_search
+from backend.utils.request_utils import parse_int_arg, parse_float_arg
 
 nearby_bp = Blueprint('nearby', __name__)
 
@@ -151,11 +152,19 @@ def get_nearby():
     """
     origin = request.args.get('origin')  # 格式 "x,y"
     origin_node_id = request.args.get('origin_node_id')
-    search_range = float(request.args.get('range', 500))
     facility_type = request.args.get('type')
     category = request.args.get('category')
     campus_id = request.args.get('campus_id')
-    limit = int(request.args.get('limit', 10))
+
+    # 安全解析 limit
+    limit, err = parse_int_arg('limit', default=10, min_value=1, max_value=100)
+    if err:
+        return err
+
+    # 安全解析 range
+    search_range, err = parse_float_arg('range', default=500, min_value=0, max_value=50000)
+    if err:
+        return err
 
     loader = get_loader()
     facilities = loader.get_all_facilities()

@@ -14,6 +14,7 @@ from backend.data import get_loader
 from backend.models.diary import Diary
 from backend.core import top_k, HashTable
 from backend.algorithms import TextSearchIndex, simple_text_search, HuffmanCoding
+from backend.utils.request_utils import parse_int_arg, parse_float_arg
 
 diary_bp = Blueprint('diary', __name__)
 
@@ -27,11 +28,6 @@ _title_index_dirty = True  # 初始为脏，需要重建
 
 
 def normalize_title(title):
-    """
-    归一化标题用于精确查询
-    - 转小写
-    - 去除首尾空格
-    """
     if not title:
         return ''
     return title.lower().strip()
@@ -43,6 +39,9 @@ def build_title_index():
 
     loader = get_loader()
     diaries = loader.get_all_diaries()
+
+    print(f'[DEBUG] build_title_index: loading {len(diaries)} diaries')
+    print(f'[DEBUG] build_title_index: checking for our test title...')
 
     index = HashTable(size=100)
     for diary in diaries:
@@ -123,9 +122,15 @@ def get_diaries():
         location_id: 按景点筛选
     """
     sort_by = request.args.get('sort', 'heat')
-    limit = int(request.args.get('limit', 10))
-    offset = int(request.args.get('offset', 0))
     location_id = request.args.get('location_id')
+
+    # 安全解析 limit 和 offset
+    limit, err = parse_int_arg('limit', default=10, min_value=1, max_value=100)
+    if err:
+        return err
+    offset, err = parse_int_arg('offset', default=0, min_value=0, max_value=10000)
+    if err:
+        return err
 
     loader = get_loader()
     diaries = loader.get_all_diaries()
@@ -216,7 +221,7 @@ def create_diary():
             "location_id": "景点ID"
         }
     """
-    data = request.get_json()
+    data = request.get_json(silent=True) or {}
 
     user_id = data.get('user_id')
     title = data.get('title', '').strip()
@@ -371,11 +376,24 @@ def rate_diary(diary_id):
             "rating": 4.5
         }
     """
-    data = request.get_json()
-    rating = float(data.get('rating', 0))
+    data = request.get_json(silent=True) or {}
 
+    # 解析并校验 rating
+    rating_str = data.get('rating')
+    if rating_str is None:
+        return jsonify({'code': 400, 'message': 'rating不能为空', 'data': None})
+    try:
+        rating = float(rating_str)
+    except (ValueError, TypeError):
+        return jsonify({'code': 400, 'message': 'rating必须是数字', 'data': None})
     if rating < 1 or rating > 5:
         return jsonify({'code': 400, 'message': '评分需在1-5之间', 'data': None})
+
+    loader = get_loader()
+    diary = loader.get_diary(diary_id)
+
+    if not diary:
+        return jsonify({'code': 404, 'message': '日记不存在', 'data': None})
 
     loader = get_loader()
     diary = loader.get_diary(diary_id)
@@ -537,6 +555,8 @@ def search_by_title():
     # 使用 HashTable 精确查询
     title_index = get_title_index()
     diary_ids = title_index.get(normalized_title, [])
+    # 反转顺序使新创建的日记排在前面（避免被 limit 截断）
+    diary_ids = list(reversed(diary_ids))
 
     # 获取完整 Diary 对象
     loader = get_loader()

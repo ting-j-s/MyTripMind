@@ -14,6 +14,7 @@ from flask import Blueprint, request, jsonify
 from backend.data import get_loader
 from backend.core import Graph, top_k
 from backend.algorithms import dijkstra, fuzzy_search
+from backend.utils.request_utils import parse_int_arg
 
 food_bp = Blueprint('food', __name__)
 
@@ -152,8 +153,14 @@ def get_foods():
     sort_by = request.args.get('sort', 'heat')
     origin = request.args.get('origin')  # 格式 "x,y"
     origin_node_id = request.args.get('origin_node_id')
-    limit = int(request.args.get('limit', 10))
-    offset = int(request.args.get('offset', 0))
+
+    # 安全解析 limit 和 offset
+    limit, err = parse_int_arg('limit', default=10, min_value=1, max_value=100)
+    if err:
+        return err
+    offset, err = parse_int_arg('offset', default=0, min_value=0, max_value=10000)
+    if err:
+        return err
 
     loader = get_loader()
     foods = loader.get_all_foods()
@@ -233,7 +240,11 @@ def search_foods():
     query = request.args.get('q', '').strip()
     campus_id = request.args.get('campus_id')
     cuisine = request.args.get('cuisine')
-    limit = int(request.args.get('limit', 10))
+
+    # 安全解析 limit
+    limit, err = parse_int_arg('limit', default=10, min_value=1, max_value=100)
+    if err:
+        return err
 
     loader = get_loader()
     foods = loader.get_all_foods()

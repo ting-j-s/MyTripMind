@@ -129,6 +129,15 @@
       "favorites": [],
       "visited": [],
       "create_time": "2026-01-20 08:56:00"
+    },
+    {
+      "id": "user_a2ec6aa1",
+      "username": "testuser_stability",
+      "password_hash": "cd8ae748d23722682cc20ad62e7cb6e9",
+      "interests": [],
+      "favorites": [],
+      "visited": [],
+      "create_time": "2026-05-03 23:49:04"
     }
   ]
 }

@@ -98,10 +98,11 @@ class TestTopK:
         assert result == [1]
 
     def test_k_equals_length(self):
-        """k 等于列表长度"""
+        """k 等于列表长度 - 返回全部但已排序"""
         result = top_k([1, 2, 3], k=3, reverse=True)
-        # Note: due to heap_sort bug, order may not be perfect but elements should be correct
-        assert set(result) == {1, 2, 3}
+        assert result == [3, 2, 1]
+        result_asc = top_k([1, 2, 3], k=3, reverse=False)
+        assert result_asc == [1, 2, 3]
 
     def test_k_greater_than_length(self):
         """k 大于列表长度"""
@@ -109,21 +110,14 @@ class TestTopK:
         assert set(result) == {1, 2}
 
     def test_top_k_largest(self):
-        """找最大的 k 个"""
+        """找最大的 k 个 - 结果已排序（降序）"""
         result = top_k([5, 3, 8, 1, 9, 2], k=3, reverse=True)
-        # Note: due to heap_sort bug, order may not be perfect but elements should be correct
-        assert len(result) == 3
-        assert 9 in result
-        # 8 and 5 should be in the result, but order may vary
-        assert set(result) == {9, 5, 3} or set(result) == {9, 8, 5}
+        assert result == [9, 8, 5]
 
     def test_top_k_smallest(self):
-        """找最小的 k 个"""
+        """找最小的 k 个 - 结果已排序（升序）"""
         result = top_k([5, 3, 8, 1, 9, 2], k=3, reverse=False)
-        assert len(result) == 3
-        assert 1 in result
-        # 2 and 3 should be in the result, but order may vary
-        assert set(result) == {1, 2, 3} or set(result) == {1, 5, 8}
+        assert result == [1, 2, 3]
 
     def test_top_k_with_duplicates(self):
         """有重复元素"""
@@ -133,9 +127,11 @@ class TestTopK:
     def test_top_k_returns_sorted(self):
         """返回结果已排序（降序）"""
         result = top_k([5, 3, 8, 1, 9, 2], k=3, reverse=True)
-        # heap_sort 可能有问题，结果不一定完全有序
-        # 这里只验证前几个是最大的
-        assert max(result) == 9
+        # 验证结果已排序（降序）
+        assert result == [9, 8, 5]
+        # 验证与 heap_sort 结果一致
+        from backend.core.sort import heap_sort
+        assert result == heap_sort([5, 3, 8, 1, 9, 2], key=lambda x: x, reverse=True)[:3]
 
     def test_original_list_unchanged(self):
         """原列表不变"""
@@ -154,3 +150,13 @@ class TestTopK:
         result = top_k([5, 3, 8, 1, 9, 2], k=1, reverse=False)
         assert len(result) == 1
         assert result[0] == 1
+
+    def test_k_zero(self):
+        """k=0 返回空列表"""
+        result = top_k([5, 3, 8, 1, 9, 2], k=0, reverse=True)
+        assert result == []
+
+    def test_k_negative(self):
+        """k<0 返回空列表"""
+        result = top_k([5, 3, 8, 1, 9, 2], k=-1, reverse=True)
+        assert result == []

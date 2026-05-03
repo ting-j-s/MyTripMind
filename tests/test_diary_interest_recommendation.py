@@ -128,6 +128,20 @@ class TestDiaryInterestRecommendation:
         # 检查返回的 score 在合理范围内
         for item in items:
             assert 0 <= item['score'] <= 1.0
+        # 验证结果按 score 降序排列
+        scores = [item['score'] for item in items]
+        assert scores == sorted(scores, reverse=True)
+
+    def test_interest_recommendation_score_descending_order(self, client):
+        """验证推荐结果按 score 降序排列"""
+        response = client.get('/api/diaries?sort=interest&user_id=user_001&limit=10')
+        assert response.status_code == 200
+        data = response.get_json()
+
+        items = data['data']['items']
+        # 验证 score 降序
+        scores = [item['score'] for item in items]
+        assert scores == sorted(scores, reverse=True), f"Scores not descending: {scores}"
 
     def test_interest_recommendation_returns_all_fields(self, client):
         """返回结果包含日记完整信息"""

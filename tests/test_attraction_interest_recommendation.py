@@ -138,8 +138,20 @@ class TestAttractionInterestRecommendation:
         # 检查返回的 score 在合理范围内
         for item in items:
             assert 0 <= item['score'] <= 1.0
-        # Note: 由于 heap_sort 存在的 bug，排序可能不完全有序
-        # 但 Top-K 逻辑本身是使用的（不是全量排序截取）
+        # 验证结果按 score 降序排列
+        scores = [item['score'] for item in items]
+        assert scores == sorted(scores, reverse=True)
+
+    def test_interest_recommendation_score_descending_order(self, client):
+        """验证推荐结果按 score 降序排列"""
+        response = client.get('/api/recommend?user_id=user_001&strategy=interest&limit=10')
+        assert response.status_code == 200
+        data = response.get_json()
+
+        items = data['data']['items']
+        # 验证 score 降序
+        scores = [item['score'] for item in items]
+        assert scores == sorted(scores, reverse=True), f"Scores not descending: {scores}"
 
     def test_interest_recommendation_returns_all_fields(self, client):
         """返回结果包含景点完整信息"""

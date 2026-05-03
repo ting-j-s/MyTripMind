@@ -86,9 +86,30 @@ score = 0.45 * interest_match + 0.30 * rating_norm + 0.25 * heat_norm
 
 | 指标 | 值 |
 |------|------|
-| 时间复杂度 | O(n log k)，n=景点数量，k=limit |
+| 时间复杂度 | O(n log k) 用于选择 + O(k log k) 用于最终排序 = O(n log k + k log k) |
 | 空间复杂度 | O(n)，存储所有景点的评分数据 |
 | 适用场景 | n很大（数千到数万），k很小（10-100） |
+
+### Top-K 实现策略
+
+Top-K 使用堆而不是全量排序：
+
+- **reverse=True（找 K 个最大）**：使用 MinHeap
+  - 堆顶维护当前 K 个中最小的元素
+  - 新元素比堆顶大时替换堆顶
+  - 最终堆中维护 K 个最大元素
+  - MinHeap pop 出升序，再 reverse 成降序
+
+- **reverse=False（找 K 个最小）**：使用 MaxHeap
+  - 堆顶维护当前 K 个中最大的元素
+  - 新元素比堆顶小时替换堆顶
+  - 最终堆中维护 K 个最小元素
+  - MaxHeap pop 出降序，再 reverse 成升序
+
+**为什么不直接用 heap_sort？**
+- heap_sort 是 O(n log n) 全量排序
+- Top-K 用堆选择是 O(n log k)
+- 当 n >> k 时，堆选择远快于全量排序 |
 
 ## 6. 返回格式
 
@@ -251,9 +272,25 @@ heat_norm = view_count / max_view_count
 
 | 指标 | 值 |
 |------|------|
-| 时间复杂度 | O(n log k)，n=日记数量，k=limit |
+| 时间复杂度 | O(n log k) 用于选择 + O(k log k) 用于最终排序 = O(n log k + k log k) |
 | 空间复杂度 | O(n)，存储所有日记的评分数据 |
 | 适用场景 | n很大（数千到数万），k很小（10-100） |
+
+### 10.5.1 Top-K 实现策略
+
+Top-K 使用堆而不是全量排序：
+
+- **reverse=True（找 K 个最大 score）**：使用 MinHeap
+  - 堆顶维护当前 K 个中最小的 score
+  - 新元素 score 比堆顶大时替换堆顶
+  - 最终堆中维护 K 个最大 score
+  - MinHeap pop 出升序，再 reverse 成降序
+
+- **reverse=False（找 K 个最小 score）**：使用 MaxHeap
+  - 堆顶维护当前 K 个中最大的 score
+  - 新元素 score 比堆顶小时替换堆顶
+  - 最终堆中维护 K 个最小 score
+  - MaxHeap pop 出降序，再 reverse 成升序
 
 ### 10.6 特殊处理
 

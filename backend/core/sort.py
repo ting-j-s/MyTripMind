@@ -185,10 +185,10 @@ def top_k(arr, k, key=None, reverse=True):
     while not heap.is_empty():
         result.append(heap.pop().value)
 
-    # min-heap pop 出来是升序，reverse=True 需要反转成降序
-    # max-heap pop 出来是降序，reverse=False 需要反转成升序
-    if reverse:
-        result.reverse()
+    # reverse=True (MinHeap): pop 出升序，需要反转成降序
+    # reverse=False (MaxHeap): pop 出降序，需要反转成升序
+    # 因此始终需要 reverse
+    result.reverse()
 
     return result
 

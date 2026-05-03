@@ -116,13 +116,15 @@ def get_diaries():
     获取日记列表
 
     查询参数:
-        sort: 排序方式 heat/rating/time
+        sort: 排序方式 heat/rating/time/interest
         limit: 返回数量
         offset: 偏移量
         location_id: 按景点筛选
+        user_id: 用户ID（用于兴趣推荐）
     """
     sort_by = request.args.get('sort', 'heat')
     location_id = request.args.get('location_id')
+    user_id = request.args.get('user_id')
 
     # 安全解析 limit 和 offset
     limit, err = parse_int_arg('limit', default=10, min_value=1, max_value=100)
@@ -139,7 +141,128 @@ def get_diaries():
     if location_id:
         diaries = [d for d in diaries if d.location_id == location_id]
 
-    # 排序
+    # 兴趣推荐模式
+    if sort_by == 'interest' and user_id:
+        user = loader.get_user(user_id)
+        if not user:
+            return jsonify({'code': 404, 'message': '用户不存在', 'data': None})
+
+        if not user.interests:
+            # 用户无兴趣，降级为热度+评分综合推荐
+            scored_diaries = []
+            max_view = max(d.view_count for d in diaries) or 1
+            for d in diaries:
+                rating_norm = d.get_average_rating() / 5.0
+                heat_norm = d.view_count / max_view
+                score = 0.6 * rating_norm + 0.4 * heat_norm
+                scored_diaries.append({
+                    'diary': d,
+                    'score': score,
+                    'interest_match': 0,
+                    'content_match': 0,
+                    'match_reasons': ['降级推荐：无兴趣标签']
+                })
+
+            top_results = top_k(scored_diaries, limit,
+                                 key=lambda x: x['score'], reverse=True)
+            items = []
+            for result in top_results:
+                d = result['diary']
+                item = d.to_dict()
+                item['score'] = round(result['score'], 3)
+                item['interest_match'] = result['interest_match']
+                item['content_match'] = result['content_match']
+                item['match_reasons'] = result['match_reasons']
+                items.append(item)
+
+            return jsonify({
+                'code': 200,
+                'data': {
+                    'items': items,
+                    'total': len(items),
+                    'limit': limit,
+                    'offset': offset,
+                    'strategy': 'interest_fallback'
+                },
+                'message': 'success'
+            })
+
+        # 计算兴趣匹配得分
+        max_view = max(d.view_count for d in diaries) or 1
+        scored_diaries = []
+
+        for d in diaries:
+            # 计算 interest_match (用户兴趣标签与日记标签匹配)
+            matched_tags = [tag for tag in user.interests
+                          if hasattr(d, 'tags') and tag in getattr(d, 'tags', [])]
+
+            # 计算 interest_match - 基于标签匹配
+            interest_match = len(matched_tags) / len(user.interests) if user.interests else 0
+
+            # 计算 content_match - 用户兴趣在 title/content 中命中
+            content_hits = 0
+            text_to_check = (d.title + ' ' + d.content).lower()
+            for interest in user.interests:
+                if interest.lower() in text_to_check:
+                    content_hits += 1
+            content_match = content_hits / len(user.interests) if user.interests else 0
+
+            # 归一化评分和热度
+            rating_norm = d.get_average_rating() / 5.0
+            heat_norm = d.view_count / max_view if max_view > 0 else 0
+
+            # 综合得分：0.45*兴趣匹配 + 0.25*评分 + 0.20*热度 + 0.10*内容匹配
+            score = 0.45 * interest_match + 0.25 * rating_norm + 0.20 * heat_norm + 0.10 * content_match
+
+            # 构建匹配原因说明
+            match_reasons = []
+            for tag in matched_tags:
+                match_reasons.append(f'匹配标签: {tag}')
+            if content_match > 0:
+                for interest in user.interests:
+                    if interest.lower() in d.title.lower():
+                        match_reasons.append(f'标题匹配: {interest}')
+                        break
+                for interest in user.interests:
+                    if interest.lower() in d.content.lower():
+                        match_reasons.append(f'内容匹配: {interest}')
+                        break
+
+            scored_diaries.append({
+                'diary': d,
+                'score': score,
+                'interest_match': interest_match,
+                'content_match': content_match,
+                'match_reasons': match_reasons
+            })
+
+        # 使用 Top-K 按 score 排序
+        top_results = top_k(scored_diaries, limit,
+                           key=lambda x: x['score'], reverse=True)
+
+        items = []
+        for result in top_results:
+            d = result['diary']
+            item = d.to_dict()
+            item['score'] = round(result['score'], 3)
+            item['interest_match'] = round(result['interest_match'], 3)
+            item['content_match'] = round(result['content_match'], 3)
+            item['match_reasons'] = result['match_reasons']
+            items.append(item)
+
+        return jsonify({
+            'code': 200,
+            'data': {
+                'items': items,
+                'total': len(items),
+                'limit': limit,
+                'offset': offset,
+                'strategy': 'interest'
+            },
+            'message': 'success'
+        })
+
+    # 排序（非兴趣模式）
     if sort_by == 'rating':
         diaries = top_k(diaries, limit,
                        key=lambda x: x.get_average_rating(), reverse=True)

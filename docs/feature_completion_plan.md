@@ -40,24 +40,37 @@
 
 **目标**: 用户设置兴趣标签（如"历史"、"博物馆"），系统推荐包含匹配标签的日记
 
+**状态**: ✅ 已完成
+
 **涉及文件**:
-- `backend/models/user.py` - 添加 `interests: List[str]` 字段
-- `backend/models/diary.py` - 添加 `tags: List[str]` 字段
-- `backend/routes/diary.py` - 扩展 `recommend_by_interest()` 函数
+- `backend/models/user.py` - interests 字段已存在
+- `backend/models/diary.py` - 现有字段
+- `backend/routes/diary.py` - 扩展 `get_diaries()` 支持 sort=interest
 
 **涉及 API**:
-- `PUT /api/user/<id>` (扩展，支持更新 interests)
-- `GET /api/diaries/recommend?user_id=xxx` (扩展，支持按兴趣推荐)
+- `GET /api/diaries?sort=interest&user_id=xxx` - 基于兴趣评分推荐
+
+**评分公式**:
+```
+score = 0.45 * interest_match + 0.25 * rating_norm + 0.20 * heat_norm + 0.10 * content_match
+- interest_match = matched_tags_count / user_interests_count (0 到 1)
+- rating_norm = avg_rating / 5.0
+- heat_norm = view_count / max_view_count
+- content_match = content_hits / user_interests_count
+```
+
+**Top-K 合规**: 使用 `sort.py:top_k` 实现，时间复杂度 O(n log k)
 
 **需要新增/修改的测试**:
-- `tests/test_diary.py` - 新增 `test_recommend_by_user_interest` 测试用例
+- `tests/test_diary_interest_recommendation.py` - 13 个测试用例
 
 **验收方式**:
-1. 用户设置 interests = ["历史", "博物馆"]
-2. 日记有 tags = ["历史", "博物馆"]
-3. 推荐 API 返回匹配日记排在前面
+1. 用户有 interests = ["历史", "校园"]
+2. 日记 title/content 包含这些词
+3. 推荐结果优先显示匹配日记（高 interest_match/content_match）
+4. 返回结果包含 score, interest_match, content_match, match_reasons
 
-**风险**: 低 - 扩展现有字段和逻辑
+**风险**: 低 - 已完成
 
 ---
 

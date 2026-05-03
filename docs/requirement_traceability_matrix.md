@@ -87,7 +87,7 @@
 | 3.4.9 | 用户评分 | 已完成 | diary.py:rate_diary, add_rating | POST /api/diary/<id>/rate | test_api_full_requirements.py | diary_detail.html | 是 | 无 | - |
 | 3.4.10 | 按热度推荐 | 已完成 | diary.py:get_diaries sort=heat | GET /api/diaries?sort=heat | test_api_full_requirements.py | diary_square.html | 是 | 无 | - |
 | 3.4.11 | 按评价推荐 | 已完成 | diary.py:get_diaries sort=rating | GET /api/diaries?sort=rating | test_api_full_requirements.py | diary_square.html | 是 | 无 | - |
-| 3.4.12 | 按个人兴趣推荐 | 部分完成 | diary.py:get_diaries (简单实现) | GET /api/diaries (user_id 匹配) | 无专门测试 | 无 | 部分 | 兴趣推荐仅基于用户已访问 location_id，未使用标签匹配 | P1 |
+| 3.4.12 | 按个人兴趣推荐 | 已完成 | diary.py:get_diaries sort=interest | GET /api/diaries?sort=interest&user_id=xxx | test_diary_interest_recommendation.py | 无 | 是 | 使用 0.45*兴趣匹配+0.25*评分+0.20*热度+0.10*内容匹配 综合评分，Top-K 选取 | - |
 | 3.4.13 | 前10推荐使用Top-K | 已完成 | sort.py:top_k | top_k(diaries, limit, ...) | test_api_full_requirements.py | diary_square.html | 是 | 无 | - |
 
 ---

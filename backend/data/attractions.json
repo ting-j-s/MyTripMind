@@ -1,0 +1,3620 @@
+{
+  "attractions": [
+    {
+      "id": "CAMPUS001",
+      "name": "北京邮电大学（沙河校区）",
+      "type": "校园",
+      "x": 116.352,
+      "y": 40.025,
+      "description": "北京邮电大学沙河校区位于北京市昌平区沙河高教园区",
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "CAMPUS002",
+      "name": "清华大学（紫荆公寓区）",
+      "type": "校园",
+      "x": 116.324,
+      "y": 40.0,
+      "description": "清华大学位于北京市海淀区中关村北大街",
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "CAMPUS003",
+      "name": "北京大学（燕园校区）",
+      "type": "校园",
+      "x": 116.307,
+      "y": 39.989,
+      "description": "北京大学位于北京市海淀区颐和园路5号",
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "CAMPUS004",
+      "name": "北京师范大学（海淀校区）",
+      "type": "校园",
+      "x": 116.365,
+      "y": 39.961,
+      "description": "北京师范大学位于北京市海淀区新街口外大街19号",
+      "location_node_id": "NODE_12702402226"
+    },
+    {
+      "id": "CAMPUS005",
+      "name": "北京航空航天大学（学院路校区）",
+      "type": "校园",
+      "x": 116.353,
+      "y": 39.943,
+      "description": "北京航空航天大学位于北京市海淀区学院路37号",
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS001_001",
+      "name": "北京邮电图书馆",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3484,
+      "y": 40.0151,
+      "heat": 3978,
+      "rating": 4.8,
+      "tags": [
+        "安静",
+        "健身",
+        "文化"
+      ],
+      "description": "北京邮电大学（沙河校区）内的图书馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_002",
+      "name": "北京邮电食堂",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3578,
+      "y": 40.0202,
+      "heat": 3693,
+      "rating": 4.3,
+      "tags": [
+        "亲子",
+        "文化",
+        "观光"
+      ],
+      "description": "北京邮电大学（沙河校区）内的食堂，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_003",
+      "name": "北京邮电体育馆",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3443,
+      "y": 40.0162,
+      "heat": 974,
+      "rating": 4.3,
+      "tags": [
+        "安静",
+        "美食"
+      ],
+      "description": "北京邮电大学（沙河校区）内的体育馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_004",
+      "name": "北京邮电游泳馆",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3421,
+      "y": 40.0296,
+      "heat": 2893,
+      "rating": 4.7,
+      "tags": [
+        "运动",
+        "观光"
+      ],
+      "description": "北京邮电大学（沙河校区）内的游泳馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_005",
+      "name": "北京邮电体育场",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3432,
+      "y": 40.0199,
+      "heat": 3792,
+      "rating": 4.1,
+      "tags": [
+        "健身",
+        "学习",
+        "拍照",
+        "观光"
+      ],
+      "description": "北京邮电大学（沙河校区）内的体育场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_006",
+      "name": "北京邮电篮球场",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3614,
+      "y": 40.0154,
+      "heat": 698,
+      "rating": 3.8,
+      "tags": [
+        "自然",
+        "休闲"
+      ],
+      "description": "北京邮电大学（沙河校区）内的篮球场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_007",
+      "name": "北京邮电网球场",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3526,
+      "y": 40.0168,
+      "heat": 3608,
+      "rating": 4.5,
+      "tags": [
+        "运动",
+        "亲子",
+        "历史",
+        "娱乐"
+      ],
+      "description": "北京邮电大学（沙河校区）内的网球场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_008",
+      "name": "北京邮电羽毛球馆",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3589,
+      "y": 40.0296,
+      "heat": 2321,
+      "rating": 4.8,
+      "tags": [
+        "休闲",
+        "学习",
+        "健身"
+      ],
+      "description": "北京邮电大学（沙河校区）内的羽毛球馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_009",
+      "name": "北京邮电宿舍楼",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3439,
+      "y": 40.0313,
+      "heat": 4296,
+      "rating": 4.9,
+      "tags": [
+        "安静",
+        "打卡",
+        "休闲",
+        "美食"
+      ],
+      "description": "北京邮电大学（沙河校区）内的宿舍楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_010",
+      "name": "北京邮电行政楼",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3515,
+      "y": 40.0321,
+      "heat": 4908,
+      "rating": 4.8,
+      "tags": [
+        "历史",
+        "公园",
+        "安静"
+      ],
+      "description": "北京邮电大学（沙河校区）内的行政楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_011",
+      "name": "北京邮电教学楼",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3605,
+      "y": 40.0209,
+      "heat": 2099,
+      "rating": 4.2,
+      "tags": [
+        "健身",
+        "休闲"
+      ],
+      "description": "北京邮电大学（沙河校区）内的教学楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_012",
+      "name": "北京邮电实验楼",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3598,
+      "y": 40.0235,
+      "heat": 1323,
+      "rating": 4.7,
+      "tags": [
+        "自然",
+        "娱乐",
+        "文化"
+      ],
+      "description": "北京邮电大学（沙河校区）内的实验楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_013",
+      "name": "北京邮电活动中心",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3598,
+      "y": 40.0299,
+      "heat": 4160,
+      "rating": 4.7,
+      "tags": [
+        "亲子",
+        "自然"
+      ],
+      "description": "北京邮电大学（沙河校区）内的活动中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_014",
+      "name": "北京邮电学术交流中心",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3479,
+      "y": 40.015,
+      "heat": 3177,
+      "rating": 4.7,
+      "tags": [
+        "校园",
+        "打卡",
+        "拍照",
+        "亲子"
+      ],
+      "description": "北京邮电大学（沙河校区）内的学术交流中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_015",
+      "name": "北京邮电校史馆",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3585,
+      "y": 40.0181,
+      "heat": 3120,
+      "rating": 3.5,
+      "tags": [
+        "校园",
+        "拍照",
+        "运动"
+      ],
+      "description": "北京邮电大学（沙河校区）内的校史馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_016",
+      "name": "北京邮电天文台",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.36,
+      "y": 40.0334,
+      "heat": 2279,
+      "rating": 4.3,
+      "tags": [
+        "安静",
+        "学习"
+      ],
+      "description": "北京邮电大学（沙河校区）内的天文台，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_017",
+      "name": "北京邮电计算机中心",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3444,
+      "y": 40.0192,
+      "heat": 2842,
+      "rating": 4.9,
+      "tags": [
+        "娱乐",
+        "校园",
+        "运动"
+      ],
+      "description": "北京邮电大学（沙河校区）内的计算机中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_018",
+      "name": "北京邮电校医院",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3508,
+      "y": 40.0236,
+      "heat": 2137,
+      "rating": 3.9,
+      "tags": [
+        "娱乐",
+        "自然"
+      ],
+      "description": "北京邮电大学（沙河校区）内的校医院，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_019",
+      "name": "北京邮电超市",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.3514,
+      "y": 40.03,
+      "heat": 2538,
+      "rating": 4.5,
+      "tags": [
+        "学习",
+        "公园"
+      ],
+      "description": "北京邮电大学（沙河校区）内的超市，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS001_020",
+      "name": "北京邮电银行",
+      "type": "景点",
+      "campus_id": "CAMPUS001",
+      "x": 116.356,
+      "y": 40.0171,
+      "heat": 3585,
+      "rating": 4.2,
+      "tags": [
+        "自然",
+        "学习",
+        "校园",
+        "安静"
+      ],
+      "description": "北京邮电大学（沙河校区）内的银行，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_001",
+      "name": "清华大学图书馆",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3158,
+      "y": 39.9915,
+      "heat": 4136,
+      "rating": 3.9,
+      "tags": [
+        "娱乐",
+        "文化"
+      ],
+      "description": "清华大学（紫荆公寓区）内的图书馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS002_002",
+      "name": "清华大学食堂",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3149,
+      "y": 40.0012,
+      "heat": 2302,
+      "rating": 4.4,
+      "tags": [
+        "观光",
+        "校园",
+        "文化"
+      ],
+      "description": "清华大学（紫荆公寓区）内的食堂，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_003",
+      "name": "清华大学体育馆",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3162,
+      "y": 39.9998,
+      "heat": 3375,
+      "rating": 3.9,
+      "tags": [
+        "打卡",
+        "历史"
+      ],
+      "description": "清华大学（紫荆公寓区）内的体育馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_004",
+      "name": "清华大学游泳馆",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3268,
+      "y": 40.0082,
+      "heat": 3039,
+      "rating": 4.0,
+      "tags": [
+        "休闲",
+        "安静",
+        "亲子"
+      ],
+      "description": "清华大学（紫荆公寓区）内的游泳馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_005",
+      "name": "清华大学体育场",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3152,
+      "y": 39.9984,
+      "heat": 1930,
+      "rating": 4.8,
+      "tags": [
+        "美食",
+        "拍照",
+        "娱乐",
+        "安静"
+      ],
+      "description": "清华大学（紫荆公寓区）内的体育场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_006",
+      "name": "清华大学篮球场",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3339,
+      "y": 39.9919,
+      "heat": 4359,
+      "rating": 3.8,
+      "tags": [
+        "学习",
+        "拍照"
+      ],
+      "description": "清华大学（紫荆公寓区）内的篮球场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_007",
+      "name": "清华大学网球场",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3264,
+      "y": 39.9989,
+      "heat": 901,
+      "rating": 5.0,
+      "tags": [
+        "美食",
+        "打卡"
+      ],
+      "description": "清华大学（紫荆公寓区）内的网球场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_008",
+      "name": "清华大学羽毛球馆",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3163,
+      "y": 39.9934,
+      "heat": 3984,
+      "rating": 5.0,
+      "tags": [
+        "亲子",
+        "健身",
+        "拍照",
+        "公园"
+      ],
+      "description": "清华大学（紫荆公寓区）内的羽毛球馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_009",
+      "name": "清华大学宿舍楼",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.324,
+      "y": 40.0049,
+      "heat": 883,
+      "rating": 4.9,
+      "tags": [
+        "打卡",
+        "拍照",
+        "文化"
+      ],
+      "description": "清华大学（紫荆公寓区）内的宿舍楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_010",
+      "name": "清华大学行政楼",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3298,
+      "y": 40.0017,
+      "heat": 1499,
+      "rating": 4.8,
+      "tags": [
+        "历史",
+        "拍照"
+      ],
+      "description": "清华大学（紫荆公寓区）内的行政楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_011",
+      "name": "清华大学教学楼",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3266,
+      "y": 40.0062,
+      "heat": 824,
+      "rating": 4.6,
+      "tags": [
+        "学习",
+        "娱乐"
+      ],
+      "description": "清华大学（紫荆公寓区）内的教学楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_012",
+      "name": "清华大学实验楼",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3277,
+      "y": 40.0007,
+      "heat": 2972,
+      "rating": 3.8,
+      "tags": [
+        "打卡",
+        "自然",
+        "历史"
+      ],
+      "description": "清华大学（紫荆公寓区）内的实验楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_013",
+      "name": "清华大学活动中心",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3339,
+      "y": 39.9914,
+      "heat": 617,
+      "rating": 4.6,
+      "tags": [
+        "校园",
+        "运动",
+        "美食"
+      ],
+      "description": "清华大学（紫荆公寓区）内的活动中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_014",
+      "name": "清华大学学术交流中心",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3231,
+      "y": 40.0033,
+      "heat": 3091,
+      "rating": 4.9,
+      "tags": [
+        "亲子",
+        "历史",
+        "公园",
+        "运动"
+      ],
+      "description": "清华大学（紫荆公寓区）内的学术交流中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_015",
+      "name": "清华大学校史馆",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3208,
+      "y": 39.9976,
+      "heat": 1070,
+      "rating": 4.4,
+      "tags": [
+        "安静",
+        "校园",
+        "打卡"
+      ],
+      "description": "清华大学（紫荆公寓区）内的校史馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_016",
+      "name": "清华大学天文台",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3317,
+      "y": 40.0059,
+      "heat": 2316,
+      "rating": 3.7,
+      "tags": [
+        "公园",
+        "打卡",
+        "美食",
+        "亲子"
+      ],
+      "description": "清华大学（紫荆公寓区）内的天文台，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_017",
+      "name": "清华大学计算机中心",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3224,
+      "y": 39.9927,
+      "heat": 1495,
+      "rating": 4.2,
+      "tags": [
+        "自然",
+        "公园",
+        "学习"
+      ],
+      "description": "清华大学（紫荆公寓区）内的计算机中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_018",
+      "name": "清华大学校医院",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3204,
+      "y": 39.9965,
+      "heat": 671,
+      "rating": 3.7,
+      "tags": [
+        "公园",
+        "校园",
+        "健身",
+        "安静"
+      ],
+      "description": "清华大学（紫荆公寓区）内的校医院，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_019",
+      "name": "清华大学超市",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3279,
+      "y": 39.9976,
+      "heat": 3419,
+      "rating": 3.6,
+      "tags": [
+        "娱乐",
+        "校园",
+        "运动"
+      ],
+      "description": "清华大学（紫荆公寓区）内的超市，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS002_020",
+      "name": "清华大学银行",
+      "type": "景点",
+      "campus_id": "CAMPUS002",
+      "x": 116.3149,
+      "y": 40.0069,
+      "heat": 3245,
+      "rating": 4.3,
+      "tags": [
+        "健身",
+        "公园"
+      ],
+      "description": "清华大学（紫荆公寓区）内的银行，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS003_001",
+      "name": "北京大学图书馆",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.308,
+      "y": 39.996,
+      "heat": 3014,
+      "rating": 3.9,
+      "tags": [
+        "运动",
+        "校园",
+        "公园"
+      ],
+      "description": "北京大学（燕园校区）内的图书馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_002",
+      "name": "北京大学食堂",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3132,
+      "y": 39.9966,
+      "heat": 3084,
+      "rating": 4.2,
+      "tags": [
+        "健身",
+        "娱乐",
+        "打卡",
+        "校园"
+      ],
+      "description": "北京大学（燕园校区）内的食堂，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS003_003",
+      "name": "北京大学体育馆",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3126,
+      "y": 39.9987,
+      "heat": 4832,
+      "rating": 3.9,
+      "tags": [
+        "校园",
+        "学习"
+      ],
+      "description": "北京大学（燕园校区）内的体育馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS003_004",
+      "name": "北京大学游泳馆",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3053,
+      "y": 39.9893,
+      "heat": 4112,
+      "rating": 4.7,
+      "tags": [
+        "运动",
+        "美食"
+      ],
+      "description": "北京大学（燕园校区）内的游泳馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_005",
+      "name": "北京大学体育场",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3005,
+      "y": 39.9809,
+      "heat": 1095,
+      "rating": 4.7,
+      "tags": [
+        "拍照",
+        "历史",
+        "学习"
+      ],
+      "description": "北京大学（燕园校区）内的体育场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_006",
+      "name": "北京大学篮球场",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3157,
+      "y": 39.9816,
+      "heat": 504,
+      "rating": 4.4,
+      "tags": [
+        "娱乐",
+        "校园",
+        "美食",
+        "自然"
+      ],
+      "description": "北京大学（燕园校区）内的篮球场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_007",
+      "name": "北京大学网球场",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.2982,
+      "y": 39.9956,
+      "heat": 3356,
+      "rating": 3.6,
+      "tags": [
+        "校园",
+        "休闲"
+      ],
+      "description": "北京大学（燕园校区）内的网球场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_008",
+      "name": "北京大学羽毛球馆",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3137,
+      "y": 39.9989,
+      "heat": 743,
+      "rating": 3.9,
+      "tags": [
+        "公园",
+        "历史"
+      ],
+      "description": "北京大学（燕园校区）内的羽毛球馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS003_009",
+      "name": "北京大学宿舍楼",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.2988,
+      "y": 39.9824,
+      "heat": 1416,
+      "rating": 3.6,
+      "tags": [
+        "美食",
+        "校园"
+      ],
+      "description": "北京大学（燕园校区）内的宿舍楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_010",
+      "name": "北京大学行政楼",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3152,
+      "y": 39.9839,
+      "heat": 2600,
+      "rating": 3.6,
+      "tags": [
+        "美食",
+        "休闲"
+      ],
+      "description": "北京大学（燕园校区）内的行政楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_011",
+      "name": "北京大学教学楼",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3089,
+      "y": 39.9853,
+      "heat": 1384,
+      "rating": 4.3,
+      "tags": [
+        "安静",
+        "健身",
+        "公园",
+        "亲子"
+      ],
+      "description": "北京大学（燕园校区）内的教学楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_012",
+      "name": "北京大学实验楼",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3161,
+      "y": 39.9926,
+      "heat": 2615,
+      "rating": 4.5,
+      "tags": [
+        "健身",
+        "校园",
+        "观光"
+      ],
+      "description": "北京大学（燕园校区）内的实验楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_013",
+      "name": "北京大学活动中心",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.315,
+      "y": 39.9863,
+      "heat": 3953,
+      "rating": 4.9,
+      "tags": [
+        "历史",
+        "娱乐"
+      ],
+      "description": "北京大学（燕园校区）内的活动中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_014",
+      "name": "北京大学学术交流中心",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3113,
+      "y": 39.994,
+      "heat": 3333,
+      "rating": 4.1,
+      "tags": [
+        "打卡",
+        "安静"
+      ],
+      "description": "北京大学（燕园校区）内的学术交流中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_015",
+      "name": "北京大学校史馆",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.2991,
+      "y": 39.9848,
+      "heat": 3032,
+      "rating": 4.8,
+      "tags": [
+        "拍照",
+        "打卡",
+        "美食",
+        "亲子"
+      ],
+      "description": "北京大学（燕园校区）内的校史馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_016",
+      "name": "北京大学天文台",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3023,
+      "y": 39.9953,
+      "heat": 2833,
+      "rating": 4.7,
+      "tags": [
+        "观光",
+        "运动",
+        "安静"
+      ],
+      "description": "北京大学（燕园校区）内的天文台，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_017",
+      "name": "北京大学计算机中心",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3014,
+      "y": 39.9812,
+      "heat": 3041,
+      "rating": 3.9,
+      "tags": [
+        "娱乐",
+        "亲子"
+      ],
+      "description": "北京大学（燕园校区）内的计算机中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_018",
+      "name": "北京大学校医院",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3051,
+      "y": 39.9827,
+      "heat": 3638,
+      "rating": 3.5,
+      "tags": [
+        "拍照",
+        "学习",
+        "文化",
+        "打卡"
+      ],
+      "description": "北京大学（燕园校区）内的校医院，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_019",
+      "name": "北京大学超市",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.3041,
+      "y": 39.98,
+      "heat": 4238,
+      "rating": 3.6,
+      "tags": [
+        "学习",
+        "拍照",
+        "运动",
+        "历史"
+      ],
+      "description": "北京大学（燕园校区）内的超市，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS003_020",
+      "name": "北京大学银行",
+      "type": "景点",
+      "campus_id": "CAMPUS003",
+      "x": 116.2979,
+      "y": 39.9978,
+      "heat": 4170,
+      "rating": 3.8,
+      "tags": [
+        "健身",
+        "公园",
+        "亲子"
+      ],
+      "description": "北京大学（燕园校区）内的银行，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS004_001",
+      "name": "北京师范图书馆",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3608,
+      "y": 39.97,
+      "heat": 2586,
+      "rating": 4.3,
+      "tags": [
+        "历史",
+        "健身",
+        "拍照"
+      ],
+      "description": "北京师范大学（海淀校区）内的图书馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS004_002",
+      "name": "北京师范食堂",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3742,
+      "y": 39.9599,
+      "heat": 3641,
+      "rating": 4.8,
+      "tags": [
+        "历史",
+        "学习",
+        "拍照",
+        "亲子"
+      ],
+      "description": "北京师范大学（海淀校区）内的食堂，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_529504632"
+    },
+    {
+      "id": "ATTR_CAMPUS004_003",
+      "name": "北京师范体育馆",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3661,
+      "y": 39.9624,
+      "heat": 1951,
+      "rating": 3.5,
+      "tags": [
+        "健身",
+        "安静",
+        "娱乐",
+        "打卡"
+      ],
+      "description": "北京师范大学（海淀校区）内的体育馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402226"
+    },
+    {
+      "id": "ATTR_CAMPUS004_004",
+      "name": "北京师范游泳馆",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.365,
+      "y": 39.954,
+      "heat": 4645,
+      "rating": 3.7,
+      "tags": [
+        "自然",
+        "亲子",
+        "打卡"
+      ],
+      "description": "北京师范大学（海淀校区）内的游泳馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS004_005",
+      "name": "北京师范体育场",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3596,
+      "y": 39.9531,
+      "heat": 3259,
+      "rating": 4.4,
+      "tags": [
+        "安静",
+        "历史",
+        "亲子",
+        "公园"
+      ],
+      "description": "北京师范大学（海淀校区）内的体育场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS004_006",
+      "name": "北京师范篮球场",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3667,
+      "y": 39.9646,
+      "heat": 1637,
+      "rating": 3.7,
+      "tags": [
+        "美食",
+        "安静"
+      ],
+      "description": "北京师范大学（海淀校区）内的篮球场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402226"
+    },
+    {
+      "id": "ATTR_CAMPUS004_007",
+      "name": "北京师范网球场",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3593,
+      "y": 39.9604,
+      "heat": 1029,
+      "rating": 3.7,
+      "tags": [
+        "亲子",
+        "休闲",
+        "文化",
+        "美食"
+      ],
+      "description": "北京师范大学（海淀校区）内的网球场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS004_008",
+      "name": "北京师范羽毛球馆",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3644,
+      "y": 39.9571,
+      "heat": 2823,
+      "rating": 3.9,
+      "tags": [
+        "亲子",
+        "休闲"
+      ],
+      "description": "北京师范大学（海淀校区）内的羽毛球馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS004_009",
+      "name": "北京师范宿舍楼",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3556,
+      "y": 39.9584,
+      "heat": 2702,
+      "rating": 4.6,
+      "tags": [
+        "自然",
+        "观光",
+        "拍照",
+        "校园"
+      ],
+      "description": "北京师范大学（海淀校区）内的宿舍楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS004_010",
+      "name": "北京师范行政楼",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3662,
+      "y": 39.9649,
+      "heat": 4373,
+      "rating": 4.8,
+      "tags": [
+        "文化",
+        "健身"
+      ],
+      "description": "北京师范大学（海淀校区）内的行政楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402226"
+    },
+    {
+      "id": "ATTR_CAMPUS004_011",
+      "name": "北京师范教学楼",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3564,
+      "y": 39.9517,
+      "heat": 2021,
+      "rating": 4.8,
+      "tags": [
+        "文化",
+        "自然"
+      ],
+      "description": "北京师范大学（海淀校区）内的教学楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS004_012",
+      "name": "北京师范实验楼",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3632,
+      "y": 39.9697,
+      "heat": 2603,
+      "rating": 4.9,
+      "tags": [
+        "拍照",
+        "历史"
+      ],
+      "description": "北京师范大学（海淀校区）内的实验楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS004_013",
+      "name": "北京师范活动中心",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3634,
+      "y": 39.9702,
+      "heat": 2929,
+      "rating": 4.7,
+      "tags": [
+        "观光",
+        "校园",
+        "健身"
+      ],
+      "description": "北京师范大学（海淀校区）内的活动中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAMPUS004_014",
+      "name": "北京师范学术交流中心",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3673,
+      "y": 39.9571,
+      "heat": 3951,
+      "rating": 3.9,
+      "tags": [
+        "安静",
+        "美食"
+      ],
+      "description": "北京师范大学（海淀校区）内的学术交流中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402226"
+    },
+    {
+      "id": "ATTR_CAMPUS004_015",
+      "name": "北京师范校史馆",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3675,
+      "y": 39.9565,
+      "heat": 4098,
+      "rating": 3.9,
+      "tags": [
+        "安静",
+        "亲子"
+      ],
+      "description": "北京师范大学（海淀校区）内的校史馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402226"
+    },
+    {
+      "id": "ATTR_CAMPUS004_016",
+      "name": "北京师范天文台",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3699,
+      "y": 39.9536,
+      "heat": 2704,
+      "rating": 3.7,
+      "tags": [
+        "健身",
+        "拍照"
+      ],
+      "description": "北京师范大学（海淀校区）内的天文台，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402226"
+    },
+    {
+      "id": "ATTR_CAMPUS004_017",
+      "name": "北京师范计算机中心",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3677,
+      "y": 39.9587,
+      "heat": 3104,
+      "rating": 4.2,
+      "tags": [
+        "学习",
+        "运动",
+        "校园",
+        "历史"
+      ],
+      "description": "北京师范大学（海淀校区）内的计算机中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402226"
+    },
+    {
+      "id": "ATTR_CAMPUS004_018",
+      "name": "北京师范校医院",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3582,
+      "y": 39.953,
+      "heat": 4212,
+      "rating": 3.6,
+      "tags": [
+        "健身",
+        "学习",
+        "自然",
+        "观光"
+      ],
+      "description": "北京师范大学（海淀校区）内的校医院，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS004_019",
+      "name": "北京师范超市",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.363,
+      "y": 39.9634,
+      "heat": 1094,
+      "rating": 4.6,
+      "tags": [
+        "娱乐",
+        "亲子",
+        "校园"
+      ],
+      "description": "北京师范大学（海淀校区）内的超市，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402226"
+    },
+    {
+      "id": "ATTR_CAMPUS004_020",
+      "name": "北京师范银行",
+      "type": "景点",
+      "campus_id": "CAMPUS004",
+      "x": 116.3571,
+      "y": 39.9511,
+      "heat": 4779,
+      "rating": 4.4,
+      "tags": [
+        "运动",
+        "亲子",
+        "观光"
+      ],
+      "description": "北京师范大学（海淀校区）内的银行，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_001",
+      "name": "北京航空图书馆",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3529,
+      "y": 39.9455,
+      "heat": 3242,
+      "rating": 3.5,
+      "tags": [
+        "安静",
+        "公园"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的图书馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_002",
+      "name": "北京航空食堂",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3531,
+      "y": 39.941,
+      "heat": 1473,
+      "rating": 4.8,
+      "tags": [
+        "美食",
+        "自然",
+        "休闲",
+        "健身"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的食堂，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_003",
+      "name": "北京航空体育馆",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3602,
+      "y": 39.9498,
+      "heat": 4223,
+      "rating": 4.1,
+      "tags": [
+        "文化",
+        "健身",
+        "学习"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的体育馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_004",
+      "name": "北京航空游泳馆",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3565,
+      "y": 39.9445,
+      "heat": 2941,
+      "rating": 4.3,
+      "tags": [
+        "安静",
+        "观光",
+        "文化",
+        "亲子"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的游泳馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_005",
+      "name": "北京航空体育场",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.346,
+      "y": 39.9403,
+      "heat": 4286,
+      "rating": 4.0,
+      "tags": [
+        "公园",
+        "自然",
+        "学习",
+        "美食"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的体育场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_006",
+      "name": "北京航空篮球场",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3609,
+      "y": 39.9431,
+      "heat": 3636,
+      "rating": 4.9,
+      "tags": [
+        "娱乐",
+        "学习"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的篮球场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_007",
+      "name": "北京航空网球场",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3607,
+      "y": 39.9372,
+      "heat": 1391,
+      "rating": 4.8,
+      "tags": [
+        "打卡",
+        "休闲",
+        "娱乐"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的网球场，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_10278017141"
+    },
+    {
+      "id": "ATTR_CAMPUS005_008",
+      "name": "北京航空羽毛球馆",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3601,
+      "y": 39.9491,
+      "heat": 2964,
+      "rating": 4.7,
+      "tags": [
+        "校园",
+        "休闲",
+        "娱乐",
+        "美食"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的羽毛球馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_009",
+      "name": "北京航空宿舍楼",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3448,
+      "y": 39.9436,
+      "heat": 3090,
+      "rating": 4.9,
+      "tags": [
+        "自然",
+        "休闲"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的宿舍楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_010",
+      "name": "北京航空行政楼",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3494,
+      "y": 39.9427,
+      "heat": 1811,
+      "rating": 4.5,
+      "tags": [
+        "拍照",
+        "校园"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的行政楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_011",
+      "name": "北京航空教学楼",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3577,
+      "y": 39.9505,
+      "heat": 4355,
+      "rating": 4.9,
+      "tags": [
+        "运动",
+        "学习",
+        "娱乐"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的教学楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_012",
+      "name": "北京航空实验楼",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3443,
+      "y": 39.9389,
+      "heat": 3237,
+      "rating": 3.9,
+      "tags": [
+        "自然",
+        "休闲"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的实验楼，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_013",
+      "name": "北京航空活动中心",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3469,
+      "y": 39.9337,
+      "heat": 3151,
+      "rating": 4.1,
+      "tags": [
+        "健身",
+        "拍照",
+        "打卡",
+        "美食"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的活动中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_10278017141"
+    },
+    {
+      "id": "ATTR_CAMPUS005_014",
+      "name": "北京航空学术交流中心",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3502,
+      "y": 39.9439,
+      "heat": 1386,
+      "rating": 4.2,
+      "tags": [
+        "自然",
+        "校园"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的学术交流中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_015",
+      "name": "北京航空校史馆",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3597,
+      "y": 39.9411,
+      "heat": 2153,
+      "rating": 4.3,
+      "tags": [
+        "打卡",
+        "运动",
+        "校园"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的校史馆，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_016",
+      "name": "北京航空天文台",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3511,
+      "y": 39.9481,
+      "heat": 4501,
+      "rating": 3.8,
+      "tags": [
+        "历史",
+        "学习"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的天文台，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_017",
+      "name": "北京航空计算机中心",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3539,
+      "y": 39.9457,
+      "heat": 2381,
+      "rating": 4.7,
+      "tags": [
+        "休闲",
+        "学习"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的计算机中心，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_018",
+      "name": "北京航空校医院",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3462,
+      "y": 39.9446,
+      "heat": 1600,
+      "rating": 3.9,
+      "tags": [
+        "休闲",
+        "安静",
+        "历史"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的校医院，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_019",
+      "name": "北京航空超市",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.347,
+      "y": 39.9445,
+      "heat": 508,
+      "rating": 3.8,
+      "tags": [
+        "健身",
+        "亲子"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的超市，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMPUS005_020",
+      "name": "北京航空银行",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3447,
+      "y": 39.9345,
+      "heat": 2781,
+      "rating": 4.2,
+      "tags": [
+        "历史",
+        "安静",
+        "学习"
+      ],
+      "description": "北京航空航天大学（学院路校区）内的银行，设施完善",
+      "image_url": null,
+      "location_node_id": "NODE_10278017141"
+    },
+    {
+      "id": "ATTR_BJ_001",
+      "name": "故宫博物院",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.397,
+      "y": 39.9168,
+      "heat": 94517,
+      "rating": 4.9,
+      "tags": [
+        "历史",
+        "博物馆",
+        "古建筑"
+      ],
+      "description": "故宫博物院是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_733789019"
+    },
+    {
+      "id": "ATTR_BJ_002",
+      "name": "天坛公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.4326,
+      "y": 39.8782,
+      "heat": 65224,
+      "rating": 5.0,
+      "tags": [
+        "历史",
+        "公园",
+        "古建筑"
+      ],
+      "description": "天坛公园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_10804008139"
+    },
+    {
+      "id": "ATTR_BJ_003",
+      "name": "颐和园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.2696,
+      "y": 39.9966,
+      "heat": 78197,
+      "rating": 4.8,
+      "tags": [
+        "历史",
+        "园林",
+        "公园"
+      ],
+      "description": "颐和园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_BJ_004",
+      "name": "圆明园遗址公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.2918,
+      "y": 40.0045,
+      "heat": 59361,
+      "rating": 4.8,
+      "tags": [
+        "历史",
+        "园林",
+        "遗址"
+      ],
+      "description": "圆明园遗址公园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_BJ_005",
+      "name": "八达岭长城",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.6032,
+      "y": 40.3592,
+      "heat": 90328,
+      "rating": 4.9,
+      "tags": [
+        "历史",
+        "古建筑",
+        "观光"
+      ],
+      "description": "八达岭长城是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_006",
+      "name": "慕田峪长城",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.5718,
+      "y": 40.4299,
+      "heat": 50538,
+      "rating": 4.8,
+      "tags": [
+        "历史",
+        "古建筑",
+        "观光"
+      ],
+      "description": "慕田峪长城是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_007",
+      "name": "北海公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.3872,
+      "y": 39.9324,
+      "heat": 53402,
+      "rating": 4.8,
+      "tags": [
+        "历史",
+        "园林",
+        "湖泊"
+      ],
+      "description": "北海公园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1687056693"
+    },
+    {
+      "id": "ATTR_BJ_008",
+      "name": "景山公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.4011,
+      "y": 39.9303,
+      "heat": 38358,
+      "rating": 4.4,
+      "tags": [
+        "历史",
+        "公园",
+        "观景"
+      ],
+      "description": "景山公园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_6001339704"
+    },
+    {
+      "id": "ATTR_BJ_009",
+      "name": "香山公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.1933,
+      "y": 39.9395,
+      "heat": 40665,
+      "rating": 4.6,
+      "tags": [
+        "自然",
+        "园林",
+        "红叶"
+      ],
+      "description": "香山公园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_BJ_010",
+      "name": "北京欢乐谷",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.5091,
+      "y": 39.8258,
+      "heat": 60830,
+      "rating": 4.3,
+      "tags": [
+        "娱乐",
+        "主题公园"
+      ],
+      "description": "北京欢乐谷是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1840711644"
+    },
+    {
+      "id": "ATTR_BJ_011",
+      "name": "北京动物园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.3409,
+      "y": 39.9479,
+      "heat": 53755,
+      "rating": 4.6,
+      "tags": [
+        "动物",
+        "亲子",
+        "公园"
+      ],
+      "description": "北京动物园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_BJ_012",
+      "name": "北京植物园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.2112,
+      "y": 39.9987,
+      "heat": 37574,
+      "rating": 4.5,
+      "tags": [
+        "植物",
+        "自然",
+        "公园"
+      ],
+      "description": "北京植物园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_BJ_013",
+      "name": "中山公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.3996,
+      "y": 39.9225,
+      "heat": 19859,
+      "rating": 4.5,
+      "tags": [
+        "历史",
+        "园林",
+        "公园"
+      ],
+      "description": "中山公园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7825648530"
+    },
+    {
+      "id": "ATTR_BJ_014",
+      "name": "陶然亭公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.3672,
+      "y": 39.8735,
+      "heat": 14929,
+      "rating": 4.2,
+      "tags": [
+        "历史",
+        "园林",
+        "公园"
+      ],
+      "description": "陶然亭公园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_9063939458"
+    },
+    {
+      "id": "ATTR_BJ_015",
+      "name": "玉渊潭公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.3157,
+      "y": 39.9199,
+      "heat": 29275,
+      "rating": 4.3,
+      "tags": [
+        "自然",
+        "湖泊",
+        "公园"
+      ],
+      "description": "玉渊潭公园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_9377983841"
+    },
+    {
+      "id": "ATTR_BJ_016",
+      "name": "朝阳公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.4694,
+      "y": 39.9175,
+      "heat": 23357,
+      "rating": 4.5,
+      "tags": [
+        "自然",
+        "湖泊",
+        "公园"
+      ],
+      "description": "朝阳公园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1765118851"
+    },
+    {
+      "id": "ATTR_BJ_017",
+      "name": "国家体育场（鸟巢）",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.4026,
+      "y": 39.9238,
+      "heat": 74558,
+      "rating": 4.8,
+      "tags": [
+        "运动",
+        "场馆",
+        "地标"
+      ],
+      "description": "国家体育场（鸟巢）是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_6095096788"
+    },
+    {
+      "id": "ATTR_BJ_018",
+      "name": "国家游泳中心（水立方）",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.4146,
+      "y": 39.9229,
+      "heat": 53230,
+      "rating": 4.5,
+      "tags": [
+        "运动",
+        "场馆",
+        "地标"
+      ],
+      "description": "国家游泳中心（水立方）是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1858911859"
+    },
+    {
+      "id": "ATTR_BJ_019",
+      "name": "国家大剧院",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.3942,
+      "y": 39.9297,
+      "heat": 37202,
+      "rating": 4.5,
+      "tags": [
+        "艺术",
+        "场馆",
+        "地标"
+      ],
+      "description": "国家大剧院是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_733788504"
+    },
+    {
+      "id": "ATTR_BJ_020",
+      "name": "中国国家博物馆",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.4002,
+      "y": 39.9054,
+      "heat": 58207,
+      "rating": 4.9,
+      "tags": [
+        "历史",
+        "博物馆",
+        "文物"
+      ],
+      "description": "中国国家博物馆是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_4710638570"
+    },
+    {
+      "id": "ATTR_BJ_021",
+      "name": "中国科学技术馆",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.4068,
+      "y": 39.9865,
+      "heat": 39547,
+      "rating": 4.4,
+      "tags": [
+        "科学",
+        "博物馆",
+        "互动"
+      ],
+      "description": "中国科学技术馆是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_022",
+      "name": "北京自然博物馆",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.4058,
+      "y": 39.9148,
+      "heat": 23027,
+      "rating": 4.4,
+      "tags": [
+        "自然",
+        "博物馆",
+        "科学"
+      ],
+      "description": "北京自然博物馆是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_266112546"
+    },
+    {
+      "id": "ATTR_BJ_023",
+      "name": "南锣鼓巷",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.4148,
+      "y": 39.9318,
+      "heat": 75467,
+      "rating": 4.5,
+      "tags": [
+        "历史",
+        "胡同",
+        "文化"
+      ],
+      "description": "南锣鼓巷是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_10314755509"
+    },
+    {
+      "id": "ATTR_BJ_024",
+      "name": "什刹海",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.4068,
+      "y": 39.9352,
+      "heat": 67916,
+      "rating": 4.8,
+      "tags": [
+        "历史",
+        "胡同",
+        "湖泊"
+      ],
+      "description": "什刹海是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_343099208"
+    },
+    {
+      "id": "ATTR_BJ_025",
+      "name": "798艺术区",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.5066,
+      "y": 39.9855,
+      "heat": 40700,
+      "rating": 4.6,
+      "tags": [
+        "艺术",
+        "展览",
+        "文化"
+      ],
+      "description": "798艺术区是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1000533142"
+    },
+    {
+      "id": "ATTR_BJ_026",
+      "name": "三里屯太古里",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.4537,
+      "y": 39.9435,
+      "heat": 57604,
+      "rating": 4.4,
+      "tags": [
+        "购物",
+        "时尚",
+        "餐饮"
+      ],
+      "description": "三里屯太古里是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_3483690817"
+    },
+    {
+      "id": "ATTR_BJ_027",
+      "name": "前门大街",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.3995,
+      "y": 39.9086,
+      "heat": 67539,
+      "rating": 4.7,
+      "tags": [
+        "历史",
+        "商业",
+        "文化"
+      ],
+      "description": "前门大街是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1858572385"
+    },
+    {
+      "id": "ATTR_BJ_028",
+      "name": "王府井步行街",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.4182,
+      "y": 39.9114,
+      "heat": 80371,
+      "rating": 4.4,
+      "tags": [
+        "商业",
+        "购物",
+        "历史"
+      ],
+      "description": "王府井步行街是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_733859947"
+    },
+    {
+      "id": "ATTR_BJ_029",
+      "name": "北京世界公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.2893,
+      "y": 39.865,
+      "heat": 32968,
+      "rating": 4.1,
+      "tags": [
+        "旅游",
+        "微缩景观",
+        "亲子"
+      ],
+      "description": "北京世界公园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_245106850"
+    },
+    {
+      "id": "ATTR_BJ_030",
+      "name": "北京野生动物园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.6819,
+      "y": 39.7159,
+      "heat": 39974,
+      "rating": 4.4,
+      "tags": [
+        "动物",
+        "自然",
+        "亲子"
+      ],
+      "description": "北京野生动物园是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1840711644"
+    },
+    {
+      "id": "ATTR_BJ_031",
+      "name": "北京明十三陵",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.2243,
+      "y": 40.2496,
+      "heat": 45366,
+      "rating": 4.7,
+      "tags": [
+        "历史",
+        "陵墓",
+        "文化"
+      ],
+      "description": "北京明十三陵是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_BJ_032",
+      "name": "北京雍和宫",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.4197,
+      "y": 39.9475,
+      "heat": 42954,
+      "rating": 4.7,
+      "tags": [
+        "宗教",
+        "寺庙",
+        "文化"
+      ],
+      "description": "北京雍和宫是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_733992786"
+    },
+    {
+      "id": "ATTR_BJ_033",
+      "name": "北京大觉寺",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.1559,
+      "y": 39.9828,
+      "heat": 14612,
+      "rating": 4.3,
+      "tags": [
+        "宗教",
+        "寺庙",
+        "园林"
+      ],
+      "description": "北京大觉寺是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_BJ_034",
+      "name": "北京红螺寺",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.5656,
+      "y": 40.3791,
+      "heat": 14182,
+      "rating": 4.6,
+      "tags": [
+        "宗教",
+        "寺庙",
+        "自然"
+      ],
+      "description": "北京红螺寺是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_035",
+      "name": "北京潭柘寺",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.0914,
+      "y": 39.8706,
+      "heat": 21141,
+      "rating": 4.7,
+      "tags": [
+        "宗教",
+        "寺庙",
+        "历史"
+      ],
+      "description": "北京潭柘寺是北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_245106850"
+    },
+    {
+      "id": "ATTR_CAMP_056",
+      "name": "体育馆",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3504,
+      "y": 39.9463,
+      "heat": 823,
+      "rating": 4.3,
+      "tags": [
+        "生活",
+        "美食"
+      ],
+      "description": "校园内体育馆",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMP_057",
+      "name": "游泳馆",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3407,
+      "y": 39.9296,
+      "heat": 2594,
+      "rating": 4.8,
+      "tags": [
+        "休闲",
+        "自然"
+      ],
+      "description": "校园内游泳馆",
+      "image_url": null,
+      "location_node_id": "NODE_10278017141"
+    },
+    {
+      "id": "ATTR_CAMP_058",
+      "name": "体育场",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.36,
+      "y": 39.9335,
+      "heat": 186,
+      "rating": 4.3,
+      "tags": [
+        "自然",
+        "美食"
+      ],
+      "description": "校园内体育场",
+      "image_url": null,
+      "location_node_id": "NODE_10278017141"
+    },
+    {
+      "id": "ATTR_CAMP_059",
+      "name": "篮球场",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3411,
+      "y": 39.9401,
+      "heat": 2099,
+      "rating": 4.6,
+      "tags": [
+        "学习",
+        "休闲"
+      ],
+      "description": "校园内篮球场",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMP_060",
+      "name": "网球场",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3641,
+      "y": 39.9539,
+      "heat": 525,
+      "rating": 3.6,
+      "tags": [
+        "娱乐",
+        "休闲"
+      ],
+      "description": "校园内网球场",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMP_061",
+      "name": "羽毛球馆",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3567,
+      "y": 39.9451,
+      "heat": 1654,
+      "rating": 4.5,
+      "tags": [
+        "文化",
+        "休闲"
+      ],
+      "description": "校园内羽毛球馆",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMP_062",
+      "name": "乒乓球馆",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3661,
+      "y": 39.9575,
+      "heat": 802,
+      "rating": 3.6,
+      "tags": [
+        "娱乐",
+        "美食"
+      ],
+      "description": "校园内乒乓球馆",
+      "image_url": null,
+      "location_node_id": "NODE_12702402226"
+    },
+    {
+      "id": "ATTR_CAMP_063",
+      "name": "足球场",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3508,
+      "y": 39.9472,
+      "heat": 176,
+      "rating": 3.6,
+      "tags": [
+        "运动",
+        "生活"
+      ],
+      "description": "校园内足球场",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMP_064",
+      "name": "排球场",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.3556,
+      "y": 39.9543,
+      "heat": 2657,
+      "rating": 4.5,
+      "tags": [
+        "生活",
+        "休闲"
+      ],
+      "description": "校园内排球场",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_CAMP_065",
+      "name": "田径场",
+      "type": "景点",
+      "campus_id": "CAMPUS005",
+      "x": 116.365,
+      "y": 39.9344,
+      "heat": 913,
+      "rating": 4.3,
+      "tags": [
+        "休闲",
+        "自然"
+      ],
+      "description": "校园内田径场",
+      "image_url": null,
+      "location_node_id": "NODE_10278017141"
+    },
+    {
+      "id": "ATTR_BJ_EX0151",
+      "name": "恭王府文化中心",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.422547,
+      "y": 40.022152,
+      "heat": 58360,
+      "rating": 4.5,
+      "tags": [
+        "历史",
+        "湖泊",
+        "文化"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0152",
+      "name": "十三陵遗址",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.308809,
+      "y": 39.907388,
+      "heat": 86646,
+      "rating": 4.9,
+      "tags": [
+        "宗教",
+        "亲子",
+        "公园"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1298111369"
+    },
+    {
+      "id": "ATTR_BJ_EX0153",
+      "name": "国家大剧院广场",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.567689,
+      "y": 40.1441,
+      "heat": 35676,
+      "rating": 4.0,
+      "tags": [
+        "购物",
+        "公园",
+        "摄影"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0154",
+      "name": "亦庄文化中心",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.625555,
+      "y": 40.141033,
+      "heat": 10111,
+      "rating": 3.9,
+      "tags": [
+        "园林",
+        "文化",
+        "博物馆"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0155",
+      "name": "云居寺",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.443179,
+      "y": 39.976683,
+      "heat": 36853,
+      "rating": 3.6,
+      "tags": [
+        "运动",
+        "博物馆",
+        "宗教"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0156",
+      "name": "朝阳公园广场",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.559335,
+      "y": 39.904845,
+      "heat": 59046,
+      "rating": 4.8,
+      "tags": [
+        "文化",
+        "古建筑",
+        "娱乐"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_11977539774"
+    },
+    {
+      "id": "ATTR_BJ_EX0157",
+      "name": "琉璃河遗址",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.450922,
+      "y": 39.941377,
+      "heat": 1472,
+      "rating": 3.8,
+      "tags": [
+        "购物",
+        "博物馆",
+        "美食"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1761980749"
+    },
+    {
+      "id": "ATTR_BJ_EX0158",
+      "name": "香山博物馆",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.445861,
+      "y": 39.921776,
+      "heat": 77629,
+      "rating": 5.0,
+      "tags": [
+        "摄影",
+        "自然",
+        "园林"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1977226306"
+    },
+    {
+      "id": "ATTR_BJ_EX0159",
+      "name": "礼王府博物馆",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.674167,
+      "y": 40.100738,
+      "heat": 36898,
+      "rating": 4.4,
+      "tags": [
+        "运动",
+        "公园",
+        "古建筑"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1000533142"
+    },
+    {
+      "id": "ATTR_BJ_EX0160",
+      "name": "水立方",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.319519,
+      "y": 40.06086,
+      "heat": 33466,
+      "rating": 4.0,
+      "tags": [
+        "购物",
+        "博物馆",
+        "园林"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_BJ_EX0161",
+      "name": "永定门文化中心",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.369375,
+      "y": 40.175832,
+      "heat": 45194,
+      "rating": 4.3,
+      "tags": [
+        "历史",
+        "博物馆",
+        "文化"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0162",
+      "name": "恭王府广场",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.484908,
+      "y": 39.949883,
+      "heat": 18883,
+      "rating": 3.6,
+      "tags": [
+        "宗教",
+        "湖泊",
+        "公园"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1761980765"
+    },
+    {
+      "id": "ATTR_BJ_EX0163",
+      "name": "东单公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.547439,
+      "y": 40.145805,
+      "heat": 7402,
+      "rating": 3.5,
+      "tags": [
+        "古建筑",
+        "亲子",
+        "摄影"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0164",
+      "name": "顺义",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.56061,
+      "y": 40.203181,
+      "heat": 62050,
+      "rating": 4.7,
+      "tags": [
+        "文化",
+        "运动",
+        "娱乐"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0165",
+      "name": "西四",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.394374,
+      "y": 39.907105,
+      "heat": 78322,
+      "rating": 4.2,
+      "tags": [
+        "文化",
+        "公园",
+        "园林"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_6421450359"
+    },
+    {
+      "id": "ATTR_BJ_EX0166",
+      "name": "喜峰口博物馆",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.582866,
+      "y": 40.237066,
+      "heat": 65248,
+      "rating": 4.9,
+      "tags": [
+        "摄影",
+        "园林",
+        "博物馆"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0167",
+      "name": "颐和园遗址",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.393201,
+      "y": 40.191824,
+      "heat": 65095,
+      "rating": 4.8,
+      "tags": [
+        "购物",
+        "运动",
+        "娱乐"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0168",
+      "name": "门头沟遗址",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.301254,
+      "y": 40.131059,
+      "heat": 58629,
+      "rating": 4.2,
+      "tags": [
+        "公园",
+        "娱乐",
+        "自然"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_BJ_EX0169",
+      "name": "金山岭广场",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.431296,
+      "y": 39.976523,
+      "heat": 80377,
+      "rating": 4.3,
+      "tags": [
+        "美食",
+        "历史",
+        "园林"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0170",
+      "name": "钟楼文化中心",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.586541,
+      "y": 40.02312,
+      "heat": 31087,
+      "rating": 3.9,
+      "tags": [
+        "湖泊",
+        "古建筑",
+        "历史"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1000533142"
+    },
+    {
+      "id": "ATTR_BJ_EX0171",
+      "name": "密云博物馆",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.560725,
+      "y": 39.944243,
+      "heat": 30850,
+      "rating": 4.9,
+      "tags": [
+        "亲子",
+        "购物",
+        "公园"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1761980765"
+    },
+    {
+      "id": "ATTR_BJ_EX0172",
+      "name": "八达岭博物馆",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.342903,
+      "y": 39.94333,
+      "heat": 59478,
+      "rating": 4.1,
+      "tags": [
+        "美食",
+        "亲子",
+        "湖泊"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "ATTR_BJ_EX0173",
+      "name": "前门广场",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.599764,
+      "y": 39.998124,
+      "heat": 32219,
+      "rating": 4.9,
+      "tags": [
+        "娱乐",
+        "购物",
+        "博物馆"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1761980765"
+    },
+    {
+      "id": "ATTR_BJ_EX0174",
+      "name": "步瀛斋博物馆",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.630319,
+      "y": 40.200683,
+      "heat": 7238,
+      "rating": 4.6,
+      "tags": [
+        "摄影",
+        "文化",
+        "运动"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0175",
+      "name": "野生动物园博物馆",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.651271,
+      "y": 39.916373,
+      "heat": 20388,
+      "rating": 4.9,
+      "tags": [
+        "运动",
+        "购物",
+        "古建筑"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1765118851"
+    },
+    {
+      "id": "ATTR_BJ_EX0176",
+      "name": "朝阳公园广场",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.385411,
+      "y": 40.014692,
+      "heat": 55243,
+      "rating": 4.4,
+      "tags": [
+        "湖泊",
+        "娱乐",
+        "自然"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0177",
+      "name": "水立方公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.699364,
+      "y": 40.098766,
+      "heat": 4939,
+      "rating": 4.7,
+      "tags": [
+        "宗教",
+        "历史",
+        "亲子"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1000533142"
+    },
+    {
+      "id": "ATTR_BJ_EX0178",
+      "name": "潭柘寺",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.432018,
+      "y": 40.142044,
+      "heat": 25824,
+      "rating": 4.9,
+      "tags": [
+        "摄影",
+        "运动",
+        "文化"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0179",
+      "name": "居庸关",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.452945,
+      "y": 40.201852,
+      "heat": 59920,
+      "rating": 4.5,
+      "tags": [
+        "购物",
+        "古建筑",
+        "娱乐"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0180",
+      "name": "望京公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.479015,
+      "y": 40.249764,
+      "heat": 68156,
+      "rating": 3.5,
+      "tags": [
+        "宗教",
+        "公园",
+        "娱乐"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0181",
+      "name": "瑞蚨祥遗址",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.354521,
+      "y": 40.113219,
+      "heat": 47399,
+      "rating": 4.3,
+      "tags": [
+        "自然",
+        "摄影",
+        "博物馆"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0182",
+      "name": "国家大剧院遗址",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.371393,
+      "y": 40.179814,
+      "heat": 63436,
+      "rating": 4.0,
+      "tags": [
+        "美食",
+        "园林",
+        "运动"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0183",
+      "name": "水立方遗址",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.3321,
+      "y": 40.198877,
+      "heat": 62677,
+      "rating": 4.5,
+      "tags": [
+        "园林",
+        "湖泊",
+        "公园"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0184",
+      "name": "798艺术区公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.624449,
+      "y": 40.226938,
+      "heat": 24828,
+      "rating": 3.6,
+      "tags": [
+        "博物馆",
+        "文化",
+        "自然"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0185",
+      "name": "什刹海公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.431008,
+      "y": 39.98376,
+      "heat": 82447,
+      "rating": 4.6,
+      "tags": [
+        "历史",
+        "公园",
+        "运动"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0186",
+      "name": "人民英雄纪念碑广场",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.341299,
+      "y": 40.058902,
+      "heat": 14587,
+      "rating": 4.6,
+      "tags": [
+        "古建筑",
+        "亲子",
+        "运动"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_BJ_EX0187",
+      "name": "门头沟广场",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.408338,
+      "y": 40.147187,
+      "heat": 58317,
+      "rating": 4.0,
+      "tags": [
+        "美食",
+        "运动",
+        "自然"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0188",
+      "name": "鼓楼博物馆",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.519545,
+      "y": 40.126412,
+      "heat": 6416,
+      "rating": 4.9,
+      "tags": [
+        "娱乐",
+        "摄影",
+        "购物"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0189",
+      "name": "日坛遗址",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.321022,
+      "y": 40.088672,
+      "heat": 87934,
+      "rating": 3.5,
+      "tags": [
+        "历史",
+        "购物",
+        "美食"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_BJ_EX0190",
+      "name": "胡同",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.695098,
+      "y": 40.111747,
+      "heat": 32981,
+      "rating": 4.5,
+      "tags": [
+        "历史",
+        "亲子",
+        "文化"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1000533142"
+    },
+    {
+      "id": "ATTR_BJ_EX0191",
+      "name": "国贸公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.592927,
+      "y": 39.985077,
+      "heat": 70938,
+      "rating": 4.3,
+      "tags": [
+        "文化",
+        "园林",
+        "美食"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1761980765"
+    },
+    {
+      "id": "ATTR_BJ_EX0192",
+      "name": "月坛文化中心",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.690122,
+      "y": 40.043292,
+      "heat": 61306,
+      "rating": 4.8,
+      "tags": [
+        "博物馆",
+        "古建筑",
+        "文化"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1000533142"
+    },
+    {
+      "id": "ATTR_BJ_EX0193",
+      "name": "野生动物园文化中心",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.413879,
+      "y": 40.248585,
+      "heat": 18154,
+      "rating": 3.6,
+      "tags": [
+        "亲子",
+        "历史",
+        "文化"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0194",
+      "name": "人民大会堂公园",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.412482,
+      "y": 39.905847,
+      "heat": 55808,
+      "rating": 4.7,
+      "tags": [
+        "历史",
+        "购物",
+        "自然"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1841644320"
+    },
+    {
+      "id": "ATTR_BJ_EX0195",
+      "name": "什刹海广场",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.393848,
+      "y": 40.101692,
+      "heat": 19389,
+      "rating": 3.9,
+      "tags": [
+        "宗教",
+        "自然",
+        "摄影"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0196",
+      "name": "人民英雄纪念碑广场",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.463138,
+      "y": 40.018101,
+      "heat": 12966,
+      "rating": 4.7,
+      "tags": [
+        "古建筑",
+        "娱乐",
+        "公园"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0197",
+      "name": "陶然亭广场",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.573327,
+      "y": 40.062448,
+      "heat": 5520,
+      "rating": 4.9,
+      "tags": [
+        "运动",
+        "宗教",
+        "古建筑"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1000533142"
+    },
+    {
+      "id": "ATTR_BJ_EX0198",
+      "name": "门头沟博物馆",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.586755,
+      "y": 40.140431,
+      "heat": 63992,
+      "rating": 5.0,
+      "tags": [
+        "宗教",
+        "博物馆",
+        "园林"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0199",
+      "name": "人民英雄纪念碑博物馆",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.460704,
+      "y": 40.137599,
+      "heat": 52731,
+      "rating": 3.5,
+      "tags": [
+        "湖泊",
+        "公园",
+        "文化"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_7089655069"
+    },
+    {
+      "id": "ATTR_BJ_EX0200",
+      "name": "天坛遗址",
+      "type": "景点",
+      "campus_id": null,
+      "x": 116.627872,
+      "y": 40.080674,
+      "heat": 82732,
+      "rating": 4.7,
+      "tags": [
+        "自然",
+        "文化",
+        "运动"
+      ],
+      "description": "北京著名景点",
+      "image_url": null,
+      "location_node_id": "NODE_1000533142"
+    },
+    {
+      "id": "ATTR_201",
+      "name": "新增景点1",
+      "type": "景点",
+      "campus_id": null,
+      "x": 0,
+      "y": 0,
+      "heat": 100,
+      "rating": 4.5,
+      "tags": [
+        "新增",
+        "测试"
+      ],
+      "description": "这是一个新增的测试景点1",
+      "image_url": null,
+      "location_node_id": "NODE_734045828"
+    },
+    {
+      "id": "ATTR_202",
+      "name": "新增景点2",
+      "type": "景点",
+      "campus_id": null,
+      "x": 0,
+      "y": 0,
+      "heat": 110,
+      "rating": 4.5,
+      "tags": [
+        "新增",
+        "测试"
+      ],
+      "description": "这是一个新增的测试景点2",
+      "image_url": null,
+      "location_node_id": "NODE_533806256"
+    },
+    {
+      "id": "ATTR_203",
+      "name": "新增景点3",
+      "type": "景点",
+      "campus_id": null,
+      "x": 0,
+      "y": 0,
+      "heat": 120,
+      "rating": 4.5,
+      "tags": [
+        "新增",
+        "测试"
+      ],
+      "description": "这是一个新增的测试景点3",
+      "image_url": null,
+      "location_node_id": "NODE_7825648503"
+    },
+    {
+      "id": "ATTR_204",
+      "name": "新增景点4",
+      "type": "景点",
+      "campus_id": null,
+      "x": 0,
+      "y": 0,
+      "heat": 130,
+      "rating": 4.5,
+      "tags": [
+        "新增",
+        "测试"
+      ],
+      "description": "这是一个新增的测试景点4",
+      "image_url": null,
+      "location_node_id": "NODE_4716204249"
+    },
+    {
+      "id": "ATTR_205",
+      "name": "新增景点5",
+      "type": "景点",
+      "campus_id": null,
+      "x": 0,
+      "y": 0,
+      "heat": 140,
+      "rating": 4.5,
+      "tags": [
+        "新增",
+        "测试"
+      ],
+      "description": "这是一个新增的测试景点5",
+      "image_url": null,
+      "location_node_id": "NODE_5115805580"
+    }
+  ]
+}

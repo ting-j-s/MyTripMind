@@ -1,0 +1,134 @@
+{
+  "users": [
+    {
+      "id": "user_001",
+      "username": "张三",
+      "password_hash": "e10adc3949ba59abbe56e057f20f883e",
+      "interests": [
+        "历史",
+        "校园"
+      ],
+      "favorites": [
+        "ATTR_LIB"
+      ],
+      "visited": [
+        "ATTR_LIB",
+        "ATTR_CAFETERIA",
+        "attraction_1"
+      ],
+      "create_time": "2026-03-01"
+    },
+    {
+      "id": "user_002",
+      "username": "李四",
+      "password_hash": "e10adc3949ba59abbe56e057f20f883e",
+      "interests": [
+        "美食",
+        "自然"
+      ],
+      "favorites": [],
+      "visited": [],
+      "create_time": "2026-03-02"
+    },
+    {
+      "id": "user_3781e767",
+      "username": "听江声",
+      "password_hash": "3133a9bb9fc56e125d6599b0c02122a4",
+      "interests": [],
+      "favorites": [],
+      "visited": [],
+      "create_time": "2026-04-19 20:26:47"
+    },
+    {
+      "id": "user_004",
+      "username": "user004",
+      "password_hash": "123456",
+      "interests": [
+        "文化",
+        "博物馆",
+        "休闲"
+      ],
+      "favorites": [],
+      "visited": [],
+      "create_time": "2026-03-19 17:17:00"
+    },
+    {
+      "id": "user_005",
+      "username": "user005",
+      "password_hash": "123456",
+      "interests": [
+        "休闲",
+        "文化",
+        "历史"
+      ],
+      "favorites": [],
+      "visited": [],
+      "create_time": "2026-04-13 12:41:00"
+    },
+    {
+      "id": "user_006",
+      "username": "user006",
+      "password_hash": "123456",
+      "interests": [
+        "美食",
+        "博物馆",
+        "文化"
+      ],
+      "favorites": [],
+      "visited": [],
+      "create_time": "2026-01-23 20:27:00"
+    },
+    {
+      "id": "user_007",
+      "username": "user007",
+      "password_hash": "123456",
+      "interests": [
+        "娱乐",
+        "购物",
+        "运动"
+      ],
+      "favorites": [],
+      "visited": [],
+      "create_time": "2026-04-19 09:31:00"
+    },
+    {
+      "id": "user_008",
+      "username": "user008",
+      "password_hash": "123456",
+      "interests": [
+        "运动",
+        "历史",
+        "博物馆"
+      ],
+      "favorites": [],
+      "visited": [],
+      "create_time": "2026-01-26 10:21:00"
+    },
+    {
+      "id": "user_009",
+      "username": "user009",
+      "password_hash": "123456",
+      "interests": [
+        "运动",
+        "自然",
+        "娱乐"
+      ],
+      "favorites": [],
+      "visited": [],
+      "create_time": "2026-03-10 10:38:00"
+    },
+    {
+      "id": "user_010",
+      "username": "user010",
+      "password_hash": "123456",
+      "interests": [
+        "运动",
+        "自然",
+        "美食"
+      ],
+      "favorites": [],
+      "visited": [],
+      "create_time": "2026-01-20 08:56:00"
+    }
+  ]
+}

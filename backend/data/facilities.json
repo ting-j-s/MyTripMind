@@ -1,0 +1,454 @@
+{
+  "facilities": [
+    {
+      "id": "FAC_001",
+      "name": "图书馆超市",
+      "type": "超市",
+      "campus_id": "CAMPUS001",
+      "x": 116.3521,
+      "y": 40.0251,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_002",
+      "name": "图书馆洗手间",
+      "type": "洗手间",
+      "campus_id": "CAMPUS001",
+      "x": 116.3522,
+      "y": 40.0252,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_003",
+      "name": "咖啡厅",
+      "type": "咖啡馆",
+      "campus_id": "CAMPUS001",
+      "x": 116.3523,
+      "y": 40.0253,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_004",
+      "name": "食堂洗手间",
+      "type": "洗手间",
+      "campus_id": "CAMPUS001",
+      "x": 116.3531,
+      "y": 40.0261,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_005",
+      "name": "食堂超市",
+      "type": "超市",
+      "campus_id": "CAMPUS001",
+      "x": 116.3532,
+      "y": 40.0262,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_006",
+      "name": "体育馆器材室",
+      "type": "服务中心",
+      "campus_id": "CAMPUS001",
+      "x": 116.354,
+      "y": 40.027,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_007",
+      "name": "ATM机",
+      "type": "ATM",
+      "campus_id": "CAMPUS001",
+      "x": 116.3525,
+      "y": 40.0255,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0008",
+      "name": "设施8",
+      "type": "洗手间",
+      "campus_id": "CAMPUS003",
+      "x": 116.290215,
+      "y": 39.981693,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0009",
+      "name": "设施9",
+      "type": "停车场",
+      "campus_id": "CAMPUS002",
+      "x": 116.317133,
+      "y": 39.994474,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0010",
+      "name": "设施10",
+      "type": "快递站",
+      "campus_id": "CAMPUS003",
+      "x": 116.325188,
+      "y": 39.987544,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0011",
+      "name": "设施11",
+      "type": "就业指导中心",
+      "campus_id": "CAMPUS001",
+      "x": 116.338932,
+      "y": 40.029423,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0012",
+      "name": "设施12",
+      "type": "自动售货机",
+      "campus_id": "CAMPUS003",
+      "x": 116.306571,
+      "y": 39.989866,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0013",
+      "name": "设施13",
+      "type": "药店",
+      "campus_id": "CAMPUS003",
+      "x": 116.306821,
+      "y": 39.992895,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0014",
+      "name": "设施14",
+      "type": "停车场",
+      "campus_id": "CAMPUS004",
+      "x": 116.376538,
+      "y": 39.944992,
+      "location_node_id": "NODE_340246167"
+    },
+    {
+      "id": "FAC_EX0015",
+      "name": "设施15",
+      "type": "自动售货机",
+      "campus_id": "CAMPUS004",
+      "x": 116.349695,
+      "y": 39.946957,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0016",
+      "name": "设施16",
+      "type": "打印店",
+      "campus_id": "CAMPUS003",
+      "x": 116.294507,
+      "y": 39.978437,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0017",
+      "name": "设施17",
+      "type": "打印店",
+      "campus_id": "CAMPUS005",
+      "x": 116.336824,
+      "y": 39.92342,
+      "location_node_id": "NODE_10278017141"
+    },
+    {
+      "id": "FAC_EX0018",
+      "name": "设施18",
+      "type": "体育馆器材室",
+      "campus_id": "CAMPUS003",
+      "x": 116.302459,
+      "y": 39.981645,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0019",
+      "name": "设施19",
+      "type": "心理咨询室",
+      "campus_id": "CAMPUS001",
+      "x": 116.370465,
+      "y": 40.030248,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0020",
+      "name": "设施20",
+      "type": "打印店",
+      "campus_id": "CAMPUS003",
+      "x": 116.304656,
+      "y": 39.973961,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0021",
+      "name": "设施21",
+      "type": "打印店",
+      "campus_id": "CAMPUS002",
+      "x": 116.326657,
+      "y": 39.997992,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0022",
+      "name": "设施22",
+      "type": "ATM",
+      "campus_id": "CAMPUS003",
+      "x": 116.299511,
+      "y": 39.994646,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0023",
+      "name": "设施23",
+      "type": "医务室",
+      "campus_id": "CAMPUS002",
+      "x": 116.3174,
+      "y": 39.988087,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0024",
+      "name": "设施24",
+      "type": "快递站",
+      "campus_id": "CAMPUS004",
+      "x": 116.383761,
+      "y": 39.964078,
+      "location_node_id": "NODE_2071181228"
+    },
+    {
+      "id": "FAC_EX0025",
+      "name": "设施25",
+      "type": "药店",
+      "campus_id": "CAMPUS004",
+      "x": 116.346851,
+      "y": 39.980496,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0026",
+      "name": "设施26",
+      "type": "超市",
+      "campus_id": "CAMPUS003",
+      "x": 116.310177,
+      "y": 39.97601,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0027",
+      "name": "设施27",
+      "type": "打印店",
+      "campus_id": "CAMPUS002",
+      "x": 116.320879,
+      "y": 40.018318,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0028",
+      "name": "设施28",
+      "type": "体育馆器材室",
+      "campus_id": "CAMPUS005",
+      "x": 116.362388,
+      "y": 39.950861,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0029",
+      "name": "设施29",
+      "type": "ATM",
+      "campus_id": "CAMPUS004",
+      "x": 116.37801,
+      "y": 39.977863,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0030",
+      "name": "设施30",
+      "type": "就业指导中心",
+      "campus_id": "CAMPUS002",
+      "x": 116.33972,
+      "y": 39.985376,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0031",
+      "name": "设施31",
+      "type": "书店",
+      "campus_id": "CAMPUS002",
+      "x": 116.322559,
+      "y": 40.015928,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0032",
+      "name": "设施32",
+      "type": "淋浴间",
+      "campus_id": "CAMPUS005",
+      "x": 116.356566,
+      "y": 39.942302,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0033",
+      "name": "设施33",
+      "type": "书店",
+      "campus_id": "CAMPUS001",
+      "x": 116.342584,
+      "y": 40.020014,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0034",
+      "name": "设施34",
+      "type": "药店",
+      "campus_id": "CAMPUS004",
+      "x": 116.359065,
+      "y": 39.968611,
+      "location_node_id": "NODE_12702402226"
+    },
+    {
+      "id": "FAC_EX0035",
+      "name": "设施35",
+      "type": "超市",
+      "campus_id": "CAMPUS001",
+      "x": 116.360509,
+      "y": 40.035813,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0036",
+      "name": "设施36",
+      "type": "淋浴间",
+      "campus_id": "CAMPUS003",
+      "x": 116.291853,
+      "y": 39.972997,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0037",
+      "name": "设施37",
+      "type": "药店",
+      "campus_id": "CAMPUS002",
+      "x": 116.328303,
+      "y": 39.993784,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0038",
+      "name": "设施38",
+      "type": "药店",
+      "campus_id": "CAMPUS004",
+      "x": 116.358439,
+      "y": 39.96533,
+      "location_node_id": "NODE_12702402227"
+    },
+    {
+      "id": "FAC_EX0039",
+      "name": "设施39",
+      "type": "学生活动中心",
+      "campus_id": "CAMPUS005",
+      "x": 116.372328,
+      "y": 39.928421,
+      "location_node_id": "NODE_10278017141"
+    },
+    {
+      "id": "FAC_EX0040",
+      "name": "设施40",
+      "type": "停车场",
+      "campus_id": "CAMPUS002",
+      "x": 116.318952,
+      "y": 40.00762,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0041",
+      "name": "设施41",
+      "type": "体育馆器材室",
+      "campus_id": "CAMPUS004",
+      "x": 116.375692,
+      "y": 39.946865,
+      "location_node_id": "NODE_341227721"
+    },
+    {
+      "id": "FAC_EX0042",
+      "name": "设施42",
+      "type": "咖啡馆",
+      "campus_id": "CAMPUS003",
+      "x": 116.30434,
+      "y": 39.983116,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0043",
+      "name": "设施43",
+      "type": "快递站",
+      "campus_id": "CAMPUS004",
+      "x": 116.36845,
+      "y": 39.972295,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0044",
+      "name": "设施44",
+      "type": "快递站",
+      "campus_id": "CAMPUS002",
+      "x": 116.312471,
+      "y": 39.987565,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0045",
+      "name": "设施45",
+      "type": "停车场",
+      "campus_id": "CAMPUS003",
+      "x": 116.296777,
+      "y": 39.993406,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0046",
+      "name": "设施46",
+      "type": "体育馆器材室",
+      "campus_id": "CAMPUS001",
+      "x": 116.350153,
+      "y": 40.021862,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0047",
+      "name": "设施47",
+      "type": "药店",
+      "campus_id": "CAMPUS002",
+      "x": 116.314672,
+      "y": 40.015772,
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "FAC_EX0048",
+      "name": "设施48",
+      "type": "淋浴间",
+      "campus_id": "CAMPUS005",
+      "x": 116.359274,
+      "y": 39.946457,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0049",
+      "name": "设施49",
+      "type": "医务室",
+      "campus_id": "CAMPUS003",
+      "x": 116.302506,
+      "y": 39.972337,
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "FAC_EX0050",
+      "name": "设施50",
+      "type": "医务室",
+      "campus_id": "CAMPUS001",
+      "x": 116.337775,
+      "y": 40.039444,
+      "location_node_id": "NODE_1359329128"
+    }
+  ]
+}

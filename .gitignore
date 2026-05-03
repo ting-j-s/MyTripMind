@@ -9,8 +9,8 @@ __pycache__/
 .venv/
 venv/
 
-# 不排除 data 目录下的 json 文件
-backend/data/*.json
+# 数据文件（应被Git跟踪）
+# backend/data/*.json  # 已注释，确保JSON数据文件能被跟踪
 
 # 前端
 node_modules/

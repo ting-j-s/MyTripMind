@@ -1,0 +1,480 @@
+{
+  "buildings": [
+    {
+      "id": "ATTR_LIB",
+      "name": "图书馆",
+      "type": "教学楼",
+      "campus_id": "CAMPUS001",
+      "x": 116.352,
+      "y": 40.025,
+      "floors": 5,
+      "rooms": [
+        "101",
+        "102",
+        "201",
+        "202",
+        "301",
+        "自息室"
+      ],
+      "elevators": [
+        "A"
+      ],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "ATTR_CAFETERIA",
+      "name": "学生食堂",
+      "type": "食堂",
+      "campus_id": "CAMPUS001",
+      "x": 116.353,
+      "y": 40.026,
+      "floors": 3,
+      "rooms": [
+        "一层",
+        "二层",
+        "三层"
+      ],
+      "elevators": [],
+      "entrances": [
+        "南门",
+        "北门"
+      ],
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "BLD_0003",
+      "name": "建筑3",
+      "type": "体育馆",
+      "campus_id": "CAMPUS002",
+      "x": 116.339603,
+      "y": 40.005197,
+      "floors": 9,
+      "rooms": [
+        "503",
+        "402",
+        "104",
+        "605",
+        "301",
+        "504",
+        "604"
+      ],
+      "elevators": [],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "BLD_0004",
+      "name": "建筑4",
+      "type": "活动中心",
+      "campus_id": "CAMPUS001",
+      "x": 116.351533,
+      "y": 40.034807,
+      "floors": 10,
+      "rooms": [
+        "607",
+        "904",
+        "404",
+        "909",
+        "803",
+        "403",
+        "703"
+      ],
+      "elevators": [],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "BLD_0005",
+      "name": "建筑5",
+      "type": "超市",
+      "campus_id": "CAMPUS002",
+      "x": 116.335172,
+      "y": 39.993178,
+      "floors": 7,
+      "rooms": [
+        "404",
+        "107",
+        "303",
+        "906",
+        "303"
+      ],
+      "elevators": [],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "BLD_0006",
+      "name": "建筑6",
+      "type": "教学楼",
+      "campus_id": "CAMPUS005",
+      "x": 116.371251,
+      "y": 39.945608,
+      "floors": 10,
+      "rooms": [
+        "803",
+        "906",
+        "603",
+        "803",
+        "308",
+        "507",
+        "707",
+        "609"
+      ],
+      "elevators": [
+        "A",
+        "B"
+      ],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_1742785935"
+    },
+    {
+      "id": "BLD_0007",
+      "name": "建筑7",
+      "type": "宿舍楼",
+      "campus_id": "CAMPUS001",
+      "x": 116.355211,
+      "y": 40.028302,
+      "floors": 6,
+      "rooms": [
+        "906",
+        "905",
+        "202"
+      ],
+      "elevators": [],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "BLD_0008",
+      "name": "建筑8",
+      "type": "体育场",
+      "campus_id": "CAMPUS005",
+      "x": 116.337733,
+      "y": 39.957228,
+      "floors": 1,
+      "rooms": [
+        "106",
+        "506",
+        "305",
+        "209",
+        "204",
+        "505"
+      ],
+      "elevators": [
+        "A",
+        "B"
+      ],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "BLD_0009",
+      "name": "建筑9",
+      "type": "体育馆",
+      "campus_id": "CAMPUS002",
+      "x": 116.31135,
+      "y": 39.982573,
+      "floors": 3,
+      "rooms": [
+        "905",
+        "206",
+        "602",
+        "106",
+        "906"
+      ],
+      "elevators": [
+        "A",
+        "B"
+      ],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "BLD_0010",
+      "name": "建筑10",
+      "type": "银行",
+      "campus_id": "CAMPUS003",
+      "x": 116.323864,
+      "y": 39.979314,
+      "floors": 7,
+      "rooms": [
+        "502",
+        "905",
+        "602",
+        "709",
+        "606",
+        "201",
+        "602",
+        "508"
+      ],
+      "elevators": [
+        "A",
+        "B"
+      ],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "BLD_0011",
+      "name": "建筑11",
+      "type": "体育馆",
+      "campus_id": "CAMPUS002",
+      "x": 116.325427,
+      "y": 40.000735,
+      "floors": 7,
+      "rooms": [
+        "301",
+        "209",
+        "403",
+        "106",
+        "806"
+      ],
+      "elevators": [
+        "A",
+        "B"
+      ],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "BLD_0012",
+      "name": "建筑12",
+      "type": "体育馆",
+      "campus_id": "CAMPUS001",
+      "x": 116.354217,
+      "y": 40.030715,
+      "floors": 1,
+      "rooms": [
+        "105",
+        "304",
+        "509"
+      ],
+      "elevators": [],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "BLD_0013",
+      "name": "建筑13",
+      "type": "篮球场",
+      "campus_id": "CAMPUS003",
+      "x": 116.29208,
+      "y": 39.991903,
+      "floors": 9,
+      "rooms": [
+        "405",
+        "407",
+        "902",
+        "706"
+      ],
+      "elevators": [
+        "A",
+        "B"
+      ],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "BLD_0014",
+      "name": "建筑14",
+      "type": "活动中心",
+      "campus_id": "CAMPUS001",
+      "x": 116.335704,
+      "y": 40.041133,
+      "floors": 7,
+      "rooms": [
+        "909",
+        "309",
+        "205",
+        "404",
+        "405",
+        "907",
+        "206",
+        "805"
+      ],
+      "elevators": [],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "BLD_0015",
+      "name": "建筑15",
+      "type": "实验楼",
+      "campus_id": "CAMPUS002",
+      "x": 116.330621,
+      "y": 40.004012,
+      "floors": 3,
+      "rooms": [
+        "205",
+        "301",
+        "407",
+        "507",
+        "107",
+        "104",
+        "201",
+        "504"
+      ],
+      "elevators": [],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "BLD_0016",
+      "name": "建筑16",
+      "type": "图书馆",
+      "campus_id": "CAMPUS004",
+      "x": 116.372602,
+      "y": 39.976943,
+      "floors": 6,
+      "rooms": [
+        "603",
+        "804",
+        "206",
+        "606",
+        "107",
+        "309",
+        "706"
+      ],
+      "elevators": [],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "BLD_0017",
+      "name": "建筑17",
+      "type": "活动中心",
+      "campus_id": "CAMPUS003",
+      "x": 116.290629,
+      "y": 39.997753,
+      "floors": 10,
+      "rooms": [
+        "109",
+        "902",
+        "802",
+        "807",
+        "309",
+        "409",
+        "901"
+      ],
+      "elevators": [],
+      "entrances": [
+        "正门"
+      ],
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "BLD_0018",
+      "name": "建筑18",
+      "type": "银行",
+      "campus_id": "CAMPUS002",
+      "x": 116.304645,
+      "y": 39.986508,
+      "floors": 7,
+      "rooms": [
+        "301",
+        "906",
+        "906",
+        "502",
+        "803",
+        "105"
+      ],
+      "elevators": [
+        "A",
+        "B"
+      ],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_12702402233"
+    },
+    {
+      "id": "BLD_0019",
+      "name": "建筑19",
+      "type": "网球场",
+      "campus_id": "CAMPUS002",
+      "x": 116.335029,
+      "y": 40.010762,
+      "floors": 9,
+      "rooms": [
+        "801",
+        "501",
+        "908",
+        "805",
+        "602"
+      ],
+      "elevators": [],
+      "entrances": [
+        "东门",
+        "西门"
+      ],
+      "location_node_id": "NODE_1359329128"
+    },
+    {
+      "id": "BLD_0020",
+      "name": "建筑20",
+      "type": "网球场",
+      "campus_id": "CAMPUS003",
+      "x": 116.309826,
+      "y": 39.97867,
+      "floors": 10,
+      "rooms": [
+        "405",
+        "108",
+        "708",
+        "105"
+      ],
+      "elevators": [],
+      "entrances": [
+        "正门"
+      ],
+      "location_node_id": "NODE_12702402233"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+# 功能完善计划 (Feature Completion Plan)
+
+## 概述
+
+本计划基于 Step 3 功能验收追踪矩阵，列出当前最需要完善的功能缺口，按优先级排序。
+
+---
+
+## 一、P1 优先级任务
+
+### 任务 1: 混合交通工具路线
+
+**任务名称**: 支持多段不同交通方式的混合路线规划
+
+**目标**: 用户可以选择多种交通工具（如步行+自行车），系统自动分段计算最优路径
+
+**涉及文件**:
+- `backend/algorithms/dijkstra.py` - 需要新增 `dijkstra_mixed_transport()` 函数
+- `backend/routes/route.py` - 新增 API `/api/route/mixed` 或扩展 `/api/route/shortest`
+
+**涉及 API**:
+- `POST /api/route/shortest` (扩展)
+
+**需要新增/修改的测试**:
+- `tests/test_route.py` - 新增 `test_shortest_path_mixed_transport` 测试用例
+- 验证不同路段使用不同交通工具
+
+**验收方式**:
+1. 调用 API 时传入 `transports: ['步行', '自行车', '电瓶车']`
+2. 返回的 path 中不同路段使用不同 speed 计算时间
+3. 验证总时间 = sum(segment_time)
+
+**风险**: 中 - 需要在 graph 边上记录多种 road_types
+
+---
+
+### 任务 2: 日记个人兴趣推荐增强
+
+**任务名称**: 基于标签的日记个人兴趣推荐
+
+**目标**: 用户设置兴趣标签（如"历史"、"博物馆"），系统推荐包含匹配标签的日记
+
+**涉及文件**:
+- `backend/models/user.py` - 添加 `interests: List[str]` 字段
+- `backend/models/diary.py` - 添加 `tags: List[str]` 字段
+- `backend/routes/diary.py` - 扩展 `recommend_by_interest()` 函数
+
+**涉及 API**:
+- `PUT /api/user/<id>` (扩展，支持更新 interests)
+- `GET /api/diaries/recommend?user_id=xxx` (扩展，支持按兴趣推荐)
+
+**需要新增/修改的测试**:
+- `tests/test_diary.py` - 新增 `test_recommend_by_user_interest` 测试用例
+
+**验收方式**:
+1. 用户设置 interests = ["历史", "博物馆"]
+2. 日记有 tags = ["历史", "博物馆"]
+3. 推荐 API 返回匹配日记排在前面
+
+**风险**: 低 - 扩展现有字段和逻辑
+
+---
+
+### 任务 3: 景点个人兴趣推荐增强
+
+**任务名称**: 基于标签的景点个人兴趣推荐
+
+**目标**: 与任务 2 类似，但针对景点推荐，基于用户兴趣标签匹配景点类别
+
+**涉及文件**:
+- `backend/models/attraction.py` - 确认 tags 字段存在
+- `backend/routes/attractions.py` - 扩展 `recommend_attractions()` 支持兴趣匹配
+
+**涉及 API**:
+- `GET /api/recommend?user_id=xxx&sort=interest`
+
+**需要新增/修改的测试**:
+- `tests/test_attractions.py` - 新增 `test_recommend_by_interest` 测试用例
+
+**验收方式**:
+1. 用户有 interests = ["历史"]
+2. 景点有 tags = ["历史", "博物馆"]
+3. 推荐结果优先显示匹配景点
+
+**风险**: 低 - 扩展现有推荐逻辑
+
+---
+
+## 二、P2 优先级任务
+
+### 任务 4: 前端动态交互
+
+**任务名称**: 将静态 HTML 页面改为动态数据渲染
+
+**目标**: 前端页面能从 API 动态加载数据并实时更新 UI
+
+**涉及文件**:
+- `frontend/pages/home.html` - 改为动态加载景点列表
+- `frontend/pages/diary_square.html` - 改为动态加载日记列表
+- `frontend/js/app.js` - 新增统一的数据请求和渲染逻辑
+
+**涉及 API**:
+- 所有现有 GET API
+
+**需要新增/修改的测试**:
+- 无需修改后端测试
+- 前端测试使用 Selenium 或 Playwright（可选）
+
+**验收方式**:
+1. 打开 home.html 能自动加载景点列表
+2. 点击筛选条件时页面刷新数据而非重新加载
+3. 日记列表支持下拉加载更多
+
+**风险**: 高 - 前端工作量较大，但不影响后端验收
+
+---
+
+### 任务 5: 数据变化后索引自动重建
+
+**任务名称**: 索引脏标记自动触发重建
+
+**目标**: 当 diary 数据变化时，搜索索引能自动重建而不需要手动调用
+
+**涉及文件**:
+- `backend/routes/diary.py` - 在 `create_diary/update_diary/delete_diary` 时自动重建
+- `backend/algorithms/text_search.py` - 添加自动重建方法
+
+**涉及 API**:
+- `POST /api/diary` - 自动触发搜索索引重建
+- `PUT /api/diary/<id>` - 自动触发标题索引和搜索索引重建
+- `DELETE /api/diary/<id>` - 自动触发索引重建
+
+**需要新增/修改的测试**:
+- `tests/test_diary.py` - 新增 `test_index_auto_rebuild_after_create` 测试用例
+
+**验收方式**:
+1. 创建新日记后立即搜索，能找到新日记
+2. 更新日记标题后，精确搜索能找到更新后的标题
+
+**风险**: 低 - 已有脏标记机制，只需添加自动调用
+
+---
+
+## 三、任务开发顺序
+
+建议按以下顺序开发：
+
+1. **任务 3 (景点兴趣推荐)** - 最简单，先热身
+2. **任务 2 (日记兴趣推荐)** - 类似逻辑，巩固理解
+3. **任务 5 (索引自动重建)** - 改进代码质量
+4. **任务 1 (混合交通工具)** - 功能性较强，放在后面
+
+前端动态交互任务建议最后处理，或根据实际需要决定是否开发。
+
+---
+
+## 四、不需要开发的内容
+
+以下内容课程要求已满足，无需额外开发：
+
+1. **Dijkstra 算法** - 已完整实现，使用 MinHeap 优化
+2. **TSP 算法** - 已实现贪心+2-opt，返回起点
+3. **Top-K 排序** - 已使用堆实现，非全量排序
+4. **倒排索引** - 已实现 TextSearchIndex
+5. **哈希表** - 已实现 HashTable 用于标题精确查询
+6. **霍夫曼压缩** - 已实现，支持压缩/解压无损还原
+7. **道路网络距离** - 附近设施和美食都使用 Dijkstra 计算
+8. **数据规模** - 所有数据文件均满足 >=200 景点, >=200 道路边等要求
+
+---
+
+**最后更新**: 2026-05-04
+**优先级排序**: P1 > P2
+**建议**: 先完成 P1 任务再考虑 P2

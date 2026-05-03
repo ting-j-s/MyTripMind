@@ -1839,7 +1839,7 @@
       "campus_id": null,
       "x": 116.397,
       "y": 39.9168,
-      "heat": 94522,
+      "heat": 94523,
       "rating": 4.9,
       "tags": [
         "历史",
@@ -3546,7 +3546,7 @@
       ],
       "description": "这是一个新增的测试景点1",
       "image_url": null,
-      "location_node_id": "NODE_6813572766"
+      "location_node_id": "NODE_6007826875"
     },
     {
       "id": "ATTR_202",
@@ -3563,7 +3563,7 @@
       ],
       "description": "这是一个新增的测试景点2",
       "image_url": null,
-      "location_node_id": "NODE_733859433"
+      "location_node_id": "NODE_342780172"
     },
     {
       "id": "ATTR_203",
@@ -3580,7 +3580,7 @@
       ],
       "description": "这是一个新增的测试景点3",
       "image_url": null,
-      "location_node_id": "NODE_1840733234"
+      "location_node_id": "NODE_12630448027"
     },
     {
       "id": "ATTR_204",
@@ -3597,7 +3597,7 @@
       ],
       "description": "这是一个新增的测试景点4",
       "image_url": null,
-      "location_node_id": "NODE_13329037979"
+      "location_node_id": "NODE_558638467"
     },
     {
       "id": "ATTR_205",
@@ -3614,7 +3614,7 @@
       ],
       "description": "这是一个新增的测试景点5",
       "image_url": null,
-      "location_node_id": "NODE_13568912191"
+      "location_node_id": "NODE_6132199045"
     }
   ]
 }

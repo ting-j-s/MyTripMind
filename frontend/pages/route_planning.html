@@ -200,6 +200,9 @@
                         <button class="btn transport-btn" data-type="car" onclick="selectTransport(this)" style="flex: 1; padding: 10px;">
                             驾车
                         </button>
+                        <button class="btn transport-btn" data-type="mixed" onclick="selectTransport(this)" style="flex: 1; padding: 10px;">
+                            混合
+                        </button>
                     </div>
                 </div>
 
@@ -336,10 +339,14 @@
             `;
 
             try {
-                const route = await API.Routes.shortest(from, to, {
+                const opts = {
                     transport: getTransportName(selectedTransport),
                     weight: 'distance'
-                });
+                };
+                if (selectedTransport === 'mixed') {
+                    opts.modes = ['walk', 'bike', 'shuttle'];
+                }
+                const route = await API.Routes.shortest(from, to, opts);
 
                 if (route) {
                     const distance = (route.distance / 1000).toFixed(2);
@@ -359,6 +366,7 @@
                         segmentsHtml = route.segments.map(seg => {
                             const segFromName = seg.from_name || seg.from;
                             const segToName = seg.to_name || seg.to;
+                            const modeHtml = seg.mode ? `<span style="background: var(--primary-light); color: var(--primary); padding: 2px 8px; border-radius: 4px; font-size: 11px;">${getTransportLabel(seg.mode)}</span>` : '';
                             return `
                                 <div class="route-segment">
                                     <div class="from">
@@ -369,7 +377,7 @@
                                     </div>
                                     <div class="to">
                                         <div class="name">${segToName}</div>
-                                        <div class="distance">${(seg.distance / 1000).toFixed(1)}公里</div>
+                                        <div class="distance">${(seg.distance / 1000).toFixed(1)}公里 ${modeHtml}</div>
                                     </div>
                                 </div>
                             `;
@@ -393,6 +401,12 @@
                         }
                     }
 
+                    const modesUsedHtml = route.modes_used
+                        ? `<div style="text-align: center; margin-bottom: 12px; font-size: 12px; color: var(--text-secondary);">
+                            使用交通方式：${route.modes_used.map(m => getTransportLabel(m)).join(' / ')}
+                           </div>`
+                        : '';
+
                     resultDetails.innerHTML = `
                         <div style="display: flex; justify-content: space-between; margin-bottom: 16px;">
                             <div style="text-align: center; flex: 1;">
@@ -406,6 +420,7 @@
                                 <div style="font-size: 12px; color: var(--text-muted);">分钟</div>
                             </div>
                         </div>
+                        ${modesUsedHtml}
                         <div class="route-segment">
                             <div class="from">
                                 <div class="name">${fromName}</div>
@@ -478,12 +493,25 @@
             updateMapVisualizationSimple(from, to);
         }
 
+        function getTransportLabel(type) {
+            const map = {
+                'walking': '步行', 'walk': '步行',
+                'bicycle': '自行车', 'bike': '自行车',
+                'bus': '公交',
+                'car': '驾车',
+                'shuttle': '电瓶车',
+                'mixed': '混合交通', 'mixed_transport': '混合交通'
+            };
+            return map[type] || type;
+        }
+
         function getTransportName(type) {
             const map = {
                 'walking': '步行',
                 'bicycle': '自行车',
                 'bus': '公交',
-                'car': '驾车'
+                'car': '驾车',
+                'mixed': 'mixed_transport'
             };
             return map[type] || '步行';
         }

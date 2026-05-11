@@ -107,15 +107,19 @@ const Attractions = {
 const Routes = {
     // 最短路径
     shortest(from, to, options = {}) {
+        const body = {
+            from,
+            to,
+            campus_id: options.campus_id,
+            transport: options.transport || '步行',
+            weight: options.weight || 'distance'
+        };
+        if (options.modes) {
+            body.modes = options.modes;
+        }
         return request('/route/shortest', {
             method: 'POST',
-            body: JSON.stringify({
-                from,
-                to,
-                campus_id: options.campus_id,
-                transport: options.transport || '步行',
-                weight: options.weight || 'distance'
-            })
+            body: JSON.stringify(body)
         });
     },
 
